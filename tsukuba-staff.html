@@ -267,7 +267,7 @@ body{
 
   <div class="callout callout-warm">
     <strong>このプロジェクトの目的</strong>
-    つくば院をみなさんにとって「働きやすく、やりがいのある職場」にすること。そして、患者さんにとって「安心して通えるクリニック」にすること。この2つをゴールに、一緒に取り組んでいきたいと思っています。
+    つくば院が、スタッフさんも患者さんもより安心して通えるクリニックにすることを目的に、一緒に取り組んでいきたいと思います。
   </div>
 </section>
 
@@ -442,14 +442,14 @@ const DATA = {
 
   // 1on1 status: done / scheduled / pending
   oneon1: [
-    { name: 'たろ先生', status: 'done', date: '3/5' },
+    { name: 'たろさん', status: 'done', date: '3/5' },
     { name: 'みゆさん', status: 'scheduled', date: '3/7 11:00' },
+    { name: 'しめじさん', status: 'scheduled', date: '3/8 15:00' },
+    { name: 'keiさん', status: 'scheduled', date: '3/8 16:00' },
+    { name: 'ひなさん', status: 'scheduled', date: '3/8 17:00' },
+    { name: 'Reikoさん', status: 'scheduled', date: '3/8 19:00' },
     { name: 'eiさん', status: 'scheduled', date: '3/8 21:00' },
     { name: 'kuuさん', status: 'scheduled', date: '3/9 11:00' },
-    { name: 'しめじさん', status: 'pending', date: '調整中' },
-    { name: 'ひなさん', status: 'pending', date: '調整中' },
-    { name: 'keiさん', status: 'pending', date: '調整中' },
-    { name: 'Reikoさん', status: 'pending', date: '調整中' },
     { name: 'Mayaさん', status: 'pending', date: '調整中' },
     { name: '黄先生', status: 'pending', date: '調整中' },
   ],
@@ -459,7 +459,7 @@ const DATA = {
     { text: '院内ルール・業務フローの文書化', done: false },
     { text: '会議体の整備（朝礼・週次MTG）', done: false },
     { text: '日報フォーマットの改善', done: false },
-    { text: '休日出勤・勤怠管理ルールの明確化', done: false },
+    { text: 'ルール整備', done: false },
     { text: 'チャットグループの整理・命名規則統一', done: false },
   ],
   improveComm: [
@@ -477,10 +477,8 @@ const DATA = {
   timeline: [
     { date: '3/5', title: 'ABBの院長面談完了', desc: '常駐について合意。改善の方向性を共有しました', status: 'done' },
     { date: '3/6', title: 'スタッフ全員にご挨拶・1on1案内', desc: '日報チャットにて自己紹介と面談のご案内をしました', status: 'done' },
-    { date: '3/7-9', title: '1on1面談（みゆさん・eiさん・kuuさん）', desc: '順次面談を実施します。お気軽にお話しください', status: 'current' },
-    { date: '3/10', title: '残りの方の1on1日程確定', desc: '調整さんでご都合をお知らせください', status: 'future' },
+    { date: '3/7-9', title: '1on1面談（8名）', desc: 'みゆさん〜kuuさんまで順次実施します。お気軽にお話しください', status: 'current' },
     { date: '3/12', title: 'ABB常駐開始', desc: '毎日クリニックに伺い、一緒に改善に取り組みます', status: 'future' },
-    { date: '3/14', title: '朝礼・週次MTG開始', desc: 'チーム全員で情報を共有する場を設けます', status: 'future' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルールを整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
   ]
