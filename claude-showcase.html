@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude AI for Online Secretary | AIが変える秘書業務の未来</title>
+<style>
+:root {
+  --claude-orange: #da7756;
+  --claude-cream: #f9f5f0;
+  --claude-dark: #1a1a2e;
+  --claude-blue: #3b82f6;
+  --claude-green: #10b981;
+  --claude-purple: #8b5cf6;
+  --claude-pink: #ec4899;
+  --claude-red: #ef4444;
+  --claude-yellow: #f59e0b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.15);
+  --radius: 16px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  background: var(--claude-cream);
+  color: #333;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+  color: white;
+  padding: 40px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(218,119,86,0.15) 0%, transparent 70%);
+  top: -200px; right: -200px;
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+  bottom: -100px; left: -100px;
+  border-radius: 50%;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(218,119,86,0.15);
+  border: 1px solid rgba(218,119,86,0.3);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  color: var(--claude-orange);
+  margin-bottom: 32px;
+  animation: fadeInDown 0.8s ease;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+.hero h1 .accent { color: var(--claude-orange); }
+.hero p {
+  font-size: clamp(16px, 2.5vw, 22px);
+  max-width: 700px;
+  opacity: 0.8;
+  margin-bottom: 48px;
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+.hero-stat {
+  text-align: center;
+}
+.hero-stat .num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--claude-orange);
+  display: block;
+}
+.hero-stat .label {
+  font-size: 14px;
+  opacity: 0.7;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  animation: bounce 2s infinite;
+  opacity: 0.5;
+  font-size: 13px;
+}
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 0 24px;
+  box-shadow: var(--shadow-sm);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav a {
+  display: block;
+  padding: 16px 16px;
+  text-decoration: none;
+  color: #666;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+.nav a:hover, .nav a.active {
+  color: var(--claude-orange);
+  border-bottom-color: var(--claude-orange);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+.section-title {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--claude-dark);
+}
+.section-sub {
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 48px;
+}
+
+/* ===== DEMO CARDS ===== */
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.demo-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.demo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.demo-card-header {
+  padding: 24px 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.demo-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.demo-card-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+}
+.demo-card-header .tag {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.demo-card-body {
+  padding: 0 24px 24px;
+}
+
+/* ===== BEFORE/AFTER ===== */
+.ba-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.ba-box {
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.ba-before {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+}
+.ba-after {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+.ba-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  display: block;
+}
+.ba-before .ba-label { color: var(--claude-red); }
+.ba-after .ba-label { color: var(--claude-green); }
+
+/* ===== INTERACTIVE DEMO ===== */
+.live-demo {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  margin-top: 48px;
+}
+.live-demo-header {
+  background: var(--claude-dark);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.live-demo-header .dots {
+  display: flex; gap: 6px;
+}
+.live-demo-header .dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+.live-demo-header .dot:nth-child(1) { background: #ff5f57; }
+.live-demo-header .dot:nth-child(2) { background: #febc2e; }
+.live-demo-header .dot:nth-child(3) { background: #28c840; }
+.live-demo-header span { font-size: 13px; opacity: 0.7; margin-left: 8px; }
+.live-demo-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 400px;
+}
+.live-input, .live-output {
+  padding: 24px;
+}
+.live-input {
+  border-right: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+.live-input label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+.live-input select, .live-input textarea {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  line-height: 1.7;
+}
+.live-input select { margin-bottom: 16px; cursor: pointer; }
+.live-input textarea { min-height: 200px; }
+.live-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, var(--claude-orange), #c96040);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.live-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(218,119,86,0.3);
+}
+.live-btn:active { transform: scale(0.98); }
+.live-output {
+  position: relative;
+}
+.live-output label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 8px;
+}
+.live-result {
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: #333;
+  min-height: 200px;
+}
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 18px;
+  background: var(--claude-orange);
+  animation: blink 1s infinite;
+  vertical-align: text-bottom;
+}
+@keyframes blink {
+  0%,50% { opacity: 1; }
+  51%,100% { opacity: 0; }
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--claude-orange), var(--claude-blue), var(--claude-green));
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 32px;
+  background: white;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--claude-orange);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--claude-orange);
+}
+.tl-time {
+  font-size: 12px;
+  color: var(--claude-orange);
+  font-weight: 700;
+}
+.tl-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+.tl-desc {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== USE CASES GRID ===== */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.usecase-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid transparent;
+}
+.usecase-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--claude-orange);
+}
+.usecase-emoji {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: block;
+}
+.usecase-card h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--claude-dark);
+}
+.usecase-card p {
+  font-size: 13px;
+  color: #888;
+  line-height: 1.6;
+}
+
+/* ===== METRICS ===== */
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.metric-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+.metric-value {
+  font-size: 42px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--claude-orange), var(--claude-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.metric-label {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+}
+.metric-detail {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 8px;
+}
+
+/* ===== REAL EXAMPLES ===== */
+.example-showcase {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+.example-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  overflow-x: auto;
+}
+.example-tab {
+  padding: 14px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.example-tab:hover { color: #333; }
+.example-tab.active {
+  color: var(--claude-orange);
+  border-bottom-color: var(--claude-orange);
+}
+.example-content {
+  padding: 32px;
+  display: none;
+}
+.example-content.active { display: block; }
+.example-report {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 24px;
+  font-size: 14px;
+  line-height: 1.9;
+  border-left: 4px solid var(--claude-orange);
+}
+.example-report h4 {
+  color: var(--claude-dark);
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.example-report .highlight {
+  background: rgba(218,119,86,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--claude-orange);
+  font-weight: 600;
+}
+
+/* ===== CTA ===== */
+.cta {
+  text-align: center;
+  padding: 100px 24px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+}
+.cta h2 {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+.cta p {
+  font-size: 18px;
+  opacity: 0.7;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 40px;
+  background: var(--claude-orange);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: transform 0.2s;
+}
+.cta-btn:hover { transform: scale(1.05); }
+
+/* ===== COMPARISON TABLE ===== */
+.compare-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-top: 32px;
+}
+.compare-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--claude-dark);
+  color: white;
+}
+.compare-table th:nth-child(3) {
+  background: linear-gradient(135deg, var(--claude-orange), #c96040);
+}
+.compare-table td {
+  padding: 14px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tr:hover td { background: #fafafa; }
+.compare-table .check { color: var(--claude-green); font-weight: bold; }
+.compare-table .cross { color: #ccc; }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 13px;
+  color: #999;
+  background: #f3f4f6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .live-demo-body { grid-template-columns: 1fr; }
+  .live-input { border-right: none; border-bottom: 1px solid #e5e7eb; }
+  .ba-container { grid-template-columns: 1fr; }
+  .hero-stats { gap: 32px; }
+  .hero-stat .num { font-size: 36px; }
+}
+
+/* ===== CHAT ANIMATION ===== */
+.chat-demo {
+  max-width: 500px;
+  margin: 32px auto 0;
+}
+.chat-msg {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: chatIn 0.5s ease forwards;
+}
+.chat-msg.user { flex-direction: row-reverse; }
+.chat-avatar {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+.chat-msg.ai .chat-avatar { background: linear-gradient(135deg, var(--claude-orange), #c96040); }
+.chat-msg.user .chat-avatar { background: var(--claude-blue); color: white; font-size: 12px; font-weight: 700; }
+.chat-bubble {
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  max-width: 340px;
+  line-height: 1.6;
+}
+.chat-msg.ai .chat-bubble { background: white; box-shadow: var(--shadow-sm); }
+.chat-msg.user .chat-bubble { background: var(--claude-blue); color: white; }
+@keyframes chatIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.chat-msg:nth-child(1) { animation-delay: 0.3s; }
+.chat-msg:nth-child(2) { animation-delay: 1.2s; }
+.chat-msg:nth-child(3) { animation-delay: 2.4s; }
+.chat-msg:nth-child(4) { animation-delay: 3.6s; }
+.chat-msg:nth-child(5) { animation-delay: 4.5s; }
+
+/* ===== WORKFLOW DIAGRAM ===== */
+.workflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+.wf-step {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  min-width: 160px;
+  transition: transform 0.3s;
+}
+.wf-step:hover { transform: scale(1.05); }
+.wf-step .wf-icon { font-size: 28px; margin-bottom: 8px; }
+.wf-step .wf-label { font-size: 13px; font-weight: 700; color: var(--claude-dark); }
+.wf-step .wf-time { font-size: 11px; color: #aaa; margin-top: 4px; }
+.wf-arrow {
+  font-size: 24px;
+  color: var(--claude-orange);
+  padding: 0 8px;
+}
+
+/* Feature highlight */
+.feature-highlight {
+  background: linear-gradient(135deg, rgba(218,119,86,0.05), rgba(139,92,246,0.05));
+  border: 1px solid rgba(218,119,86,0.15);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin: 32px 0;
+}
+.feature-highlight h4 {
+  color: var(--claude-orange);
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* Animate on scroll */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-badge">Powered by Anthropic Claude</div>
+  <h1>AIが変える<br><span class="accent">秘書業務</span>の未来</h1>
+  <p>Chatwork分析、日報生成、リスク検知、戦略レポート。<br>Claude AIが経営企画室の業務をどう変革したか、実例でご紹介します。</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num" id="counter1">0</span>
+      <span class="label">日次処理メッセージ数</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" id="counter2">0</span>
+      <span class="label">事業ユニット管理数</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" id="counter3">0</span>
+      <span class="label">自動生成レポート/日</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" id="counter4">0</span>
+      <span class="label">時間削減率 (%)</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="#workflow-section">朝事処理</a>
+    <a href="#features">機能一覧</a>
+    <a href="#demo">ライブデモ</a>
+    <a href="#examples">実例紹介</a>
+    <a href="#compare">比較</a>
+    <a href="#usecases">活用シーン</a>
+    <a href="#timeline-section">導入効果</a>
+  </div>
+</nav>
+
+<!-- ===== WORKFLOW (Morning Routine) ===== -->
+<section class="section" id="workflow-section">
+  <div class="animate-on-scroll">
+    <div class="section-title">毎朝、自動で完了する「朝事処理」</div>
+    <div class="section-sub">「おはよう」の一言で、全事業の状況把握が完了します</div>
+  </div>
+  <div class="workflow animate-on-scroll">
+    <div class="wf-step">
+      <div class="wf-icon">💬</div>
+      <div class="wf-label">Chatwork全室<br>ログ取得</div>
+      <div class="wf-time">自動 / 30秒</div>
+    </div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step">
+      <div class="wf-icon">📊</div>
+      <div class="wf-label">事業別<br>進捗レポート</div>
+      <div class="wf-time">自動 / 2分</div>
+    </div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step">
+      <div class="wf-icon">⚠️</div>
+      <div class="wf-label">リスク<br>アラート検知</div>
+      <div class="wf-time">自動 / 1分</div>
+    </div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step">
+      <div class="wf-icon">📅</div>
+      <div class="wf-label">カレンダー<br>連携・工程表</div>
+      <div class="wf-time">自動 / 30秒</div>
+    </div>
+    <div class="wf-arrow">→</div>
+    <div class="wf-step" style="border: 2px solid var(--claude-orange);">
+      <div class="wf-icon">🖥️</div>
+      <div class="wf-label">統合<br>ダッシュボード</div>
+      <div class="wf-time">自動生成</div>
+    </div>
+  </div>
+
+  <div class="feature-highlight animate-on-scroll">
+    <h4>実際の運用イメージ</h4>
+    <div class="chat-demo">
+      <div class="chat-msg user">
+        <div class="chat-avatar">ABB</div>
+        <div class="chat-bubble">おはよう</div>
+      </div>
+      <div class="chat-msg ai">
+        <div class="chat-avatar">C</div>
+        <div class="chat-bubble">おはようございます。朝事処理を開始します。Chatwork 48時間分のログを取得中...</div>
+      </div>
+      <div class="chat-msg ai">
+        <div class="chat-avatar">C</div>
+        <div class="chat-bubble">全15事業のレポート生成完了。リスクアラートが2件あります:<br><br>🔴 大阪歯科：返金請求（本日期限）<br>🟡 つくば院：スタッフ離職リスク</div>
+      </div>
+      <div class="chat-msg user">
+        <div class="chat-avatar">ABB</div>
+        <div class="chat-bubble">つくば院の詳細は？</div>
+      </div>
+      <div class="chat-msg ai">
+        <div class="chat-avatar">C</div>
+        <div class="chat-bubble">つくば院の分析結果です:<br>- 院長マネジメント課題（スコア4/5）<br>- 1on1実施済: 1/9名<br>- 推奨: 本日みゆさんZoomでヒアリング<br><br>詳細ダッシュボードをブラウザで開きますか？</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section" id="features">
+  <div class="animate-on-scroll">
+    <div class="section-title">Claudeができること</div>
+    <div class="section-sub">秘書・ディレクター業務を根本から変える7つの機能</div>
+  </div>
+
+  <div class="demo-grid animate-on-scroll">
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #fef3c7;">📊</div>
+        <div>
+          <h3>事業別レポート自動生成</h3>
+          <span class="tag" style="background: #fef3c7; color: #92400e;">毎朝自動</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">Chatworkの全チャットルームを横断的に分析し、事業ごとの進捗・課題・推奨アクションを自動レポート化</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            各チャットを1つずつ開いて確認<br>→ 1〜2時間かかる<br>→ 見落としリスクあり
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            全事業を一括分析<br>→ 3分で完了<br>→ 漏れゼロ・リスク自動検知
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #fce7f3;">⚠️</div>
+        <div>
+          <h3>リスクアラート自動検知</h3>
+          <span class="tag" style="background: #fce7f3; color: #9d174d;">リアルタイム</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">期限切れ・クレーム・法的リスク・放置メッセージなどを自動スコアリングし、緊急度順に通知</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            問題発生後に気づく<br>→ 対応が後手に回る<br>→ 炎上リスク
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            問題を予兆段階で検知<br>→ 先手で対応可能<br>→ 炎上を未然に防止
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #e0e7ff;">✍️</div>
+        <div>
+          <h3>返信案の自動生成</h3>
+          <span class="tag" style="background: #e0e7ff; color: #3730a3;">オンデマンド</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">未返信のメンション・DMを検出し、文脈を読み取って最適な返信文案を自動生成。マイチャットに下書き投稿</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            返信文面を毎回考える<br>→ 1通5〜10分<br>→ 返信漏れ発生
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            ワンクリックで返信案生成<br>→ 1通30秒<br>→ 返信漏れゼロ
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #d1fae5;">📋</div>
+        <div>
+          <h3>再建計画・戦略策定</h3>
+          <span class="tag" style="background: #d1fae5; color: #065f46;">戦略分析</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">過去の成功パターンと現在のデータを比較分析し、具体的なアクションプラン付きの再建計画を策定</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            コンサルに依頼<br>→ 数週間〜1ヶ月<br>→ 費用100万円〜
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            ログ分析→計画策定<br>→ 30分で完了<br>→ 追加費用ゼロ
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #ede9fe;">📝</div>
+        <div>
+          <h3>コンテンツ・記事作成</h3>
+          <span class="tag" style="background: #ede9fe; color: #5b21b6;">オンデマンド</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">トーン・ターゲット・メディアに合わせた記事やSNS投稿を企画・執筆。SEO対策やトレンド分析込み</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            ライターに外注<br>→ 納品まで3〜5日<br>→ 修正のやりとり
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            要件を伝えて即生成<br>→ 5分で初稿完成<br>→ その場で修正可能
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="demo-icon" style="background: #fef9c3;">🌐</div>
+        <div>
+          <h3>トレンド調査・市場分析</h3>
+          <span class="tag" style="background: #fef9c3; color: #854d0e;">オンデマンド</span>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <p style="font-size:14px;color:#666;margin-bottom:12px;">Web検索を活用した最新トレンド収集。業界動向・競合分析・SWOT分析を構造化レポートで出力</p>
+        <div class="ba-container">
+          <div class="ba-box ba-before">
+            <span class="ba-label">Before</span>
+            手動で情報収集<br>→ 半日〜1日<br>→ 情報が散らばる
+          </div>
+          <div class="ba-box ba-after">
+            <span class="ba-label">After</span>
+            キーワード1つで調査開始<br>→ 10分で完了<br>→ 構造化レポート出力
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIVE DEMO ===== -->
+<section class="section" id="demo">
+  <div class="animate-on-scroll">
+    <div class="section-title">ライブデモ</div>
+    <div class="section-sub">Claudeの文章生成力を体験してください（シミュレーション）</div>
+  </div>
+  <div class="live-demo animate-on-scroll">
+    <div class="live-demo-header">
+      <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+      <span>Claude AI - Secretary Assistant</span>
+    </div>
+    <div class="live-demo-body">
+      <div class="live-input">
+        <label>タスクを選択</label>
+        <select id="demoTask" onchange="updateDemoInput()">
+          <option value="reply">返信文案の生成</option>
+          <option value="summary">議事録の要約</option>
+          <option value="report">日報レポート作成</option>
+          <option value="risk">リスク分析</option>
+        </select>
+        <label>入力テキスト</label>
+        <textarea id="demoInput">お世話になっております。先日お話しした物件の件ですが、オーナー様から条件変更の連絡がありました。家賃が月額5万円アップ、敷金が2ヶ月から3ヶ月に変更とのことです。来週月曜までにご回答いただけますでしょうか。</textarea>
+        <button class="live-btn" onclick="runDemo()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          実行する
+        </button>
+      </div>
+      <div class="live-output">
+        <label>Claude AI 出力</label>
+        <div class="live-result" id="demoOutput">
+          <span style="color: #aaa;">左のパネルで入力して「実行する」をクリックしてください</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REAL EXAMPLES ===== -->
+<section class="section" id="examples">
+  <div class="animate-on-scroll">
+    <div class="section-title">実際の出力例</div>
+    <div class="section-sub">経営企画室で日々生成されている実際のレポートを紹介</div>
+  </div>
+
+  <div class="example-showcase animate-on-scroll">
+    <div class="example-tabs">
+      <div class="example-tab active" onclick="switchTab(this, 'ex-biz')">事業レポート</div>
+      <div class="example-tab" onclick="switchTab(this, 'ex-risk')">リスクアラート</div>
+      <div class="example-tab" onclick="switchTab(this, 'ex-plan')">再建計画</div>
+      <div class="example-tab" onclick="switchTab(this, 'ex-reply')">返信案</div>
+    </div>
+    <div class="example-content active" id="ex-biz">
+      <div class="example-report">
+        <h4>歯科 大阪院 | ABB担当</h4>
+        <p>
+          <strong>1行レポート:</strong> 問合せチャット49件・日報26件と非常に活発。<span class="highlight">平野氏の返金請求</span>が最大の課題。<br><br>
+          <strong>進捗:</strong> 口管強の届出受理確認中（近畿厚生局3月算定可能）。平野氏の返金請求（77,000円）への対応が緊急。<br><br>
+          <strong>リスク:</strong> 平野氏から<span class="highlight">3/8（日）中の回答期限</span>付き要求。カルテ開示費用・返金・説明の4点回答が必要。<br><br>
+          <strong>推奨対応:</strong> 本日中に川崎弁護士と回答方針を確定し、3/8中に回答を送信する。
+        </p>
+      </div>
+      <p style="margin-top:16px;font-size:13px;color:#888;">* Chatworkの566件のメッセージから自動生成。処理時間: 約3分</p>
+    </div>
+    <div class="example-content" id="ex-risk">
+      <div class="example-report" style="border-left-color: var(--claude-red);">
+        <h4>リスクアラート | 2026-03-07</h4>
+        <p>
+          <span style="font-size:20px;">🔴</span> <strong>【緊急度5/5】大阪歯科 - 返金請求</strong><br>
+          患者 平野氏から77,000円の返金請求。期限: 明日3/8（日）中。<br>
+          弁護士対応必須。カルテ開示請求も含む。<br><br>
+          <span style="font-size:20px;">🟠</span> <strong>【緊急度4/5】つくば院 - 組織崩壊リスク</strong><br>
+          院長のマネジメント課題が深刻化。スタッフ離職リスク。<br>
+          ABB 3/12常駐で介入予定。代替院長の確保が急務。<br><br>
+          <span style="font-size:20px;">🟡</span> <strong>【緊急度3/5】放デイ北浜 - 赤字継続</strong><br>
+          月次赤字-135万円。改善方針が未策定のまま放置。<br>
+          来週月曜までに改善案の提出を要請。
+        </p>
+      </div>
+      <p style="margin-top:16px;font-size:13px;color:#888;">* 15事業のチャットログを横断分析し、リスクを自動スコアリング</p>
+    </div>
+    <div class="example-content" id="ex-plan">
+      <div class="example-report" style="border-left-color: var(--claude-blue);">
+        <h4>つくば院再建計画 | 大阪歯科成功パターン適用</h4>
+        <p>
+          <strong>背景:</strong> 大阪歯科院はジョイン後12ヶ月で<span class="highlight">日商100万円超</span>を達成。このパターンをつくば院に適用。<br><br>
+          <strong>Phase 1（3月）:</strong> 現状把握・1on1完了・緊急安定化<br>
+          <strong>Phase 2（4月）:</strong> 代替院長採用・業務フロー再設計<br>
+          <strong>Phase 3（5-6月）:</strong> 組織定着・KPI管理体制構築<br>
+          <strong>Phase 4（7月〜）:</strong> 自走体制確立・撤収<br><br>
+          <strong>KPI:</strong> スタッフ離職ゼロ / 院長候補3名確保 / 日商30%増<br><br>
+          ※ Chatwork 80件の運営相談ログ + 日報65件を分析して策定
+        </p>
+      </div>
+      <p style="margin-top:16px;font-size:13px;color:#888;">* 過去のChatworkログ分析 → 問題構造の可視化 → 計画策定まで約30分</p>
+    </div>
+    <div class="example-content" id="ex-reply">
+      <div class="example-report" style="border-left-color: var(--claude-purple);">
+        <h4>返信案 | 未返信メンション対応</h4>
+        <p>
+          <strong>対象:</strong> きむぽんさんからのIF(インパクトフィルター)FB依頼（3/6 23:10）<br>
+          <strong>放置時間:</strong> 18時間<br><br>
+          <strong>【生成された返信案】</strong><br>
+          「きむぽんさん、IF共有ありがとうございます。<br>
+          「応援カード」コンセプト、良い方向性だと思います。<br><br>
+          気になった点を3つ:<br>
+          1. 稼働率の想定が楽天比で高め → 初年度は保守的に見積もっては<br>
+          2. 割賦販売法の申請期間が読めない → 法務スケジュールを先行させるべき<br>
+          3. ファンカード戦略の具体施策がもう少し欲しい<br><br>
+          3/9のMTGで詳しく話しましょう。」
+        </p>
+      </div>
+      <p style="margin-top:16px;font-size:13px;color:#888;">* 文脈を読み取り、相手との関係性・過去のやり取りを考慮して生成</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section class="section" id="compare">
+  <div class="animate-on-scroll">
+    <div class="section-title">Claude vs 従来の秘書業務</div>
+    <div class="section-sub">何が変わるのか、具体的に比較</div>
+  </div>
+
+  <div class="metrics-row animate-on-scroll">
+    <div class="metric-card">
+      <div class="metric-value">95%</div>
+      <div class="metric-label">レポート作成時間の削減</div>
+      <div class="metric-detail">2時間 → 5分</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">100%</div>
+      <div class="metric-label">チャットログ確認率</div>
+      <div class="metric-detail">見落としゼロ</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">24/7</div>
+      <div class="metric-label">対応可能時間</div>
+      <div class="metric-detail">深夜・休日も即座に</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-value">15+</div>
+      <div class="metric-label">同時管理事業数</div>
+      <div class="metric-detail">スケール制限なし</div>
+    </div>
+  </div>
+
+  <table class="compare-table animate-on-scroll">
+    <thead>
+      <tr>
+        <th>業務内容</th>
+        <th>従来のやり方</th>
+        <th>Claude AI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>朝の状況確認</strong></td>
+        <td>チャットを1つずつ確認（1〜2時間）</td>
+        <td><span class="check">全チャット一括分析（3分）</span></td>
+      </tr>
+      <tr>
+        <td><strong>リスク検知</strong></td>
+        <td>問題発生後に気づく（受動的）</td>
+        <td><span class="check">予兆段階で自動アラート（能動的）</span></td>
+      </tr>
+      <tr>
+        <td><strong>返信作成</strong></td>
+        <td>1通ずつ文面を考える（5〜10分/通）</td>
+        <td><span class="check">文脈を読み取り即座に案を生成（30秒/通）</span></td>
+      </tr>
+      <tr>
+        <td><strong>議事録・要約</strong></td>
+        <td>手動で整理（30分〜1時間）</td>
+        <td><span class="check">自動構造化・要点抽出（1分）</span></td>
+      </tr>
+      <tr>
+        <td><strong>戦略・計画策定</strong></td>
+        <td>外部コンサル依頼（数週間・100万円〜）</td>
+        <td><span class="check">データ分析→計画策定（30分・追加費用ゼロ）</span></td>
+      </tr>
+      <tr>
+        <td><strong>レポート出力</strong></td>
+        <td>Excel/PPTで手動作成</td>
+        <td><span class="check">HTMLダッシュボード自動生成・Web公開</span></td>
+      </tr>
+      <tr>
+        <td><strong>情報の一元管理</strong></td>
+        <td>チャット・メール・資料に分散</td>
+        <td><span class="check">全情報を統合分析・構造化</span></td>
+      </tr>
+      <tr>
+        <td><strong>複数事業の横断管理</strong></td>
+        <td>担当者の頭の中（属人化）</td>
+        <td><span class="check">15事業を同時並行で可視化</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== USE CASES ===== -->
+<section class="section" id="usecases">
+  <div class="animate-on-scroll">
+    <div class="section-title">秘書・ディレクター向け活用シーン</div>
+    <div class="section-sub">日々の業務で、こんな場面で活躍します</div>
+  </div>
+  <div class="usecase-grid animate-on-scroll">
+    <div class="usecase-card">
+      <span class="usecase-emoji">🌅</span>
+      <h4>朝イチの状況把握</h4>
+      <p>「おはよう」で全事業の昨日の動きを把握。優先対応すべきことが即座にわかる</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">📨</span>
+      <h4>未返信の一括処理</h4>
+      <p>溜まったメンション・DMへの返信案を自動生成。確認して送るだけ</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">📊</span>
+      <h4>週次・月次レポート</h4>
+      <p>「週報作って」で1週間の動きを自動集計。ディレクターへの報告が一瞬で</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">🔍</span>
+      <h4>調査・リサーチ</h4>
+      <p>業界動向・競合分析・法規制の確認。Web検索を駆使した構造化レポート</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">✏️</span>
+      <h4>文書作成・推敲</h4>
+      <p>メール・案内文・マニュアル・お知らせ。トーンや対象に合わせた文面を即生成</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">🗂️</span>
+      <h4>情報の整理・構造化</h4>
+      <p>散らばった情報を体系的に整理。手順書やFAQの自動生成</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">⚡</span>
+      <h4>緊急対応サポート</h4>
+      <p>クレーム・法的問題・トラブル発生時の対応方針を即座に提案</p>
+    </div>
+    <div class="usecase-card">
+      <span class="usecase-emoji">🎯</span>
+      <h4>KPI管理・進捗追跡</h4>
+      <p>目標に対する進捗を自動追跡。遅延や未達のアラートを自動通知</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="section" id="timeline-section">
+  <div class="animate-on-scroll">
+    <div class="section-title">導入からの変化</div>
+    <div class="section-sub">経営企画室でのClaude導入リアルタイムライン</div>
+  </div>
+  <div class="timeline animate-on-scroll">
+    <div class="tl-item">
+      <div class="tl-time">Day 1</div>
+      <div class="tl-title">環境構築・連携設定</div>
+      <div class="tl-desc">Chatwork API連携、Google Calendar連携、ディレクトリ構造の設計。「朝事処理」の基本フローを構築</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Day 2-3</div>
+      <div class="tl-title">自動レポート体制の確立</div>
+      <div class="tl-desc">事業別レポート・リスクアラート・コミュニケーション振り返りの3種レポートを自動生成。15事業を一括カバー</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Day 4-5</div>
+      <div class="tl-title">戦略分析・再建計画の策定</div>
+      <div class="tl-desc">つくば院の再建計画を策定。大阪歯科の成功パターンを分析し、4フェーズのアクションプランを作成。HTMLダッシュボードで可視化</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">Day 5+</div>
+      <div class="tl-title">GitHub Pages自動デプロイ</div>
+      <div class="tl-desc">生成したダッシュボードをGitHub Pagesに自動公開。チームメンバーがいつでもWebから最新状況を確認可能に</div>
+    </div>
+    <div class="tl-item" style="border: 2px solid var(--claude-orange);">
+      <div class="tl-time">現在</div>
+      <div class="tl-title">毎朝「おはよう」で全自動運用中</div>
+      <div class="tl-desc">朝事処理が完全自動化。566件/48h のメッセージを分析し、レポート生成・リスク検知・ダッシュボード更新・Web公開までを一気通貫で実行</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <h2>AI秘書で、<br>チームの生産性を<br>次のレベルへ</h2>
+  <p>Claudeは単なるチャットボットではありません。<br>あなたの業務を深く理解し、自律的に動くパートナーです。</p>
+  <a href="https://claude.ai" target="_blank" class="cta-btn">
+    Claude を試してみる →
+  </a>
+</section>
+
+<div class="footer">
+  <p>Built with Claude AI (Anthropic) | 経営企画室 2026</p>
+  <p style="margin-top:4px;">このページ自体もClaude AIが生成しました</p>
+</div>
+
+<script>
+// Counter animation
+function animateCounter(el, target, suffix = '') {
+  let current = 0;
+  const step = target / 60;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current) + suffix;
+  }, 16);
+}
+
+// Intersection Observer for counters
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('counter1'), 566);
+      animateCounter(document.getElementById('counter2'), 15);
+      animateCounter(document.getElementById('counter3'), 5);
+      animateCounter(document.getElementById('counter4'), 95);
+      heroObserver.disconnect();
+    }
+  });
+});
+heroObserver.observe(document.querySelector('.hero-stats'));
+
+// Scroll animation
+const scrollObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+
+// Nav highlight
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Tab switching
+function switchTab(tab, contentId) {
+  tab.parentElement.querySelectorAll('.example-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  tab.closest('.example-showcase').querySelectorAll('.example-content').forEach(c => c.classList.remove('active'));
+  document.getElementById(contentId).classList.add('active');
+}
+
+// Live demo
+const demoTemplates = {
+  reply: {
+    input: 'お世話になっております。先日お話しした物件の件ですが、オーナー様から条件変更の連絡がありました。家賃が月額5万円アップ、敷金が2ヶ月から3ヶ月に変更とのことです。来週月曜までにご回答いただけますでしょうか。',
+    output: '【返信案】\n\n〇〇様\n\nお世話になっております。\nご連絡いただきありがとうございます。\n\n条件変更の件、承知いたしました。\n\n家賃月額5万円増・敷金3ヶ月への変更とのこと、\n社内で検討させていただきます。\n\nつきましては、以下2点を確認させてください:\n\n1. 条件変更の背景（近隣相場の変動等）\n2. 敷金の分割払い対応の可否\n\n来週月曜までに最終回答をお送りいたします。\n引き続きよろしくお願いいたします。\n\n---\n⏱ 生成時間: 0.8秒\n📝 トーン: ビジネスフォーマル\n💡 ポイント: 交渉余地を残しつつ丁寧に対応'
+  },
+  summary: {
+    input: '今日のMTGメモ:\n・売上目標の見直し→Q2は前年比120%に設定\n・新規採用3名（営業2名、事務1名）→来月面接開始\n・オフィス移転検討→駅近物件3件を内見予定\n・経費削減→サブスク見直しで月15万円削減可能\n・次回MTG: 3/15 10:00',
+    output: '【議事録サマリー】\n\n📅 会議日: 本日\n\n■ 決定事項\n1. Q2売上目標: 前年比120%に上方修正\n2. 新規採用: 3名（営業2/事務1）来月面接開始\n3. サブスク見直し: 月15万円の経費削減を実行\n\n■ 検討中\n- オフィス移転: 駅近3物件を内見予定\n\n■ アクションアイテム\n- [ ] 売上目標の部門別ブレイクダウン（担当: 要確認）\n- [ ] 採用JD作成・媒体選定（担当: 要確認）\n- [ ] 物件内見日程の調整（担当: 要確認）\n- [ ] サブスク一覧の精査・解約手続き（担当: 要確認）\n\n■ 次回\n📅 3/15（月）10:00\n\n---\n⏱ 生成時間: 0.5秒\n📊 抽出項目: 決定3件 / 検討1件 / TODO 4件'
+  },
+  report: {
+    input: '本日の業務:\n・朝礼参加\n・A社見積もり作成（50万円）\n・B社からの問い合わせ対応（新規案件）\n・経費精算3件処理\n・チームMTG（新プロジェクト企画）\n・C社への提案資料修正',
+    output: '【日報】\n\n━━━━━━━━━━━━━━━━\n📅 2026年3月7日（金）\n━━━━━━━━━━━━━━━━\n\n■ 本日の成果\n✅ A社見積もり作成完了（50万円） → 送付待ち\n✅ B社新規問い合わせ対応 → 案件化の可能性あり\n✅ 経費精算3件処理完了\n✅ C社提案資料修正完了\n\n■ 進行中\n🔄 新プロジェクト企画（チームMTGで方向性議論）\n\n■ 所感\nB社の新規問い合わせは規模感が大きく、\n来週の初回打合せで詳細をヒアリング予定。\nA社見積もりは週明けに送付し、早期クロージングを目指す。\n\n■ 明日の予定\n- A社見積もり送付\n- B社打合せ日程調整\n- 新プロジェクト企画書ドラフト作成\n\n---\n⏱ 生成時間: 0.6秒\n📊 完了: 4件 / 進行中: 1件'
+  },
+  risk: {
+    input: '状況:\n・クライアントから「品質に問題がある」とクレーム\n・担当者が3日間返信していない\n・納期が来週金曜に迫っている\n・代替要員の確保ができていない',
+    output: '【リスク分析レポート】\n\n🔴 総合リスクレベル: 5/5（最高）\n\n━━━━━━━━━━━━━━━━\n■ リスク要因の分解\n━━━━━━━━━━━━━━━━\n\n1. 顧客満足度リスク 🔴 5/5\n   - 品質クレームが未対応\n   - 3日間の放置で信頼が急速に低下中\n   - → 契約解除・損害賠償の可能性\n\n2. 納期リスク 🔴 4/5\n   - 残り5営業日で品質問題の修正が必要\n   - 代替要員未確保でバッファなし\n\n3. 人的リスク 🟠 3/5\n   - 担当者の状況不明（体調？モチベーション？）\n   - 属人化により代替対応が困難\n\n━━━━━━━━━━━━━━━━\n■ 推奨アクション（緊急度順）\n━━━━━━━━━━━━━━━━\n\n【今日中】\n1. 担当者に即時連絡（電話）→ 状況確認\n2. クライアントに一次回答（謝罪+対応方針）\n3. 代替要員の緊急手配を開始\n\n【明日まで】\n4. 品質問題の原因特定と修正計画策定\n5. 納期の再交渉（必要に応じて）\n\n【今週中】\n6. 再発防止策（レビュー体制・エスカレーションルール）\n\n---\n⏱ 生成時間: 1.2秒\n⚠️ 最優先: クライアントへの即時連絡'
+  }
+};
+
+function updateDemoInput() {
+  const task = document.getElementById('demoTask').value;
+  document.getElementById('demoInput').value = demoTemplates[task].input;
+  document.getElementById('demoOutput').innerHTML = '<span style="color:#aaa;">「実行する」をクリックしてください</span>';
+}
+
+function runDemo() {
+  const task = document.getElementById('demoTask').value;
+  const output = demoTemplates[task].output;
+  const el = document.getElementById('demoOutput');
+  el.innerHTML = '';
+
+  let i = 0;
+  const speed = 12;
+  function type() {
+    if (i < output.length) {
+      el.textContent += output.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+</body>
+</html>
