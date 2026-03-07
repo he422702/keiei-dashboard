@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>つくばLAファミリークリニック | 改善プロジェクト</title>
+<style>
+:root {
+  --primary: #0d6e6e;
+  --primary-light: #e6f5f5;
+  --primary-dark: #094d4d;
+  --accent: #f0a050;
+  --accent-light: #fff7ed;
+  --bg: #f7fafa;
+  --card: #ffffff;
+  --text: #2d3a3a;
+  --text-light: #6b7f7f;
+  --border: #dce8e8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --info: #0284c7;
+  --shadow: 0 1px 6px rgba(0,0,0,0.06);
+  --radius: 14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;
+}
+
+/* Header */
+.header{
+  background:linear-gradient(135deg,#0d6e6e 0%,#148f8f 50%,#1aadad 100%);
+  color:white;padding:48px 24px 40px;position:relative;
+}
+.header::after{
+  content:'';position:absolute;bottom:-20px;left:0;right:0;
+  height:40px;background:var(--bg);border-radius:20px 20px 0 0;
+}
+.header-inner{max-width:900px;margin:0 auto;}
+.header-badge{
+  display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
+  padding:4px 16px;border-radius:100px;font-size:12px;margin-bottom:16px;
+}
+.header h1{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.3;margin-bottom:8px;}
+.header p{font-size:15px;opacity:0.85;max-width:600px;}
+.header-date{margin-top:16px;font-size:13px;opacity:0.6;}
+
+/* Nav */
+.nav{
+  position:sticky;top:0;z-index:50;max-width:900px;margin:0 auto;padding:0 24px;
+}
+.nav-inner{
+  background:var(--card);border-radius:12px;box-shadow:var(--shadow);
+  padding:10px 16px;display:flex;gap:4px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav a{
+  display:block;padding:8px 14px;text-decoration:none;color:var(--text-light);
+  font-size:13px;font-weight:600;white-space:nowrap;border-radius:8px;transition:all 0.2s;
+}
+.nav a:hover,.nav a.active{color:var(--primary);background:var(--primary-light);}
+
+/* Main */
+.main{max-width:900px;margin:0 auto;padding:24px 24px 80px;}
+
+/* Section */
+.section{margin-bottom:48px;}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:2px solid var(--border);
+}
+.section-icon{
+  width:36px;height:36px;background:var(--primary);color:white;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.section-title{font-size:20px;font-weight:800;color:var(--primary-dark);}
+
+/* Card */
+.card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;margin-bottom:16px;
+}
+.card h4{font-size:16px;font-weight:700;color:var(--primary-dark);margin-bottom:10px;}
+.card p{margin-bottom:10px;font-size:14px;color:var(--text);}
+.card ul{padding-left:20px;margin-bottom:10px;}
+.card li{margin-bottom:4px;font-size:14px;}
+
+/* Profile */
+.profile{
+  display:flex;gap:20px;align-items:center;
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;margin-bottom:24px;
+}
+.profile-avatar{
+  width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:16px;display:flex;align-items:center;justify-content:center;
+  color:white;font-size:28px;font-weight:800;flex-shrink:0;
+}
+.profile-info h3{font-size:18px;font-weight:700;color:var(--primary-dark);margin-bottom:4px;}
+.profile-info .role{font-size:13px;color:var(--text-light);margin-bottom:8px;}
+.profile-info p{font-size:14px;color:var(--text);line-height:1.7;}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px;}
+.metric{
+  background:var(--card);border-radius:12px;box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:20px;text-align:center;
+}
+.metric .value{font-size:32px;font-weight:800;color:var(--primary);}
+.metric .label{font-size:12px;color:var(--text-light);margin-top:2px;}
+.metric .sub{font-size:11px;color:var(--text-light);margin-top:4px;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:36px;}
+.timeline::before{
+  content:'';position:absolute;left:13px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+}
+.tl-item{
+  position:relative;margin-bottom:20px;background:var(--card);
+  padding:16px 20px;border-radius:12px;box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.tl-item::before{
+  content:'';position:absolute;left:-29px;top:20px;width:10px;height:10px;
+  border-radius:50%;background:var(--primary);border:2px solid white;
+  box-shadow:0 0 0 2px var(--primary);
+}
+.tl-item.done::before{background:var(--success);}
+.tl-item.current::before{background:var(--accent);box-shadow:0 0 0 2px var(--accent),0 0 8px rgba(240,160,80,0.4);}
+.tl-item.future::before{background:#ccc;box-shadow:0 0 0 2px #ccc;}
+.tl-date{font-size:12px;font-weight:700;color:var(--primary);}
+.tl-item.done .tl-date{color:var(--success);}
+.tl-item.current .tl-date{color:var(--accent);}
+.tl-item.future .tl-date{color:#aaa;}
+.tl-title{font-size:15px;font-weight:700;margin:2px 0 4px;color:var(--primary-dark);}
+.tl-desc{font-size:13px;color:var(--text-light);}
+
+/* 1on1 Progress */
+.oneon1-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px;}
+.oneon1-card{
+  background:var(--card);border-radius:12px;border:1px solid var(--border);
+  padding:16px;text-align:center;box-shadow:var(--shadow);
+}
+.oneon1-card.done{border-color:var(--success);background:#f0fdf4;}
+.oneon1-card.scheduled{border-color:var(--accent);background:var(--accent-light);}
+.oneon1-card.pending{border-color:#ddd;}
+.oneon1-name{font-size:14px;font-weight:700;color:var(--primary-dark);margin-bottom:4px;}
+.oneon1-status{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;display:inline-block;}
+.done .oneon1-status{background:#dcfce7;color:#166534;}
+.scheduled .oneon1-status{background:#fef3c7;color:#92400e;}
+.pending .oneon1-status{background:#f3f4f6;color:#6b7280;}
+
+/* Phase Cards */
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.phase{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;position:relative;overflow:hidden;
+}
+.phase.active{border-color:var(--primary);border-width:2px;}
+.phase-label{
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--primary);margin-bottom:8px;
+}
+.phase.active .phase-label{color:var(--accent);}
+.phase h4{font-size:16px;font-weight:700;color:var(--primary-dark);margin-bottom:8px;}
+.phase p{font-size:13px;color:var(--text-light);line-height:1.6;}
+.phase .period{font-size:12px;color:var(--text-light);margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+
+/* Improvement List */
+.improve-list{list-style:none;padding:0;}
+.improve-list li{
+  padding:12px 16px 12px 40px;position:relative;border-bottom:1px solid #f0f0f0;
+  font-size:14px;
+}
+.improve-list li:last-child{border-bottom:none;}
+.improve-list li::before{
+  content:'';position:absolute;left:12px;top:16px;width:16px;height:16px;
+  border:2px solid var(--primary);border-radius:4px;
+}
+.improve-list li.done::before{
+  background:var(--success);border-color:var(--success);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3 4.3a1 1 0 010 1.4l-6 6a1 1 0 01-1.4 0l-3-3a1 1 0 011.4-1.4L6.5 9.6l5.3-5.3a1 1 0 011.4 0z'/%3E%3C/svg%3E");
+  background-size:12px;background-position:center;background-repeat:no-repeat;
+}
+.improve-list li .date{font-size:11px;color:var(--text-light);margin-left:8px;}
+
+/* Callout */
+.callout{
+  padding:18px 22px;border-radius:12px;margin:16px 0;font-size:14px;line-height:1.7;
+}
+.callout-info{background:#ecfeff;border:1px solid #a5f3fc;color:#155e75;}
+.callout-warm{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;}
+.callout strong{display:block;margin-bottom:4px;}
+
+/* Sales Chart */
+.chart-bar{
+  display:flex;align-items:flex-end;gap:8px;height:160px;
+  padding:16px 0;border-bottom:1px solid var(--border);margin:16px 0;
+}
+.bar-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.bar{
+  width:100%;max-width:48px;background:linear-gradient(180deg,var(--primary),#1aadad);
+  border-radius:6px 6px 0 0;transition:height 0.6s ease;margin:0 auto;min-height:4px;
+}
+.bar-label{font-size:11px;color:var(--text-light);white-space:nowrap;}
+.bar-value{font-size:11px;font-weight:700;color:var(--primary-dark);}
+
+/* Footer */
+.footer{
+  text-align:center;padding:32px 24px;font-size:12px;color:var(--text-light);
+  border-top:1px solid var(--border);max-width:900px;margin:0 auto;
+}
+
+@media(max-width:640px){
+  .profile{flex-direction:column;text-align:center;}
+  .phase-grid{grid-template-columns:1fr;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-badge">TSUKUBA LA FAMILY CLINIC</div>
+    <h1>つくば院<br>改善プロジェクト</h1>
+    <p>経営企画室と一緒に、より良い職場環境とクリニック運営を実現するための取り組みです</p>
+    <div class="header-date">最終更新：2026年3月7日</div>
+  </div>
+</header>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#intro">はじめに</a>
+    <a href="#performance">診療実績</a>
+    <a href="#oneon1">1on1面談</a>
+    <a href="#improvement">改善項目</a>
+    <a href="#phases">今後の流れ</a>
+    <a href="#timeline-section">スケジュール</a>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="main">
+
+<!-- Intro -->
+<section class="section" id="intro">
+  <div class="section-header">
+    <div class="section-icon">!</div>
+    <div class="section-title">経営企画室からのご挨拶</div>
+  </div>
+
+  <div class="profile">
+    <div class="profile-avatar">A</div>
+    <div class="profile-info">
+      <h3>ABB</h3>
+      <div class="role">経営企画室 / 学長秘書室</div>
+      <p>3月12日よりつくば院に常駐し、みなさんと一緒にクリニックの運営改善に取り組みます。まずは全員との1on1面談を通じて、現場の声をしっかり聞かせていただきます。</p>
+    </div>
+  </div>
+
+  <div class="callout callout-warm">
+    <strong>このプロジェクトの目的</strong>
+    つくば院をみなさんにとって「働きやすく、やりがいのある職場」にすること。そして、患者さんにとって「安心して通えるクリニック」にすること。この2つをゴールに、一緒に取り組んでいきたいと思っています。
+  </div>
+</section>
+
+<!-- Performance -->
+<section class="section" id="performance">
+  <div class="section-header">
+    <div class="section-icon">~</div>
+    <div class="section-title">診療実績</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="value" id="m-sales">--</div>
+      <div class="label">3月売上（累計）</div>
+      <div class="sub" id="m-sales-sub"></div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-patients">--</div>
+      <div class="label">平均患者数/日</div>
+      <div class="sub">外来 + 訪問</div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-rece">--</div>
+      <div class="label">2月レセプト</div>
+      <div class="sub">1,117件</div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-visit">--</div>
+      <div class="label">訪問診療</div>
+      <div class="sub">3月実績</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>日別売上推移（3月）</h4>
+    <div class="chart-bar" id="salesChart">
+      <!-- JS で描画 -->
+    </div>
+    <p style="font-size:12px;color:var(--text-light);text-align:center;">
+      * 保険 + 自費 + その他の合計
+    </p>
+  </div>
+</section>
+
+<!-- 1on1 -->
+<section class="section" id="oneon1">
+  <div class="section-header">
+    <div class="section-icon">@</div>
+    <div class="section-title">1on1面談の進捗</div>
+  </div>
+
+  <div class="card">
+    <h4>面談の目的</h4>
+    <p>みなさん一人ひとりの声を直接聞かせていただくための面談です。業務上の困りごと、改善のアイデア、職場環境について、なんでもお話しいただければと思います。面談内容は個人が特定される形では共有しません。</p>
+  </div>
+
+  <div class="card">
+    <h4>面談スケジュール</h4>
+    <div class="oneon1-grid" id="oneon1Grid">
+      <!-- JS で描画 -->
+    </div>
+    <p style="font-size:12px;color:var(--text-light);margin-top:12px;">
+      * 日程未定の方は調整さんでご回答をお願いします
+    </p>
+  </div>
+</section>
+
+<!-- Improvement -->
+<section class="section" id="improvement">
+  <div class="section-header">
+    <div class="section-icon">&gt;</div>
+    <div class="section-title">改善に取り組むこと</div>
+  </div>
+
+  <div class="card">
+    <h4>運営ルール・業務フロー</h4>
+    <ul class="improve-list" id="improveOps">
+      <!-- JS で描画 -->
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>コミュニケーション・チーム</h4>
+    <ul class="improve-list" id="improveComm">
+      <!-- JS で描画 -->
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>診療体制</h4>
+    <ul class="improve-list" id="improveClinical">
+      <!-- JS で描画 -->
+    </ul>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>みなさんのアイデアを募集中</strong>
+    「こうしたら良くなるのに」というアイデアがあれば、1on1でお聞かせください。小さなことでも大歓迎です。良いアイデアはすぐに取り入れていきます。
+  </div>
+</section>
+
+<!-- Phases -->
+<section class="section" id="phases">
+  <div class="section-header">
+    <div class="section-icon">#</div>
+    <div class="section-title">改善のステップ</div>
+  </div>
+
+  <div class="phase-grid">
+    <div class="phase active">
+      <div class="phase-label">Phase 0 - 現在</div>
+      <h4>現状把握</h4>
+      <p>全スタッフとの1on1面談を通じて、現場の課題とみなさんの声を集めています。</p>
+      <div class="period">3月7日〜3月11日</div>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Phase 1</div>
+      <h4>常駐 + 環境整備</h4>
+      <p>ABBが常駐し、業務ルールの文書化、会議体の整備、労務環境の改善に取り組みます。</p>
+      <div class="period">3月12日〜3月31日</div>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Phase 2</div>
+      <h4>体制の安定化</h4>
+      <p>院内マニュアルの完成、診療体制の最適化、KPIの見える化に取り組みます。</p>
+      <div class="period">4月〜6月</div>
+    </div>
+    <div class="phase">
+      <div class="phase-label">Phase 3</div>
+      <h4>自走体制へ</h4>
+      <p>みなさん自身で改善サイクルを回せる状態を目指します。</p>
+      <div class="period">7月〜</div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="section" id="timeline-section">
+  <div class="section-header">
+    <div class="section-icon">=</div>
+    <div class="section-title">直近のスケジュール</div>
+  </div>
+
+  <div class="timeline" id="timelineList">
+    <!-- JS で描画 -->
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>つくばLAファミリークリニック 改善プロジェクト</p>
+  <p style="margin-top:4px;">経営企画室 | 毎日更新</p>
+</footer>
+
+<script>
+// ===== DATA (朝事処理で更新される部分) =====
+const DATA = {
+  lastUpdated: '2026-03-07',
+
+  // 日別売上
+  dailySales: [
+    { date: '3/4', amount: 244700, patients: 46 },
+    { date: '3/5', amount: 199156, patients: 51 },
+    { date: '3/6', amount: 361870, patients: 43 },
+  ],
+
+  // 月間累計
+  monthlySales: 1687856,
+  monthlyReceipts: '949万円',
+  visitCount: '2件',
+
+  // 1on1 status: done / scheduled / pending
+  oneon1: [
+    { name: 'たろ先生', status: 'done', date: '3/5' },
+    { name: 'みゆさん', status: 'scheduled', date: '3/7 11:00' },
+    { name: 'eiさん', status: 'scheduled', date: '3/8 21:00' },
+    { name: 'kuuさん', status: 'scheduled', date: '3/9 11:00' },
+    { name: 'しめじさん', status: 'pending', date: '調整中' },
+    { name: 'ひなさん', status: 'pending', date: '調整中' },
+    { name: 'keiさん', status: 'pending', date: '調整中' },
+    { name: 'Reikoさん', status: 'pending', date: '調整中' },
+    { name: 'Mayaさん', status: 'pending', date: '調整中' },
+    { name: '黄先生', status: 'pending', date: '調整中' },
+  ],
+
+  // 改善項目
+  improveOps: [
+    { text: '院内ルール・業務フローの文書化', done: false },
+    { text: '会議体の整備（朝礼・週次MTG）', done: false },
+    { text: '日報フォーマットの改善', done: false },
+    { text: '休日出勤・勤怠管理ルールの明確化', done: false },
+    { text: 'チャットグループの整理・命名規則統一', done: false },
+  ],
+  improveComm: [
+    { text: '全スタッフとの1on1面談（10名）', done: false },
+    { text: '情報共有の仕組みづくり（日報→確認→改善サイクル）', done: false },
+    { text: '業務上の相談がしやすい体制の構築', done: false },
+  ],
+  improveClinical: [
+    { text: '訪問診療の体制整備', done: false },
+    { text: '疑義照会の運用フロー見直し', done: false },
+    { text: '診療実績の見える化（KPIダッシュボード）', done: false },
+  ],
+
+  // タイムライン
+  timeline: [
+    { date: '3/5', title: 'ABBの院長面談完了', desc: '常駐について合意。改善の方向性を共有しました', status: 'done' },
+    { date: '3/6', title: 'スタッフ全員にご挨拶・1on1案内', desc: '日報チャットにて自己紹介と面談のご案内をしました', status: 'done' },
+    { date: '3/7-9', title: '1on1面談（みゆさん・eiさん・kuuさん）', desc: '順次面談を実施します。お気軽にお話しください', status: 'current' },
+    { date: '3/10', title: '残りの方の1on1日程確定', desc: '調整さんでご都合をお知らせください', status: 'future' },
+    { date: '3/12', title: 'ABB常駐開始', desc: '毎日クリニックに伺い、一緒に改善に取り組みます', status: 'future' },
+    { date: '3/14', title: '朝礼・週次MTG開始', desc: 'チーム全員で情報を共有する場を設けます', status: 'future' },
+    { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルールを整備します', status: 'future' },
+    { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
+  ]
+};
+
+// ===== RENDER =====
+
+// Metrics
+function renderMetrics() {
+  const sales = DATA.monthlySales;
+  document.getElementById('m-sales').textContent = (sales / 10000).toFixed(0) + '万';
+  document.getElementById('m-sales-sub').textContent = DATA.dailySales.length + '日分';
+
+  const avgPatients = DATA.dailySales.reduce((s, d) => s + d.patients, 0) / DATA.dailySales.length;
+  document.getElementById('m-patients').textContent = avgPatients.toFixed(0) + '人';
+
+  document.getElementById('m-rece').textContent = DATA.monthlyReceipts;
+  document.getElementById('m-visit').textContent = DATA.visitCount;
+}
+
+// Sales Chart
+function renderChart() {
+  const container = document.getElementById('salesChart');
+  const max = Math.max(...DATA.dailySales.map(d => d.amount));
+  container.innerHTML = DATA.dailySales.map(d => {
+    const h = Math.max(8, (d.amount / max) * 130);
+    return `<div class="bar-item">
+      <div class="bar-value">${(d.amount/10000).toFixed(1)}万</div>
+      <div class="bar" style="height:${h}px;"></div>
+      <div class="bar-label">${d.date}</div>
+    </div>`;
+  }).join('');
+}
+
+// 1on1 Grid
+function renderOneon1() {
+  const grid = document.getElementById('oneon1Grid');
+  const statusLabel = { done: '完了', scheduled: '予定', pending: '調整中' };
+  grid.innerHTML = DATA.oneon1.map(o => `
+    <div class="oneon1-card ${o.status}">
+      <div class="oneon1-name">${o.name}</div>
+      <div class="oneon1-status">${statusLabel[o.status]}</div>
+      <div style="font-size:11px;color:var(--text-light);margin-top:4px;">${o.date}</div>
+    </div>
+  `).join('');
+}
+
+// Improve Lists
+function renderImprove(listId, items) {
+  const el = document.getElementById(listId);
+  el.innerHTML = items.map(i =>
+    `<li class="${i.done ? 'done' : ''}">${i.text}${i.date ? '<span class="date">' + i.date + '</span>' : ''}</li>`
+  ).join('');
+}
+
+// Timeline
+function renderTimeline() {
+  const el = document.getElementById('timelineList');
+  el.innerHTML = DATA.timeline.map(t => `
+    <div class="tl-item ${t.status}">
+      <div class="tl-date">${t.date}</div>
+      <div class="tl-title">${t.title}</div>
+      <div class="tl-desc">${t.desc}</div>
+    </div>
+  `).join('');
+}
+
+// Init
+renderMetrics();
+renderChart();
+renderOneon1();
+renderImprove('improveOps', DATA.improveOps);
+renderImprove('improveComm', DATA.improveComm);
+renderImprove('improveClinical', DATA.improveClinical);
+renderTimeline();
+
+// Nav highlight
+const secs = document.querySelectorAll('.section[id]');
+const links = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(a => {
+    const active = a.getAttribute('href') === '#' + cur;
+    a.style.background = active ? 'var(--primary-light)' : '';
+    a.style.color = active ? 'var(--primary)' : '';
+  });
+});
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
