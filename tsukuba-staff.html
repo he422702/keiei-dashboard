@@ -230,7 +230,7 @@ body{
     <div class="header-badge">学長室直轄 | 経営企画室</div>
     <h1>つくば院<br>運営体制プロジェクト</h1>
     <p></p>
-    <div class="header-date">最終更新：2026年3月7日</div>
+    <div class="header-date">最終更新：2026年3月8日</div>
   </div>
 </header>
 
@@ -426,31 +426,32 @@ body{
 <script>
 // ===== DATA (朝事処理で更新される部分) =====
 const DATA = {
-  lastUpdated: '2026-03-07',
+  lastUpdated: '2026-03-08',
 
   // 日別売上
   dailySales: [
     { date: '3/4', amount: 244700, patients: 46 },
     { date: '3/5', amount: 199156, patients: 51 },
     { date: '3/6', amount: 361870, patients: 43 },
+    { date: '3/7', amount: 295540, patients: 63 },
   ],
 
   // 月間累計
-  monthlySales: 1687856,
+  monthlySales: 1983396,
   monthlyReceipts: '949万円',
   visitCount: '2件',
 
   // 1on1 status: done / scheduled / pending
   oneon1: [
     { name: 'たろさん', status: 'done', date: '3/5' },
-    { name: 'みゆさん', status: 'scheduled', date: '3/7 11:00' },
-    { name: 'しめじさん', status: 'scheduled', date: '3/8 15:00' },
-    { name: 'keiさん', status: 'scheduled', date: '3/8 16:00' },
-    { name: 'ひなさん', status: 'scheduled', date: '3/8 17:00' },
-    { name: 'Reikoさん', status: 'scheduled', date: '3/8 19:00' },
+    { name: 'みゆさん', status: 'done', date: '3/7' },
     { name: 'eiさん', status: 'scheduled', date: '3/8 21:00' },
     { name: 'kuuさん', status: 'scheduled', date: '3/9 11:00' },
-    { name: 'Mayaさん', status: 'pending', date: '調整中' },
+    { name: 'Mayaさん', status: 'scheduled', date: '3/9 19:00' },
+    { name: 'しめじさん', status: 'pending', date: '調整中' },
+    { name: 'ひなさん', status: 'pending', date: '調整中' },
+    { name: 'Reikoさん', status: 'pending', date: '調整中' },
+    { name: 'keiさん', status: 'pending', date: '調整中' },
     { name: '黄さん', status: 'pending', date: '調整中' },
   ],
 
@@ -458,8 +459,9 @@ const DATA = {
   improveOps: [
     { text: 'チャットグループの整理・命名規則統一', done: false },
     { text: '日報フォーマットの改善', done: false },
-    { text: 'ルール整備', done: false },
-    { text: '会議体の整備', done: false },
+    { text: '予約枠管理ルールの策定', done: false },
+    { text: '残業管理ルールの整備', done: false },
+    { text: '会議体の整備（朝礼・週次MTG）', done: false },
     { text: '院内ルール・業務フローの文書化', done: false },
   ],
   improveComm: [
@@ -470,6 +472,7 @@ const DATA = {
   improveClinical: [
     { text: '訪問診療の体制整備', done: false },
     { text: '疑義照会の運用フロー見直し', done: false },
+    { text: '健診受け入れ体制の検討', done: false },
     { text: '診療実績の見える化（KPIダッシュボード）', done: false },
   ],
 
@@ -477,7 +480,8 @@ const DATA = {
   timeline: [
     { date: '3/5', title: 'ABBの院長面談完了', desc: '常駐について合意。改善の方向性を共有しました', status: 'done' },
     { date: '3/6', title: 'スタッフ全員にご挨拶・1on1案内', desc: '日報チャットにて自己紹介と面談のご案内をしました', status: 'done' },
-    { date: '3/7-9', title: '1on1面談（8名）', desc: 'みゆさん〜kuuさんまで順次実施します。お気軽にお話しください', status: 'current' },
+    { date: '3/7', title: 'みゆさん1on1完了', desc: '面談を実施しました。貴重なお話をありがとうございました', status: 'done' },
+    { date: '3/8-9', title: '1on1面談（ei・kuu・Mayaさん）', desc: '順次実施します。お気軽にお話しください', status: 'current' },
     { date: '3/12', title: 'ABB常駐開始', desc: '毎日クリニックに伺い、一緒に改善に取り組みます', status: 'future' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルールを整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
