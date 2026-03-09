@@ -31,8 +31,6 @@
     color: var(--gray-900);
     line-height: 1.6;
   }
-
-  /* Header */
   .header {
     background: linear-gradient(135deg, #1e3a8a, #1a56db);
     color: white;
@@ -58,8 +56,6 @@
     border-radius: 8px;
     font-size: 14px;
   }
-
-  /* Navigation */
   .nav {
     background: white;
     border-bottom: 1px solid var(--gray-200);
@@ -90,15 +86,11 @@
     color: var(--primary);
     border-bottom-color: var(--primary);
   }
-
-  /* Main */
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 24px;
   }
-
-  /* Section */
   .section {
     background: white;
     border-radius: 12px;
@@ -132,8 +124,6 @@
     font-weight: 600;
   }
   .section-body { padding: 24px; }
-
-  /* Summary Cards */
   .summary-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -154,15 +144,8 @@
     letter-spacing: 0.5px;
     margin-bottom: 8px;
   }
-  .summary-card .value {
-    font-size: 28px;
-    font-weight: 800;
-  }
-  .summary-card .sub {
-    font-size: 12px;
-    color: var(--gray-500);
-    margin-top: 4px;
-  }
+  .summary-card .value { font-size: 28px; font-weight: 800; }
+  .summary-card .sub { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
   .summary-card.danger { background: var(--danger-light); border-color: #fecaca; }
   .summary-card.danger .value { color: var(--danger); }
   .summary-card.success { background: var(--success-light); border-color: #bbf7d0; }
@@ -171,8 +154,6 @@
   .summary-card.warning .value { color: var(--warning); }
   .summary-card.info { background: var(--info-light); border-color: #a5f3fc; }
   .summary-card.info .value { color: var(--info); }
-
-  /* Comparison */
   .comparison {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -184,21 +165,9 @@
     padding: 24px;
     border: 2px solid;
   }
-  .comparison-card.osaka {
-    background: var(--success-light);
-    border-color: #86efac;
-  }
-  .comparison-card.tsukuba {
-    background: var(--danger-light);
-    border-color: #fca5a5;
-  }
-  .comparison-card h3 {
-    font-size: 16px;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+  .comparison-card.osaka { background: var(--success-light); border-color: #86efac; }
+  .comparison-card.tsukuba { background: var(--danger-light); border-color: #fca5a5; }
+  .comparison-card h3 { font-size: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
   .comparison-card .stat-row {
     display: flex;
     justify-content: space-between;
@@ -208,13 +177,7 @@
   }
   .comparison-card .stat-row:last-child { border-bottom: none; }
   .comparison-card .stat-value { font-weight: 700; }
-
-  /* Table */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th {
     background: var(--gray-50);
     text-align: left;
@@ -226,14 +189,8 @@
     color: var(--gray-500);
     border-bottom: 2px solid var(--gray-200);
   }
-  td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--gray-100);
-    vertical-align: top;
-  }
+  td { padding: 12px 16px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
   tr:hover td { background: var(--gray-50); }
-
-  /* Status badges */
   .status {
     display: inline-block;
     padding: 3px 10px;
@@ -245,12 +202,7 @@
   .status-progress { background: #dbeafe; color: #1d4ed8; }
   .status-pending { background: #fef3c7; color: #b45309; }
   .status-risk { background: #fee2e2; color: #dc2626; }
-
-  /* Timeline */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
-  }
+  .timeline { position: relative; padding-left: 32px; }
   .timeline::before {
     content: '';
     position: absolute;
@@ -260,10 +212,7 @@
     width: 2px;
     background: var(--gray-200);
   }
-  .timeline-item {
-    position: relative;
-    margin-bottom: 24px;
-  }
+  .timeline-item { position: relative; margin-bottom: 24px; }
   .timeline-item::before {
     content: '';
     position: absolute;
@@ -280,16 +229,9 @@
   .timeline-item.active::before { background: var(--warning); box-shadow: 0 0 0 2px var(--warning); animation: pulse 2s infinite; }
   .timeline-item.future::before { background: var(--gray-300); box-shadow: 0 0 0 2px var(--gray-300); }
   @keyframes pulse { 0%,100%{box-shadow:0 0 0 2px var(--warning)} 50%{box-shadow:0 0 0 6px rgba(245,158,11,0.3)} }
-  .timeline-date {
-    font-size: 12px;
-    color: var(--gray-500);
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
+  .timeline-date { font-size: 12px; color: var(--gray-500); font-weight: 600; margin-bottom: 4px; }
   .timeline-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
   .timeline-desc { font-size: 13px; color: var(--gray-500); }
-
-  /* Quote */
   .quote {
     background: var(--gray-50);
     border-left: 4px solid var(--primary);
@@ -299,17 +241,10 @@
     font-size: 14px;
     color: var(--gray-700);
   }
-  .quote .author {
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 4px;
-    font-size: 13px;
-  }
+  .quote .author { font-weight: 700; color: var(--primary); margin-bottom: 4px; font-size: 13px; }
   .quote.danger { border-left-color: var(--danger); }
   .quote.danger .author { color: var(--danger); }
   .quote.warning { border-left-color: var(--warning); }
-
-  /* Phase cards */
   .phase-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -322,13 +257,7 @@
     border: 2px solid;
     position: relative;
   }
-  .phase-card .phase-num {
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
+  .phase-card .phase-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
   .phase-card h4 { font-size: 15px; margin-bottom: 8px; }
   .phase-card .period { font-size: 12px; color: var(--gray-500); margin-bottom: 12px; }
   .phase-card ul { font-size: 13px; padding-left: 18px; color: var(--gray-700); }
@@ -337,8 +266,6 @@
   .phase-card.p1 { border-color: var(--primary); background: var(--primary-light); }
   .phase-card.p2 { border-color: var(--info); background: var(--info-light); }
   .phase-card.p3 { border-color: var(--success); background: var(--success-light); }
-
-  /* Problem tree */
   .problem-tree {
     background: var(--danger-light);
     border: 1px solid #fecaca;
@@ -367,19 +294,9 @@
     padding: 16px;
     border-left: 4px solid var(--danger);
   }
-  .problem-branch h5 {
-    font-size: 13px;
-    color: var(--danger);
-    margin-bottom: 8px;
-  }
-  .problem-branch ul {
-    font-size: 13px;
-    padding-left: 16px;
-    color: var(--gray-700);
-  }
+  .problem-branch h5 { font-size: 13px; color: var(--danger); margin-bottom: 8px; }
+  .problem-branch ul { font-size: 13px; padding-left: 16px; color: var(--gray-700); }
   .problem-branch ul li { margin-bottom: 4px; }
-
-  /* Staff card */
   .staff-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -408,12 +325,7 @@
   .staff-info h5 { font-size: 14px; margin-bottom: 2px; }
   .staff-info .role { font-size: 12px; color: var(--gray-500); }
   .staff-info .note { font-size: 12px; color: var(--gray-700); margin-top: 4px; }
-
-  /* Candidate */
-  .candidate-list {
-    display: grid;
-    gap: 12px;
-  }
+  .candidate-list { display: grid; gap: 12px; }
   .candidate-card {
     display: flex;
     align-items: center;
@@ -442,15 +354,7 @@
   .candidate-info { flex: 1; }
   .candidate-info h5 { font-size: 14px; }
   .candidate-info p { font-size: 13px; color: var(--gray-500); }
-  .candidate-feasibility {
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    flex-shrink: 0;
-  }
-
-  /* KPI */
+  .candidate-feasibility { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; flex-shrink: 0; }
   .kpi-row {
     display: flex;
     align-items: center;
@@ -487,25 +391,17 @@
     font-size: 11px;
     color: var(--gray-500);
   }
-
-  /* Risk matrix */
   .risk-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 12px;
   }
-  .risk-card {
-    border-radius: 8px;
-    padding: 16px;
-    border-left: 4px solid;
-  }
+  .risk-card { border-radius: 8px; padding: 16px; border-left: 4px solid; }
   .risk-card.high { background: var(--danger-light); border-color: var(--danger); }
   .risk-card.medium { background: var(--warning-light); border-color: var(--warning); }
   .risk-card h5 { font-size: 14px; margin-bottom: 4px; }
   .risk-card p { font-size: 13px; color: var(--gray-700); }
   .risk-card .risk-meta { font-size: 11px; color: var(--gray-500); margin-top: 8px; }
-
-  /* Action items */
   .action-list { list-style: none; }
   .action-item {
     display: flex;
@@ -531,25 +427,19 @@
   .action-content { flex: 1; }
   .action-content h5 { font-size: 14px; margin-bottom: 2px; }
   .action-content p { font-size: 13px; color: var(--gray-500); }
-  .action-deadline {
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    flex-shrink: 0;
-  }
+  .action-deadline { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; }
   .action-deadline.today { background: #fee2e2; color: var(--danger); }
   .action-deadline.week { background: #fef3c7; color: #b45309; }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    padding: 32px 24px;
-    color: var(--gray-500);
-    font-size: 12px;
+  .oneon1-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
   }
-
-  /* Responsive */
+  .oneon1-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
+  .oneon1-card h5 { font-size: 14px; margin-bottom: 8px; }
+  .oneon1-card .finding { font-size: 13px; color: var(--gray-700); margin-bottom: 4px; padding-left: 12px; border-left: 3px solid var(--warning); }
+  .footer { text-align: center; padding: 32px 24px; color: var(--gray-500); font-size: 12px; }
   @media (max-width: 768px) {
     .comparison, .phase-grid { grid-template-columns: 1fr; }
     .problem-branches { grid-template-columns: 1fr; }
@@ -558,7 +448,6 @@
     .staff-grid { grid-template-columns: 1fr; }
     .nav a { padding: 10px 12px; font-size: 12px; }
   }
-
   @media print {
     .header { position: static; }
     .nav { display: none; }
@@ -568,7 +457,6 @@
 </head>
 <body>
 
-<!-- Header -->
 <div class="header">
   <div class="header-inner">
     <div>
@@ -579,14 +467,14 @@
   </div>
 </div>
 
-<!-- Navigation -->
 <div class="nav">
   <div class="nav-inner">
     <a href="#overview">概要</a>
-    <a href="#osaka">大阪歯科院（実績）</a>
-    <a href="#tsukuba-status">つくば院 現状</a>
+    <a href="#osaka">大阪歯科院</a>
+    <a href="#tsukuba-status">数値実績</a>
+    <a href="#oneon1">1on1結果</a>
     <a href="#problem">問題の全体像</a>
-    <a href="#timeline">経緯タイムライン</a>
+    <a href="#timeline">タイムライン</a>
     <a href="#staff">スタッフ</a>
     <a href="#candidates">院長候補</a>
     <a href="#plan">再建フェーズ</a>
@@ -602,37 +490,35 @@
 <div id="overview" class="section">
   <div class="section-header">
     <div class="icon" style="background:var(--primary-light);color:var(--primary)">&#128200;</div>
-    <div>
-      <h2>エグゼクティブサマリー</h2>
-    </div>
+    <div><h2>エグゼクティブサマリー</h2></div>
   </div>
   <div class="section-body">
     <div class="summary-grid">
       <div class="summary-card success">
         <div class="label">大阪歯科院 月間売上</div>
         <div class="value">2,100万</div>
-        <div class="sub">2024年3月28日ジョイン → 再建成功</div>
+        <div class="sub">2024年3月ジョイン → 再建成功</div>
       </div>
       <div class="summary-card danger">
         <div class="label">つくば院 月間売上</div>
         <div class="value">950万</div>
         <div class="sub">2月レセプト実績 / 大阪比45%</div>
       </div>
-      <div class="summary-card danger">
-        <div class="label">つくば院 リスクスコア</div>
-        <div class="value">4/5</div>
-        <div class="sub">院長問題 + スタッフ離職リスク</div>
+      <div class="summary-card warning">
+        <div class="label">1on1 進捗</div>
+        <div class="value">8/10</div>
+        <div class="sub">残: Maya（日程調整中）</div>
       </div>
       <div class="summary-card info">
-        <div class="label">ABB常駐開始</div>
-        <div class="value">3/12</div>
-        <div class="sub">学長代理・全権委任</div>
+        <div class="label">ABB常駐開始まで</div>
+        <div class="value">3日</div>
+        <div class="sub">3/12（木）学長代理・全権委任</div>
       </div>
     </div>
     <p style="font-size:14px;color:var(--gray-700);line-height:1.8">
-      ABBは2024年3月28日に歯科大阪院にジョインし、約2年かけて月間売上2,100万円・自費率42%の安定院へ再建しました。
-      この成功パターンを、院長の人間性に起因する組織崩壊リスクを抱えるつくば院（つくばLAファミリークリニック）の再建に適用します。
-      最終ゴールは<strong>院長交代</strong>。それまでの延命・安定化をABBが常駐で担います。
+      ABBは2024年3月に歯科大阪院にジョインし、約2年かけて月間売上2,100万円・自費率42%の安定院へ再建。
+      この成功パターンを、院長の人間性に起因する組織崩壊リスクを抱えるつくば院の再建に適用します。
+      <strong>1on1は8/10名完了</strong>。全スタッフが「表面的には変わったが本質は変わっていない」と指摘。3/12常駐開始に向けた組織基盤整備が完成段階に入りました。
     </p>
   </div>
 </div>
@@ -647,42 +533,39 @@
   <div class="section-body">
     <div class="comparison">
       <div class="comparison-card osaka">
-        <h3>&#127941; 大阪歯科院（リベ大デンタルクリニック大阪院）</h3>
+        <h3>&#127941; 大阪歯科院</h3>
         <div class="stat-row"><span>ジョイン日</span><span class="stat-value">2024年3月28日</span></div>
         <div class="stat-row"><span>院長</span><span class="stat-value">わっこ（木村和佳子）</span></div>
         <div class="stat-row"><span>月間売上（2月）</span><span class="stat-value">21,032,920円</span></div>
         <div class="stat-row"><span>3月目標</span><span class="stat-value">22,000,000円</span></div>
         <div class="stat-row"><span>自費率</span><span class="stat-value">42%（目標47%）</span></div>
-        <div class="stat-row"><span>月間患者数</span><span class="stat-value">879人（初診72+既存807）</span></div>
-        <div class="stat-row"><span>口管強</span><span class="stat-value">3月算定開始</span></div>
+        <div class="stat-row"><span>月間患者数</span><span class="stat-value">879人</span></div>
       </div>
       <div class="comparison-card tsukuba">
-        <h3>&#9888;&#65039; つくば院（つくばLAファミリークリニック）</h3>
+        <h3>&#9888;&#65039; つくば院</h3>
         <div class="stat-row"><span>介入開始</span><span class="stat-value">2026年3月3日</span></div>
-        <div class="stat-row"><span>院長</span><span class="stat-value">たろ先生（細井崇弘）※交代予定</span></div>
+        <div class="stat-row"><span>院長</span><span class="stat-value">たろ先生 ※交代予定</span></div>
         <div class="stat-row"><span>月間売上（2月）</span><span class="stat-value">約9,493,920円</span></div>
         <div class="stat-row"><span>自費率</span><span class="stat-value">約3%</span></div>
         <div class="stat-row"><span>日次患者数</span><span class="stat-value">43〜51人</span></div>
-        <div class="stat-row"><span>リスクスコア</span><span class="stat-value" style="color:var(--danger)">4/5（院長問題）</span></div>
-        <div class="stat-row"><span>ABB常駐開始</span><span class="stat-value">3月12日〜</span></div>
+        <div class="stat-row"><span>リスクスコア</span><span class="stat-value" style="color:var(--danger)">4/5</span></div>
       </div>
     </div>
-
     <h3 style="font-size:15px;margin-bottom:12px">大阪歯科院で確立された成功パターン</h3>
     <table>
       <thead><tr><th>施策</th><th>効果</th><th>つくば院への適用</th></tr></thead>
       <tbody>
         <tr><td>情報共有の見える化（日報→承認→マニュアル）</td><td>ブラックボックス解消</td><td>最優先で導入</td></tr>
-        <tr><td>日次売上の分類トラッキング</td><td>データドリブン経営</td><td>既に日報は開始済。分析を強化</td></tr>
+        <tr><td>日次売上の分類トラッキング</td><td>データドリブン経営</td><td>日報は開始済。分析を強化</td></tr>
         <tr><td>院長自ら方針発信</td><td>チームの方向性統一</td><td>ABBが一時的に代行</td></tr>
-        <tr><td>スタッフ間の感謝・学び合い文化</td><td>離職率低下・モチベ向上</td><td>1on1で種を蒔く</td></tr>
+        <tr><td>スタッフ間の感謝・学び合い文化</td><td>離職率低下</td><td>1on1で種を蒔く</td></tr>
         <tr><td>AI診断によるカウンセリング改善</td><td>自費率向上</td><td>組織安定後に検討</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- つくば院 現状 -->
+<!-- つくば院 数値実績 -->
 <div id="tsukuba-status" class="section">
   <div class="section-header">
     <div class="icon" style="background:var(--warning-light);color:var(--warning)">&#128202;</div>
@@ -703,7 +586,6 @@
         </tr>
       </tfoot>
     </table>
-
     <h3 style="font-size:15px;margin:20px 0 12px">レセプト実績（2月分）</h3>
     <div class="summary-grid" style="grid-template-columns: repeat(3, 1fr)">
       <div class="summary-card">
@@ -721,6 +603,56 @@
         <div class="value" style="font-size:22px">949万円</div>
         <div class="sub">1,117件 / 949,392点</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1on1 Results -->
+<div id="oneon1" class="section">
+  <div class="section-header">
+    <div class="icon" style="background:var(--warning-light);color:var(--warning)">&#128172;</div>
+    <div><h2>1on1 結果サマリー（8/10名完了）</h2></div>
+    <div class="badge" style="background:var(--warning-light);color:#b45309">Phase 0 最重要成果</div>
+  </div>
+  <div class="section-body">
+    <p style="font-size:14px;color:var(--gray-700);margin-bottom:16px"><strong>共通パターン</strong>: 全員が「表面的には変わったが本質は変わっていない」と指摘。たろ先生の防衛パターンが継続していることが全方位から確認された。</p>
+    <div class="oneon1-grid">
+      <div class="oneon1-card">
+        <h5>しめじ（医療事務）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
+        <div class="finding">予約枠調整の混乱。健診運用フローの責任範囲不明確</div>
+      </div>
+      <div class="oneon1-card">
+        <h5>kei（看護師）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
+        <div class="finding">「朝令暮改」な指示。たろ先生の機嫌を恐れてチャットで事実共有できない</div>
+      </div>
+      <div class="oneon1-card">
+        <h5>ひな（医療事務）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
+        <div class="finding">システム移行不可（院長のこだわり）。事務スタッフを避ける動き</div>
+      </div>
+      <div class="oneon1-card">
+        <h5>Reiko（処置室）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
+        <div class="finding">チャットでの意見交換減少。スタッフが発言を躊躇する空気</div>
+      </div>
+      <div class="oneon1-card" style="border-color:var(--danger)">
+        <h5>ei（事務）<span class="status status-risk" style="margin-left:8px">要注意</span></h5>
+        <div class="finding" style="border-color:var(--danger)">パワハラ的言動のターゲット。差別的対応。「二面性」への深い不信感</div>
+      </div>
+      <div class="oneon1-card" style="border-color:var(--danger)">
+        <h5>kuu（看護師）<span class="status status-risk" style="margin-left:8px">重要証言 3/9</span></h5>
+        <div class="finding" style="border-color:var(--danger)">表面的改善のみ。高圧的態度+「察して動け」の空気は不変。コミュニケーション回避し看護師を介して指示</div>
+      </div>
+      <div class="oneon1-card">
+        <h5>みゆ（小児科医師）<span class="status status-done" style="margin-left:8px">3/7</span></h5>
+        <div class="finding">インシデント管理に積極的。前向きな姿勢。妊娠中</div>
+      </div>
+      <div class="oneon1-card">
+        <h5>たろ先生（院長）<span class="status status-done" style="margin-left:8px">3/5</span></h5>
+        <div class="finding">「改善すべきところは覚悟をもって改善する」との言質。常駐合意済み</div>
+      </div>
+    </div>
+    <div style="margin-top:16px;padding:12px 16px;background:var(--info-light);border-radius:8px;border:1px solid #a5f3fc">
+      <strong style="color:var(--info);font-size:13px">未実施</strong>
+      <span style="font-size:13px;color:var(--gray-700)">Maya（日程調整中 - 3/10までに確定予定）</span>
     </div>
   </div>
 </div>
@@ -743,6 +675,7 @@
             <li>チャットの発言は「上層部向けパフォーマンス」</li>
             <li>運用変更を事務に事前相談なく日報で共有</li>
             <li>keiさんに調整役負荷が集中</li>
+            <li><strong>NEW:</strong> 看護師を介してしか指示できない（kuu証言）</li>
           </ul>
         </div>
         <div class="problem-branch">
@@ -752,6 +685,7 @@
             <li>「患者数が多すぎた」→ 外部要因化</li>
             <li>「反省」と言いつつ行動変わらず</li>
             <li>ABB分析：「防衛と合理化」モード</li>
+            <li><strong>NEW:</strong> 「察して動け」の空気は不変（kuu）</li>
           </ul>
         </div>
         <div class="problem-branch">
@@ -759,7 +693,7 @@
           <ul>
             <li>ひなさんの親「労基に相談した方がいい」</li>
             <li>休日出勤の事前承認制が不徹底</li>
-            <li>eiさんの体調不良・急な休み</li>
+            <li>eiさん：パワハラターゲット・差別的対応</li>
             <li>スタッフの心身疲弊</li>
           </ul>
         </div>
@@ -774,8 +708,7 @@
         </div>
       </div>
     </div>
-
-    <h3 style="font-size:15px;margin:20px 0 12px">経営陣の評価（Chatworkログより）</h3>
+    <h3 style="font-size:15px;margin:20px 0 12px">経営陣の評価</h3>
     <div class="quote danger">
       <div class="author">両（学長）3/3</div>
       「そもそも論で、院長の人間性の問題やから、解決難しいやろなぁ」
@@ -785,30 +718,25 @@
       「人間性や人格は変わらないので、引き継いでくれる院長が見つかったらバトンタッチがベスト」
     </div>
     <div class="quote">
-      <div class="author">ABB 3/3（分析）</div>
+      <div class="author">ABB 3/3</div>
       「たろ先生のマインドは『反省』ではなく『防衛』と『状況の合理化』に大きく傾いている」
     </div>
-    <div class="quote warning">
-      <div class="author">ABB 3/6</div>
-      「何にせよ、延命してる間に代わりの院長を！！！ですね」
-    </div>
-
-    <h3 style="font-size:15px;margin:20px 0 12px">スタッフの声（Chatworkログより）</h3>
+    <h3 style="font-size:15px;margin:20px 0 12px">スタッフの声（1on1より 3/8-9更新）</h3>
     <div class="quote danger">
-      <div class="author">keiさん（看護師）</div>
-      「人間性という面で尊敬し、ついていきたいかと言われると残念ながら難しい。コミュニケーション不足が悪化している」
+      <div class="author">keiさん（看護師）3/8</div>
+      「朝令暮改な指示。たろ先生の機嫌を恐れてチャットで事実を共有できない」
     </div>
     <div class="quote danger">
-      <div class="author">eiさん（事務）</div>
-      「現在のつくば院は表面上は変化しているが本質的には全く変わっていない。日報はパフォーマンスのように見える」
+      <div class="author">eiさん（事務）3/8</div>
+      「パワハラ的言動のターゲットにされている。差別的対応。二面性への深い不信感」
     </div>
     <div class="quote danger">
-      <div class="author">kuuさん（看護師）</div>
-      「威圧的な行動は減少しているが、職場全体の雰囲気改善とは言い難い。スタッフ間の空気も重い」
+      <div class="author">kuuさん（看護師）3/9</div>
+      「高圧的態度と『察して動け』の空気は変わっていない。コミュニケーションを避け看護師を介して指示」
     </div>
     <div class="quote">
-      <div class="author">ひなさん（事務）</div>
-      「労基に相談した方がいい」（親からの助言を共有）
+      <div class="author">Reikoさん（処置室）3/8</div>
+      「チャットでの意見交換が減少。スタッフが発言を躊躇する空気がある」
     </div>
   </div>
 </div>
@@ -824,52 +752,52 @@
       <div class="timeline-item done">
         <div class="timeline-date">3/2（日）</div>
         <div class="timeline-title">経営陣が介入方針を協議</div>
-        <div class="timeline-desc">両「企画室が現場に張り付く可能性を匂わせて良い」/ ロックン「態度ひどかったら経営企画室に入ってもらう」</div>
+        <div class="timeline-desc">両「企画室が現場に張り付く可能性を匂わせて良い」</div>
       </div>
       <div class="timeline-item done">
         <div class="timeline-date">3/3（月）</div>
         <div class="timeline-title">スタッフからの深刻な報告 + 面談実施</div>
-        <div class="timeline-desc">kuu・kei・eiから現場の実態が報告される。Yu・ロックン・シゲがたろ先生と面談し、経営企画室介入で合意。ABBが参入表明「僕行こうと思ってました」</div>
+        <div class="timeline-desc">kuu・kei・eiから現場の実態が報告。ABBが参入表明「僕行こうと思ってました」</div>
       </div>
       <div class="timeline-item done">
         <div class="timeline-date">3/4（火）</div>
         <div class="timeline-title">ABBの介入準備</div>
-        <div class="timeline-desc">たろ先生にZoom調整連絡（学長代理・全権委任を明示）。代替医師（くまち先生）の検討開始。メンバープロファイル作成</div>
+        <div class="timeline-desc">たろ先生にZoom調整連絡（学長代理・全権委任を明示）</div>
       </div>
       <div class="timeline-item done">
         <div class="timeline-date">3/5（木）</div>
         <div class="timeline-title">ABB x たろ先生 1on1（2時間Zoom）</div>
-        <div class="timeline-desc">「結構良い感じにできた」。たろ先生から常駐の合意を取得。「改善すべきところは覚悟をもって改善する」との言質</div>
+        <div class="timeline-desc">常駐の合意を取得。「改善すべきところは覚悟をもって改善する」との言質</div>
       </div>
       <div class="timeline-item done">
         <div class="timeline-date">3/6（金）</div>
         <div class="timeline-title">スタッフへの自己紹介 + 1on1スケジュール確定</div>
-        <div class="timeline-desc">つくば院日報チャットに全員宛の自己紹介・1on1案内を投稿。みゆ(3/7)、ei(3/8)、kuu(3/9)のスケジュール確定</div>
+        <div class="timeline-desc">つくば院日報チャットに全員宛の自己紹介・1on1案内を投稿</div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item done">
         <div class="timeline-date">3/7（土）</div>
-        <div class="timeline-title">✅ みゆさん1on1 完了</div>
-        <div class="timeline-desc">前向きな反応。改善の道筋に希望を感じている</div>
+        <div class="timeline-title">みゆさん1on1 完了</div>
+        <div class="timeline-desc">インシデント管理に積極的。前向きな姿勢を確認</div>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item done">
         <div class="timeline-date">3/8（日）</div>
-        <div class="timeline-title">✅ 5名1on1 一括実施（しめじ・kei・ひな・Reiko・ei）</div>
-        <div class="timeline-desc">全員が「表面的改善のみ」と指摘。eiはパワハラのターゲット。kuuは「察して動け」の空気不変と報告</div>
+        <div class="timeline-title">5名の1on1を一括実施 + 概要欄大幅整備</div>
+        <div class="timeline-desc">しめじ・kei・ひな・Reiko・eiの議事録を即日共有。チャット概要欄・ルール提示・メンション文字列を整備</div>
       </div>
       <div class="timeline-item active">
         <div class="timeline-date">3/9（月）TODAY</div>
-        <div class="timeline-title">✅ kuuさん1on1 完了 / Mayaさん1on1 日程調整中</div>
-        <div class="timeline-desc">kuu：看護チームリーダーとして全体像把握。Maya：日程未定</div>
+        <div class="timeline-title">kuuさん1on1 完了 + 組織基盤整備完成</div>
+        <div class="timeline-desc">「高圧的態度+察して動けの空気は不変」の重要証言。kuuさん健診計画自主推進。ひな・Reikoが自発的に動き始める好転シグナル</div>
       </div>
       <div class="timeline-item future">
         <div class="timeline-date">3/10〜11</div>
-        <div class="timeline-title">残り5名の1on1日程確定 + 統合レポート作成</div>
-        <div class="timeline-desc">しめじ・ひな・Reiko・kei・Mayaの調整。経営陣への報告資料作成</div>
+        <div class="timeline-title">Maya 1on1確定 + 統合レポート作成</div>
+        <div class="timeline-desc">8名分の統合レポートを経営陣に共有。常駐初日のアジェンダ策定</div>
       </div>
       <div class="timeline-item future">
         <div class="timeline-date">3/12（木）</div>
         <div class="timeline-title">ABB常駐開始</div>
-        <div class="timeline-desc">朝礼導入・ルール提示・業務観察開始。院長の権限整理</div>
+        <div class="timeline-desc">朝礼導入・ルール提示・業務観察。コウさん・だいさんとの食事</div>
       </div>
     </div>
   </div>
@@ -880,6 +808,7 @@
   <div class="section-header">
     <div class="icon" style="background:var(--info-light);color:var(--info)">&#128101;</div>
     <div><h2>スタッフ構成</h2></div>
+    <div class="badge" style="background:var(--info-light);color:var(--info)">12名</div>
   </div>
   <div class="section-body">
     <div class="staff-grid">
@@ -888,7 +817,7 @@
         <div class="staff-info">
           <h5>たろ18（細井崇弘）</h5>
           <div class="role">院長 / 常勤医師 / 休日:火水</div>
-          <div class="note" style="color:var(--danger)">交代検討中。訪問診療に適性あり。承認欲求が強く傲慢になりやすい</div>
+          <div class="note" style="color:var(--danger)">交代検討中。概要欄整備には協力的だが防衛パターン継続</div>
         </div>
       </div>
       <div class="staff-card" style="border-left:3px solid var(--success)">
@@ -896,7 +825,7 @@
         <div class="staff-info">
           <h5>黄 誠</h5>
           <div class="role">非常勤医師 / 週1水曜+臨時</div>
-          <div class="note">人望厚い。将来の院長候補（1〜2年後）</div>
+          <div class="note">人望厚い。皮膚科外来見学でスキルアップ意欲。将来の院長候補</div>
         </div>
       </div>
       <div class="staff-card">
@@ -904,15 +833,15 @@
         <div class="staff-info">
           <h5>みゆ（目黒美結）</h5>
           <div class="role">小児科医師</div>
-          <div class="note">妊娠中。前職で雇われ院長経験あり。1on1: 3/7 ✅完了（前向き）</div>
+          <div class="note">1on1 3/7 &#9989; インシデント管理に積極的。妊娠中</div>
         </div>
       </div>
       <div class="staff-card">
         <div class="staff-avatar" style="background:#0891b2">&#128105;&#8205;&#9877;&#65039;</div>
         <div class="staff-info">
           <h5>kuu（小林郁美）</h5>
-          <div class="role">看護師 / 看護チームまとめ役</div>
-          <div class="note">責任感強い。代休調整を丁寧に対応。1on1: 3/9</div>
+          <div class="role">看護師 / チームリーダー</div>
+          <div class="note">1on1 3/9 &#9989; 健診計画自主推進。高圧的態度の重要証言</div>
         </div>
       </div>
       <div class="staff-card" style="border-left:3px solid var(--success)">
@@ -920,7 +849,7 @@
         <div class="staff-info">
           <h5>kei_石踊</h5>
           <div class="role">看護師</div>
-          <div class="note">スタッフ中最もバランスが良い（ロックン・シゲ評）。たろ先生との調整役</div>
+          <div class="note">1on1 3/8 &#9989; バランスが良い（ロックン評）。ABBがフォロー中</div>
         </div>
       </div>
       <div class="staff-card">
@@ -928,23 +857,23 @@
         <div class="staff-info">
           <h5>しめじ（嶋津彩穂）</h5>
           <div class="role">医療事務</div>
-          <div class="note">レセプト業務担当。他院との連携も対応</div>
+          <div class="note">1on1 3/8 &#9989; 標榜時間問題を指摘。レセプト業務担当</div>
         </div>
       </div>
-      <div class="staff-card" style="border-left:3px solid var(--warning)">
+      <div class="staff-card">
         <div class="staff-avatar" style="background:#d97706">&#128105;</div>
         <div class="staff-info">
           <h5>ひな（倉持ひな）</h5>
           <div class="role">医療事務</div>
-          <div class="note" style="color:var(--warning)">マルチタスク対応。「労基相談」の親の助言あり。要ケア</div>
+          <div class="note">1on1 3/8 &#9989; チャット一覧整備に自発参加</div>
         </div>
       </div>
-      <div class="staff-card" style="border-left:3px solid var(--warning)">
+      <div class="staff-card" style="border-left:3px solid var(--danger)">
         <div class="staff-avatar" style="background:#ea580c">&#128105;</div>
         <div class="staff-info">
           <h5>ei（石塚栄里）</h5>
           <div class="role">事務</div>
-          <div class="note" style="color:var(--warning)">体調不良（咳・声枯れ）。メンタル面も要確認。1on1: 3/8</div>
+          <div class="note" style="color:var(--danger)">1on1 3/8 &#9989; パワハラターゲット。差別的対応。要重点ケア</div>
         </div>
       </div>
       <div class="staff-card">
@@ -952,7 +881,7 @@
         <div class="staff-info">
           <h5>Reiko</h5>
           <div class="role">処置室</div>
-          <div class="note">疑義照会の運用改善を提案。業務改善に積極的</div>
+          <div class="note">1on1 3/8 &#9989; 健診資料調査を自主的に開始</div>
         </div>
       </div>
       <div class="staff-card">
@@ -960,7 +889,15 @@
         <div class="staff-info">
           <h5>Maya</h5>
           <div class="role">スタッフ</div>
-          <div class="note">4月勤務開始。1on1: 3/9 19:00確定</div>
+          <div class="note">1on1 未実施（3/10確定予定）</div>
+        </div>
+      </div>
+      <div class="staff-card" style="border-left:3px solid var(--info)">
+        <div class="staff-avatar" style="background:#475569">&#128100;</div>
+        <div class="staff-info">
+          <h5>まんまる / たねこ</h5>
+          <div class="role">新規チャット参加</div>
+          <div class="note">3/9にチャットに追加</div>
         </div>
       </div>
     </div>
@@ -972,45 +909,46 @@
   <div class="section-header">
     <div class="icon" style="background:var(--warning-light);color:var(--warning)">&#128081;</div>
     <div><h2>代替院長の選択肢</h2></div>
+    <div class="badge" style="background:var(--warning-light);color:#b45309">火曜に打診予定</div>
   </div>
   <div class="section-body">
     <div class="candidate-list">
       <div class="candidate-card">
         <div class="candidate-rank">1</div>
         <div class="candidate-info">
-          <h5>黄 誠先生（非常勤）</h5>
-          <p>人望厚い。ただし他で常勤のため1〜2年は厳しい。ベストシナリオ</p>
+          <h5>くまち先生（東京院）</h5>
+          <p>フリーで身軽。シゲがうるし先生と共有完了。<strong>火曜日に直接打診予定</strong></p>
         </div>
-        <div class="candidate-feasibility" style="background:var(--warning-light);color:#b45309">1〜2年後</div>
+        <div class="candidate-feasibility" style="background:var(--warning-light);color:#b45309">火曜打診</div>
       </div>
       <div class="candidate-card">
         <div class="candidate-rank">2</div>
         <div class="candidate-info">
-          <h5>みゆ先生（小児科）</h5>
-          <p>前職で雇われ院長経験あり。短期つなぎとして有力。ただし妊娠中（半年で産休）</p>
+          <h5>黄 誠先生（非常勤）</h5>
+          <p>人望厚い。他で常勤のため1〜2年は厳しい。ベストシナリオ</p>
         </div>
-        <div class="candidate-feasibility" style="background:var(--info-light);color:var(--info)">短期つなぎ</div>
+        <div class="candidate-feasibility" style="background:var(--info-light);color:var(--info)">1〜2年後</div>
       </div>
       <div class="candidate-card">
         <div class="candidate-rank">3</div>
         <div class="candidate-info">
-          <h5>くまち先生（東京院）</h5>
-          <p>フリーで身軽。名義貸しレベル。KYなところあり。たろ先生が1月に断った経緯。往復4時間の問題も</p>
+          <h5>みゆ先生（小児科）</h5>
+          <p>前職で雇われ院長経験あり。短期つなぎ。ただし妊娠中</p>
         </div>
-        <div class="candidate-feasibility" style="background:var(--danger-light);color:var(--danger)">最後の手段</div>
+        <div class="candidate-feasibility" style="background:var(--info-light);color:var(--info)">短期つなぎ</div>
       </div>
       <div class="candidate-card">
         <div class="candidate-rank">4</div>
         <div class="candidate-info">
           <h5>外部募集</h5>
-          <p>たろ先生に隠れて募集は悪手。本人と話してからが前提（Yu方針）</p>
+          <p>たろ先生に隠れて募集は悪手。本人と話してからが前提</p>
         </div>
         <div class="candidate-feasibility" style="background:var(--gray-100);color:var(--gray-500)">今後検討</div>
       </div>
     </div>
     <div class="quote" style="margin-top:16px">
-      <div class="author">シゲ 3/4</div>
-      「彼を残すなら、訪問診療のみにした方がいいかも。院長としての名誉は残すが、あとは勤務医と同じ権限でやってもらう」
+      <div class="author">シゲ 3/8</div>
+      「うるし先生と共有完了。火曜日にくまち先生に直接打診する」
     </div>
   </div>
 </div>
@@ -1028,10 +966,10 @@
         <h4>緊急介入</h4>
         <div class="period">3/2 〜 3/11 &#9664; NOW</div>
         <ul>
-          <li>経営陣の方針決定</li>
-          <li>たろ先生1on1（完了）</li>
-          <li>全スタッフ1on1</li>
-          <li>統合レポート作成</li>
+          <li>経営陣方針決定 &#9989;</li>
+          <li>たろ先生1on1 &#9989;</li>
+          <li>全スタッフ1on1 <strong>8/10</strong></li>
+          <li>統合レポート 3/11</li>
         </ul>
       </div>
       <div class="phase-card p1">
@@ -1041,9 +979,9 @@
         <ul>
           <li>ABB常駐開始</li>
           <li>院内ルール文書化</li>
-          <li>会議体・朝礼の導入</li>
+          <li>朝礼・会議体導入</li>
           <li>院長の権限整理</li>
-          <li>労務管理の再整備</li>
+          <li>労務管理再整備</li>
         </ul>
       </div>
       <div class="phase-card p2">
@@ -1054,8 +992,8 @@
           <li>代替院長の確保</li>
           <li>マニュアル完成</li>
           <li>KPIダッシュボード</li>
-          <li>たろ先生→訪問診療へ</li>
-          <li>きむぽんへ引き継ぎ</li>
+          <li>たろ先生→訪問診療</li>
+          <li>きむぽん引き継ぎ</li>
         </ul>
       </div>
       <div class="phase-card p3">
@@ -1064,7 +1002,7 @@
         <div class="period">7月〜</div>
         <ul>
           <li>新院長の独立運営</li>
-          <li>ABB→週1訪問に移行</li>
+          <li>ABB→週1訪問</li>
           <li>月次レビュー体制</li>
           <li>12月に成果検証</li>
         </ul>
@@ -1080,22 +1018,23 @@
         <tr><td>3/3</td><td>ABB参入表明・議事録分析</td><td><span class="status status-done">完了</span></td></tr>
         <tr><td>3/4</td><td>たろ先生にZoom調整連絡</td><td><span class="status status-done">完了</span></td></tr>
         <tr><td>3/5</td><td>ABB x たろ先生 1on1（2時間）</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/6</td><td>スタッフ自己紹介・1on1スケジュール確定</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/7</td><td>みゆさん1on1 (11:00)</td><td><span class="status status-progress">本日</span></td></tr>
-        <tr><td>3/8</td><td>eiさん1on1 (21:00)</td><td><span class="status status-pending">予定</span></td></tr>
-        <tr><td>3/9</td><td>kuuさん1on1 (11:00)</td><td><span class="status status-pending">予定</span></td></tr>
-        <tr><td>3/10-11</td><td>残り5名の日程確定 + 統合レポート</td><td><span class="status status-pending">未着手</span></td></tr>
+        <tr><td>3/6</td><td>スタッフ自己紹介・スケジュール確定</td><td><span class="status status-done">完了</span></td></tr>
+        <tr><td>3/7</td><td>みゆさん1on1</td><td><span class="status status-done">完了</span></td></tr>
+        <tr><td>3/8</td><td>5名1on1 + 概要欄整備 + ルール提示</td><td><span class="status status-done">完了</span></td></tr>
+        <tr><td>3/9</td><td>kuuさん1on1 + 議事録共有</td><td><span class="status status-done">完了</span></td></tr>
+        <tr><td>3/10</td><td>Mayaの1on1日程確定</td><td><span class="status status-pending">予定</span></td></tr>
+        <tr><td>3/11</td><td>統合レポート・常駐アジェンダ確定</td><td><span class="status status-pending">未着手</span></td></tr>
       </tbody>
     </table>
 
-    <h3 style="font-size:15px;margin:20px 0 12px">Phase 1 常駐中のたろ先生対応方針</h3>
+    <h3 style="font-size:15px;margin:20px 0 12px">Phase 1 たろ先生対応方針</h3>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
       <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
         <h5 style="color:var(--success);font-size:13px;margin-bottom:8px">良い院を作りたいと思っている場合</h5>
-        <p style="font-size:13px">一緒に改善していく。ルールの策定に巻き込む</p>
+        <p style="font-size:13px">一緒に改善していく。ルール策定に巻き込む</p>
       </div>
       <div style="background:var(--danger-light);border-radius:8px;padding:16px;border:1px solid #fecaca">
-        <h5 style="color:var(--danger);font-size:13px;margin-bottom:8px">思っていない場合（ロックン：こちらの可能性が高い）</h5>
+        <h5 style="color:var(--danger);font-size:13px;margin-bottom:8px">思っていない場合（可能性が高い）</h5>
         <p style="font-size:13px">ルールの上で必要な診療をしていただく。訪問診療に段階的に移行</p>
       </div>
     </div>
@@ -1114,7 +1053,7 @@
       <div class="kpi-label">スタッフ離職</div>
       <div class="kpi-bar-wrap">
         <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:100%;background:var(--danger)">リスクあり</div>
+          <div class="kpi-bar" style="width:100%;background:var(--warning)">リスクあり（ei要注意）</div>
           <div class="kpi-target">目標: 0人</div>
         </div>
       </div>
@@ -1123,7 +1062,7 @@
       <div class="kpi-label">1on1実施率</div>
       <div class="kpi-bar-wrap">
         <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:80%;background:var(--success)">8/10</div>
+          <div class="kpi-bar" style="width:80%;background:var(--success)">8/10名完了</div>
           <div class="kpi-target">目標: 100%</div>
         </div>
       </div>
@@ -1132,12 +1071,11 @@
       <div class="kpi-label">ルール文書化</div>
       <div class="kpi-bar-wrap">
         <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:30%;background:var(--warning)">3項目</div>
+          <div class="kpi-bar" style="width:15%;background:var(--info)">概要欄整備済</div>
           <div class="kpi-target">目標: 10項目以上</div>
         </div>
       </div>
     </div>
-
     <h3 style="font-size:15px;margin:24px 0 12px">中期KPI（6月末まで）</h3>
     <div class="kpi-row">
       <div class="kpi-label">月間売上</div>
@@ -1161,7 +1099,7 @@
       <div class="kpi-label">院長候補</div>
       <div class="kpi-bar-wrap">
         <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:30%;background:var(--warning)">打診段階</div>
+          <div class="kpi-bar" style="width:40%;background:var(--warning)">火曜打診予定</div>
           <div class="kpi-target">目標: 1名確定</div>
         </div>
       </div>
@@ -1187,34 +1125,34 @@
   <div class="section-body">
     <div class="risk-grid">
       <div class="risk-card high">
-        <h5>たろ先生の「防衛モード」継続</h5>
-        <p>改善拒否または表面的合意のみで行動が変わらないリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: 学長代理の権限でルールを強制適用。感情論ではなく仕組みで管理</div>
+        <h5>たろ先生の「防衛モード」継続 <span class="status status-risk">全員確認済</span></h5>
+        <p>全スタッフが「本質は変わっていない」と指摘。表面的改善のみ</p>
+        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: 3/12からルールベース管理</div>
       </div>
       <div class="risk-card high">
         <h5>たろ先生が突然退職（「飛ぶ」）</h5>
         <p>院長不在で診療継続不能になるリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: くまち先生を最後の手段として確保（シゲ打診中）。みゆ先生の短期つなぎも選択肢</div>
+        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: くまち先生に火曜打診（うるし先生了承済）</div>
       </div>
       <div class="risk-card high">
-        <h5>スタッフの突発的離職（ei・ひな）</h5>
-        <p>体調不良や労基相談がエスカレートするリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: 1on1で早期検知。休日出勤ルール厳守で労務環境改善</div>
-      </div>
-      <div class="risk-card medium">
-        <h5>「愚痴文化」の固定化</h5>
-        <p>院長批判が常態化し、成長機会が失われるリスク（両の懸念）</p>
-        <div class="risk-meta">影響: 中 / 確率: 中 | 対策: ABB常駐で建設的な改善文化へ転換。注意すべきことは適切に注意する体制</div>
+        <h5>eiの突発的離職</h5>
+        <p>パワハラターゲット・差別的対応が1on1で明確に</p>
+        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: ABBがフォロー済。常駐で物理的にケア</div>
       </div>
       <div class="risk-card high">
         <h5>代替院長が見つからない</h5>
-        <p>延命期間が長期化し、スタッフが疲弊するリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: 黄先生→みゆ先生→外部の3ルートで並行探索</div>
+        <p>延命期間が長期化しスタッフが疲弊するリスク</p>
+        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: くまち→黄→外部の3ルート並行</div>
+      </div>
+      <div class="risk-card medium">
+        <h5>「愚痴文化」の固定化</h5>
+        <p>院長批判が常態化し成長機会が失われるリスク</p>
+        <div class="risk-meta">影響: 中 / 確率: 中 | 対策: 建設的な改善文化へ転換</div>
       </div>
       <div class="risk-card medium">
         <h5>ABB常駐中の他事業への影響</h5>
-        <p>大阪歯科院・不動産等の他事業が手薄になるリスク</p>
-        <div class="risk-meta">影響: 中 / 確率: 高 | 対策: きむぽんへの早期引き継ぎ。他事業はリモート対応</div>
+        <p>他事業が手薄になるリスク</p>
+        <div class="risk-meta">影響: 中 / 確率: 高 | 対策: きむぽんへの早期引き継ぎ</div>
       </div>
     </div>
   </div>
@@ -1228,59 +1166,51 @@
   </div>
   <div class="section-body">
     <ul class="action-list">
-      <li class="action-item" style="opacity:0.6;text-decoration:line-through">
-        <div class="action-num" style="background:var(--success);color:#fff">✓</div>
+      <li class="action-item">
+        <div class="action-num">1</div>
         <div class="action-content">
-          <h5>みゆさん1on1（11:00 Zoom）の実施と記録</h5>
-          <p>完了。離職意向確認・妊娠中の負担ヒアリング済み</p>
+          <h5>Mayaの1on1日程を確定</h5>
+          <p>残り1名の面談日程を確定する</p>
         </div>
-        <div class="action-deadline" style="background:var(--success-light);color:var(--success)">3/7 完了</div>
-      </li>
-      <li class="action-item" style="opacity:0.6;text-decoration:line-through">
-        <div class="action-num" style="background:var(--success);color:#fff">✓</div>
-        <div class="action-content">
-          <h5>eiさん1on1 + しめじ・kei・ひな・Reiko 計5名一括実施</h5>
-          <p>完了。5名の議事録を運営相談チャットに即日共有済み</p>
-        </div>
-        <div class="action-deadline" style="background:var(--success-light);color:var(--success)">3/8 完了</div>
-      </li>
-      <li class="action-item" style="opacity:0.6;text-decoration:line-through">
-        <div class="action-num" style="background:var(--success);color:#fff">✓</div>
-        <div class="action-content">
-          <h5>kuuさん1on1の実施</h5>
-          <p>完了。看護チームリーダーとして健診計画・現場状況をヒアリング</p>
-        </div>
-        <div class="action-deadline" style="background:var(--success-light);color:var(--success)">3/9 完了</div>
+        <div class="action-deadline today">3/10</div>
       </li>
       <li class="action-item">
-        <div class="action-num">4</div>
+        <div class="action-num">2</div>
         <div class="action-content">
-          <h5>残り2名のスタッフ1on1実施（Mayaさん・まひとさん）</h5>
-          <p>8/10完了。まひとさんは7日間未返信のため日程調整を再打診</p>
+          <h5>1on1統合レポート作成・経営陣共有</h5>
+          <p>8名分の結果を統合。臨時つくば院運営相談チャットで報告</p>
         </div>
-        <div class="action-deadline week">3/10-11</div>
+        <div class="action-deadline today">3/11</div>
       </li>
       <li class="action-item">
-        <div class="action-num">5</div>
-        <div class="action-content">
-          <h5>1on1結果の統合レポート作成</h5>
-          <p>8名分の議事録を統合分析し、経営陣に共有</p>
-        </div>
-        <div class="action-deadline today">3/9 TODAY</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">6</div>
+        <div class="action-num">3</div>
         <div class="action-content">
           <h5>3/12常駐初日のアジェンダ策定</h5>
           <p>朝礼導入・ルール提示・業務観察・院長の権限整理</p>
         </div>
-        <div class="action-deadline week">3/11</div>
+        <div class="action-deadline today">3/11</div>
       </li>
       <li class="action-item">
-        <div class="action-num">7</div>
+        <div class="action-num">4</div>
         <div class="action-content">
-          <h5>代替院長の条件整理</h5>
-          <p>黄先生の意向確認をシゲ経由で開始。募集要件の明確化</p>
+          <h5>ABB常駐開始</h5>
+          <p>学長代理・全権委任の立場で現場に入る</p>
+        </div>
+        <div class="action-deadline week">3/12</div>
+      </li>
+      <li class="action-item">
+        <div class="action-num">5</div>
+        <div class="action-content">
+          <h5>くまち先生への打診結果確認</h5>
+          <p>シゲが火曜に直接打診予定</p>
+        </div>
+        <div class="action-deadline week">3/11-12</div>
+      </li>
+      <li class="action-item">
+        <div class="action-num">6</div>
+        <div class="action-content">
+          <h5>寺前先生の採用フロー進行</h5>
+          <p>たろ先生が非常勤医師として提案。ABB面談必須</p>
         </div>
         <div class="action-deadline week">3/14</div>
       </li>
@@ -1288,7 +1218,35 @@
   </div>
 </div>
 
-<!-- 大阪歯科院からの教訓 -->
+<!-- 好転シグナル -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon" style="background:var(--success-light);color:var(--success)">&#127793;</div>
+    <div><h2>好転シグナル</h2></div>
+  </div>
+  <div class="section-body">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px">
+      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
+        <h5 style="font-size:14px;margin-bottom:4px">スタッフの自発性</h5>
+        <p style="font-size:13px;color:var(--gray-700)">ひなさんがチャット一覧整備に自発参加。Reikoさんが健診資料調査開始。kuuさんが健診計画を自主推進</p>
+      </div>
+      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
+        <h5 style="font-size:14px;margin-bottom:4px">わっこ先生</h5>
+        <p style="font-size:13px;color:var(--gray-700)">武蔵小杉院副院長として参画意向。品質向上の大きな一手</p>
+      </div>
+      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
+        <h5 style="font-size:14px;margin-bottom:4px">たろ先生の協力姿勢</h5>
+        <p style="font-size:13px;color:var(--gray-700)">概要欄整備に協力的。メンション用code補足。表面的ではあるが協力</p>
+      </div>
+      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
+        <h5 style="font-size:14px;margin-bottom:4px">コウさんの支援</h5>
+        <p style="font-size:13px;color:var(--gray-700)">ABBのつくば常駐を歓迎。地元サポートを申し出</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 教訓 -->
 <div class="section">
   <div class="section-header">
     <div class="icon" style="background:var(--success-light);color:var(--success)">&#128161;</div>
@@ -1299,37 +1257,36 @@
       <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
         <div style="font-size:28px;margin-bottom:8px">&#128196;</div>
         <h5 style="font-size:14px;margin-bottom:4px">1. 情報の透明化</h5>
-        <p style="font-size:13px;color:var(--gray-500)">口頭確認→日報記録→承認→マニュアル反映のサイクル確立</p>
+        <p style="font-size:13px;color:var(--gray-500)">日報→承認→マニュアル反映のサイクル確立</p>
       </div>
       <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
         <div style="font-size:28px;margin-bottom:8px">&#128202;</div>
         <h5 style="font-size:14px;margin-bottom:4px">2. 数値で語る文化</h5>
-        <p style="font-size:13px;color:var(--gray-500)">日次売上・患者数のトラッキング。感覚ではなくデータで判断</p>
+        <p style="font-size:13px;color:var(--gray-500)">日次売上・患者数のトラッキング</p>
       </div>
       <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
         <div style="font-size:28px;margin-bottom:8px">&#127793;</div>
         <h5 style="font-size:14px;margin-bottom:4px">3. 成長実感の共有</h5>
-        <p style="font-size:13px;color:var(--gray-500)">「できることが増え、売上が向上」の好循環を作る</p>
+        <p style="font-size:13px;color:var(--gray-500)">できることが増え売上が向上の好循環</p>
       </div>
       <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
         <div style="font-size:28px;margin-bottom:8px">&#128694;</div>
         <h5 style="font-size:14px;margin-bottom:4px">4. 段階的アプローチ</h5>
-        <p style="font-size:13px;color:var(--gray-500)">信頼関係を構築しながら少しずつ改善。大阪は約2年で再建</p>
+        <p style="font-size:13px;color:var(--gray-500)">大阪は約2年で再建。焦らず信頼構築</p>
       </div>
       <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
         <div style="font-size:28px;margin-bottom:8px">&#128227;</div>
         <h5 style="font-size:14px;margin-bottom:4px">5. 方針発信者の確保</h5>
-        <p style="font-size:13px;color:var(--gray-500)">大阪はわっこ先生。つくばはABBが一時代行→新院長へ引継</p>
+        <p style="font-size:13px;color:var(--gray-500)">ABBが一時代行→新院長へ引継</p>
       </div>
     </div>
   </div>
 </div>
 
-</div><!-- container -->
+</div>
 
 <div class="footer">
-  Chatworkログ（臨時つくば院運営相談チャット・つくば院日報チャット・大阪歯科院日報チャット）に基づき作成<br>
-  1on1の結果および経営陣との協議を経て随時更新
+  Chatworkログに基づき作成。1on1の結果および経営陣との協議を経て随時更新<br>最終更新: 2026年3月9日
 </div>
 
 </body>
