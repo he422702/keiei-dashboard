@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>つくば院｜健診 現状マップ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=IBM+Plex+Mono:wght@500&display=swap');
+  :root {
+    --bg: #f5f4f0; --surface: #ffffff; --surface2: #f0ede8;
+    --border: #d8d3cc; --accent: #2d5be3;
+    --green: #1a8f5c; --red: #c94040; --yellow: #c97a10;
+    --text: #1a1a1a; --muted: #6b6560;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-size: 13px; line-height: 1.7; padding: 32px 28px; }
+
+  .header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 2px solid var(--text); }
+  .header h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+  .header p { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .header-right { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--muted); text-align: right; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-full { grid-column: 1 / -1; }
+
+  .card { background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 18px 20px; animation: fadeUp 0.4s ease both; }
+  .card:nth-child(1){animation-delay:.05s} .card:nth-child(2){animation-delay:.10s}
+  .card:nth-child(3){animation-delay:.15s} .card:nth-child(4){animation-delay:.20s}
+  .card:nth-child(5){animation-delay:.25s} .card:nth-child(6){animation-delay:.30s}
+  @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  .card-title { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .dot-green{background:var(--green)} .dot-yellow{background:var(--yellow)} .dot-red{background:var(--red)} .dot-blue{background:var(--accent)} .dot-gray{background:var(--muted)}
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; }
+  .badge-done{background:#d4f0e4;color:var(--green)} .badge-wip{background:#fff3d4;color:var(--yellow)}
+  .badge-todo{background:#fde8e8;color:var(--red)} .badge-tbd{background:#e8e8e8;color:var(--muted)}
+
+  .flow { display: flex; align-items: flex-start; gap: 0; }
+  .flow-step { display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1; min-width: 80px; }
+  .step-box { background: var(--surface2); border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 6px; text-align: center; font-size: 11px; font-weight: 500; width: 100%; }
+  .step-box.done{border-color:var(--green);background:#f0faf5}
+  .step-box.wip{border-color:var(--yellow);background:#fffbf0}
+  .step-box.todo{border-color:#ccc;background:#f5f5f5;opacity:.7}
+  .flow-arrow { font-size: 16px; color: var(--border); padding-top: 12px; flex-shrink: 0; padding-left: 2px; padding-right: 2px; }
+  .step-label { font-size: 10px; color: var(--muted); text-align: center; }
+
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .checklist li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; }
+  .checklist li .icon { flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item { display: flex; gap: 12px; position: relative; }
+  .tl-item:not(:last-child)::before { content: ''; position: absolute; left: 14px; top: 28px; bottom: 0; width: 1.5px; background: var(--border); }
+  .tl-dot { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--border); background: var(--surface); display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; z-index: 1; }
+  .tl-dot.done{border-color:var(--green);background:#f0faf5}
+  .tl-dot.wip{border-color:var(--yellow);background:#fffbf0}
+  .tl-dot.future{border-color:#ccc;background:#f5f5f5}
+  .tl-body { padding: 4px 0 18px; }
+  .tl-date { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: var(--muted); margin-bottom: 2px; }
+  .tl-title { font-size: 12px; font-weight: 600; }
+  .tl-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  .issue-table { width: 100%; border-collapse: collapse; }
+  .issue-table th { font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 4px 8px 8px; border-bottom: 1.5px solid var(--border); }
+  .issue-table td { font-size: 11.5px; padding: 7px 8px; border-bottom: 1px solid var(--surface2); vertical-align: top; }
+  .issue-table tr:last-child td { border-bottom: none; }
+
+  .legend { display: flex; gap: 16px; align-items: center; margin-top: 20px; padding-top: 12px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--muted); }
+
+  h3 { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .sub { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+  .mt8 { margin-top: 8px; }
+  .divider { height: 1px; background: var(--border); margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>つくばLAファミリークリニック｜健診 現状マップ</h1>
+    <p>Chatworkログより整理　／　2026.03.11 時点　作成：ABB</p>
+  </div>
+  <div class="header-right">参照期間<br>2026/01〜2026/03/11</div>
+</div>
+
+<div class="grid">
+
+  <!-- ① 種別整理 -->
+  <div class="card grid-full">
+    <div class="card-title"><span class="dot dot-blue"></span>健診の種類｜2種類を分けて管理する必要あり</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+      <div>
+        <h3>🏥 院内健診（自院設計）</h3>
+        <p class="sub">スタッフ・一般患者向けに院内で設計・運用するもの</p>
+        <ul class="checklist">
+          <li><span class="icon">✅</span>採血データはCSVで流し込み（江東微研連携）</li>
+          <li><span class="icon">✅</span>問診・既往歴・血圧などはカルテからコピペ流し込み</li>
+          <li><span class="icon">✅</span>評価・コメント・レントゲン所見は医師が記載</li>
+          <li><span class="icon">⚠️</span>Wakumyへの予約枠設定がまだ未完了</li>
+          <li><span class="icon">⚠️</span>結果の渡し方（暗号化PDF or クラウドリンク）未決定</li>
+          <li><span class="icon">⚠️</span>締め切り・枠数・時間帯の正式決定が必要</li>
+        </ul>
+      </div>
+      <div style="border-left:1.5px solid var(--border);padding-left:20px;">
+        <h3>🏙️ つくば市健診（行政委託）</h3>
+        <p class="sub">市から委託される検診（特定健診・がん健診・後期高齢者健診など）</p>
+        <ul class="checklist">
+          <li><span class="icon">📋</span>結果用紙に手書きして郵送 or 来院での手渡しが必要</li>
+          <li><span class="icon">📋</span>陽性者（要精密検査）への対応フローが別途必要</li>
+          <li><span class="icon">📋</span>大腸がん健診→検体受取のみ　前立腺・肝炎→採血のみ</li>
+          <li><span class="icon">📋</span>特定健診・後期高齢者健診は時間がかかる想定</li>
+          <li><span class="icon">⏳</span>市から手引き・必要書類が来週前後に届く予定</li>
+          <li><span class="icon">⚠️</span>枠の取り方も種別ごとに別設計が必要</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 院内健診フロー -->
+  <div class="card grid-full">
+    <div class="card-title"><span class="dot dot-green"></span>院内健診フロー（現状の想定）</div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-box wip">予約受付<br><span style="font-size:10px;color:#888;">Wakumy</span></div>
+        <div class="step-label">⚠️ 枠未設定</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-box done">来院・受付<br><span style="font-size:10px;color:#555;">問診票記入</span></div>
+        <div class="step-label">✅ フォームあり</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-box done">各種検査<br><span style="font-size:10px;color:#555;">採血・尿・血圧等</span></div>
+        <div class="step-label">✅ 用紙あり</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-box wip">データ取込<br><span style="font-size:10px;color:#888;">CSV→カルテ</span></div>
+        <div class="step-label">⚠️ 3/16設定予定</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-box done">医師診察<br><span style="font-size:10px;color:#555;">判定・コメント</span></div>
+        <div class="step-label">✅ フロー確認済み</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="step-box todo">結果お渡し<br><span style="font-size:10px;color:#888;">メール or 来院</span></div>
+        <div class="step-label">⚠️ 方法未決定</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 進捗タイムライン -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-green"></span>進捗タイムライン</div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot done">✓</div>
+        <div class="tl-body">
+          <div class="tl-date">完了</div>
+          <div class="tl-title">健診フロー大枠の確認</div>
+          <div class="tl-desc">大阪院から問診フォーマット共有・参考にした</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot done">✓</div>
+        <div class="tl-body">
+          <div class="tl-date">完了</div>
+          <div class="tl-title">健診用問診フォーム作成（kuu先生）</div>
+          <div class="tl-desc">GAS連携でCSV変換アプリを自作・文書管理に紐付け済み</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot done">✓</div>
+        <div class="tl-body">
+          <div class="tl-date">完了</div>
+          <div class="tl-title">尿検査結果記入用紙の導入</div>
+          <div class="tl-desc">keiさん作成の採血結果用紙をベースに追加整備</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot wip">▶</div>
+        <div class="tl-body">
+          <div class="tl-date">3/16（月）予定</div>
+          <div class="tl-title">江東微研が来院・PCデータ連携設定</div>
+          <div class="tl-desc">検査結果をノートPCに飛ばす仕組みを構築</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot wip">▶</div>
+        <div class="tl-body">
+          <div class="tl-date">3/16以降 順次</div>
+          <div class="tl-title">スタッフ健診トライアル（1〜2名ずつ）</div>
+          <div class="tl-desc">3/18・19・25・30・31（訪問診療なし日）に実施予定</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot future">○</div>
+        <div class="tl-body">
+          <div class="tl-date">4月〜</div>
+          <div class="tl-title">一般患者向け健診受け入れ開始</div>
+          <div class="tl-desc">スタッフ体制が整うタイミングでスタート方針</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 未決定事項 -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-yellow"></span>未決定事項｜要議論</div>
+    <table class="issue-table">
+      <thead>
+        <tr><th>論点</th><th>たろ先生案</th><th>状態</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>時間帯・件数</td><td>9:00〜9:30避ける<br>30分に1〜2人</td><td><span class="badge badge-wip">議論中</span></td></tr>
+        <tr><td>予約締め切り</td><td>HPに合わせる</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>結果の渡し方</td><td>メール返却</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>個人情報の扱い<br><span style="font-size:10px;color:var(--muted)">暗号化PDF or クラウドリンク</span></td><td>—</td><td><span class="badge badge-todo">要検討</span></td></tr>
+        <tr><td>訪問診療日は健診なし</td><td>（検討中）</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>市健診の陽性者対応</td><td>—</td><td><span class="badge badge-todo">要検討</span></td></tr>
+        <tr><td>Wakumy枠設定</td><td>—</td><td><span class="badge badge-todo">未着手</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ⑤ タスク役割分担 -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-blue"></span>タスク役割分担</div>
+    <h3>👩‍⚕️ 看護師チーム</h3>
+    <ul class="checklist mt8">
+      <li><span class="icon">✅</span>採血・尿検査対応・結果記入用紙運用</li>
+      <li><span class="icon">✅</span>問診フォームの案内・回収</li>
+      <li><span class="icon">⏳</span>江東微研連携後のデータ確認テスト</li>
+      <li><span class="icon">⏳</span>スタッフ健診トライアル対応</li>
+    </ul>
+    <div class="divider"></div>
+    <h3>🗂️ 事務チーム</h3>
+    <ul class="checklist mt8">
+      <li><span class="icon">⏳</span>Wakumy予約枠設定</li>
+      <li><span class="icon">⏳</span>結果送付フローの整備（メール方法含む）</li>
+      <li><span class="icon">⏳</span>つくば市健診の手引き受領後、各種申請対応</li>
+      <li><span class="icon">⏳</span>健診コスト入力タイミング・入力者の確認</li>
+    </ul>
+    <div class="divider"></div>
+    <h3>🩺 医師</h3>
+    <ul class="checklist mt8">
+      <li><span class="icon">✅</span>判定・総合コメント記載（個別対応・テンプレなし）</li>
+      <li><span class="icon">⏳</span>健診種別ごとの枠・フロー最終決定</li>
+    </ul>
+  </div>
+
+  <!-- ⑥ 懸念・リスク -->
+  <div class="card">
+    <div class="card-title"><span class="dot dot-red"></span>懸念・リスク</div>
+    <ul class="checklist">
+      <li><span class="icon">⚠️</span><span><strong>江東微研連携が前提</strong><br>3/16のPC設定が完了しないと健診データ取込ができない。遅延リスクあり。</span></li>
+      <li><span class="icon">⚠️</span><span><strong>院内健診とつくば市健診の混同</strong><br>枠・結果渡し・フローが全く別物。スタッフへの周知が必要。</span></li>
+      <li><span class="icon">⚠️</span><span><strong>結果の個人情報保護</strong><br>メール送付時の暗号化方法が未統一。送り間違いリスク。</span></li>
+      <li><span class="icon">⚠️</span><span><strong>Wakumy枠が未設定</strong><br>このまま受け入れを始めると予約混乱の可能性あり。</span></li>
+      <li><span class="icon">⚠️</span><span><strong>4月体制変更とのタイミング</strong><br>新スタッフ増加と健診開始が重なる。習熟コストに注意。</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="legend">
+  <strong style="font-size:11px;">凡例：</strong>
+  <div class="legend-item"><span class="badge badge-done">完了</span>対応済み</div>
+  <div class="legend-item"><span class="badge badge-wip">進行中</span>動いているが未完</div>
+  <div class="legend-item"><span class="badge badge-tbd">未決定</span>方針議論が必要</div>
+  <div class="legend-item"><span class="badge badge-todo">要検討</span>着手できていない</div>
+  <div class="legend-item" style="margin-left:8px;">✅完了　⚠️要対応　⏳今後対応　📋確認事項</div>
+</div>
+
+</body>
+</html>
