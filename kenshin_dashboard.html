@@ -81,7 +81,7 @@
 <div class="header">
   <div>
     <h1>つくばLAファミリークリニック｜健診 現状マップ</h1>
-    <p>Chatworkログより整理　／　2026.03.11 時点　作成：ABB</p>
+    <p>Chatworkログ + kuuさんFB反映　／　2026.03.11 時点　作成：ABB</p>
   </div>
   <div class="header-right">参照期間<br>2026/01〜2026/03/11</div>
 </div>
@@ -90,18 +90,17 @@
 
   <!-- ① 種別整理 -->
   <div class="card grid-full">
-    <div class="card-title"><span class="dot dot-blue"></span>健診の種類｜2種類を分けて管理する必要あり</div>
+    <div class="card-title"><span class="dot dot-blue"></span>健診の種類｜2つは別物として管理が必要</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
       <div>
         <h3>🏥 院内健診（自院設計）</h3>
         <p class="sub">スタッフ・一般患者向けに院内で設計・運用するもの</p>
         <ul class="checklist">
           <li><span class="icon">✅</span>採血データはCSVで流し込み（江東微研連携）</li>
-          <li><span class="icon">✅</span>問診・既往歴・血圧などはカルテからコピペ流し込み</li>
-          <li><span class="icon">✅</span>評価・コメント・レントゲン所見は医師が記載</li>
-          <li><span class="icon">⚠️</span>Wakumyへの予約枠設定がまだ未完了</li>
+          <li><span class="icon">✅</span>問診・既往歴・血圧はカルテからコピペ</li>
+          <li><span class="icon">✅</span>評価・コメントは医師が記載</li>
+          <li><span class="icon">⚠️</span>Wakumy予約枠設定がまだ未完了</li>
           <li><span class="icon">⚠️</span>結果の渡し方（暗号化PDF or クラウドリンク）未決定</li>
-          <li><span class="icon">⚠️</span>締め切り・枠数・時間帯の正式決定が必要</li>
         </ul>
       </div>
       <div style="border-left:1.5px solid var(--border);padding-left:20px;">
@@ -109,11 +108,9 @@
         <p class="sub">市から委託される検診（特定健診・がん健診・後期高齢者健診など）</p>
         <ul class="checklist">
           <li><span class="icon">📋</span>結果用紙に手書きして郵送 or 来院での手渡しが必要</li>
-          <li><span class="icon">📋</span>陽性者（要精密検査）への対応フローが別途必要</li>
-          <li><span class="icon">📋</span>大腸がん健診→検体受取のみ　前立腺・肝炎→採血のみ</li>
-          <li><span class="icon">📋</span>特定健診・後期高齢者健診は時間がかかる想定</li>
+          <li><span class="icon">📋</span>陽性者（要精密検査）の対応フローが別途必要</li>
+          <li><span class="icon">📋</span>健診種別ごとに枠の設計が異なる</li>
           <li><span class="icon">⏳</span>市から手引き・必要書類が来週前後に届く予定</li>
-          <li><span class="icon">⚠️</span>枠の取り方も種別ごとに別設計が必要</li>
         </ul>
       </div>
     </div>
@@ -129,8 +126,8 @@
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
-        <div class="step-box done">来院・受付<br><span style="font-size:10px;color:#555;">問診票記入</span></div>
-        <div class="step-label">✅ フォームあり</div>
+        <div class="step-box wip">来院・受付<br><span style="font-size:10px;color:#888;">問診票記入</span></div>
+        <div class="step-label">⚠️ シムビュー使用予定<br>医師確認未</div>
       </div>
       <div class="flow-arrow">→</div>
       <div class="flow-step">
@@ -164,15 +161,15 @@
         <div class="tl-body">
           <div class="tl-date">完了</div>
           <div class="tl-title">健診フロー大枠の確認</div>
-          <div class="tl-desc">大阪院から問診フォーマット共有・参考にした</div>
+          <div class="tl-desc">大阪院フォーマットを参考に整理</div>
         </div>
       </div>
       <div class="tl-item">
-        <div class="tl-dot done">✓</div>
+        <div class="tl-dot wip">▶</div>
         <div class="tl-body">
-          <div class="tl-date">完了</div>
-          <div class="tl-title">健診用問診フォーム作成（kuu先生）</div>
-          <div class="tl-desc">GAS連携でCSV変換アプリを自作・文書管理に紐付け済み</div>
+          <div class="tl-date">⚠️ 未完了</div>
+          <div class="tl-title">健診用問診フォーム（シムビュー・GAS連携）</div>
+          <div class="tl-desc">→ たろさん・みゆさん確認待ち</div>
         </div>
       </div>
       <div class="tl-item">
@@ -196,7 +193,7 @@
         <div class="tl-body">
           <div class="tl-date">3/16以降 順次</div>
           <div class="tl-title">スタッフ健診トライアル（1〜2名ずつ）</div>
-          <div class="tl-desc">3/18・19・25・30・31（訪問診療なし日）に実施予定</div>
+          <div class="tl-desc">対象日：3/18・19・25・30・31</div>
         </div>
       </div>
       <div class="tl-item">
@@ -204,7 +201,7 @@
         <div class="tl-body">
           <div class="tl-date">4月〜</div>
           <div class="tl-title">一般患者向け健診受け入れ開始</div>
-          <div class="tl-desc">スタッフ体制が整うタイミングでスタート方針</div>
+          <div class="tl-desc">スタッフ体制が整うタイミングでスタート</div>
         </div>
       </div>
     </div>
@@ -215,34 +212,36 @@
     <div class="card-title"><span class="dot dot-yellow"></span>未決定事項｜要議論</div>
     <table class="issue-table">
       <thead>
-        <tr><th>論点</th><th>たろ先生案</th><th>状態</th></tr>
+        <tr><th>論点</th><th>現状・案</th><th>状態</th></tr>
       </thead>
       <tbody>
-        <tr><td>時間帯・件数</td><td>9:00〜9:30避ける<br>30分に1〜2人</td><td><span class="badge badge-wip">議論中</span></td></tr>
-        <tr><td>予約締め切り</td><td>HPに合わせる</td><td><span class="badge badge-tbd">未決定</span></td></tr>
-        <tr><td>結果の渡し方</td><td>メール返却</td><td><span class="badge badge-tbd">未決定</span></td></tr>
-        <tr><td>個人情報の扱い<br><span style="font-size:10px;color:var(--muted)">暗号化PDF or クラウドリンク</span></td><td>—</td><td><span class="badge badge-todo">要検討</span></td></tr>
-        <tr><td>訪問診療日は健診なし</td><td>（検討中）</td><td><span class="badge badge-tbd">未決定</span></td></tr>
-        <tr><td>市健診の陽性者対応</td><td>—</td><td><span class="badge badge-todo">要検討</span></td></tr>
-        <tr><td>Wakumy枠設定</td><td>—</td><td><span class="badge badge-todo">未着手</span></td></tr>
+        <tr><td>時間帯・件数</td><td>たろさん案：9:00〜9:30を避ける／30分に1〜2人</td><td><span class="badge badge-wip">議論中</span></td></tr>
+        <tr><td>予約締め切り</td><td>HPに合わせる方向（前日17時締め切りが現実的か）</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>結果の渡し方</td><td>メール返却の方向だが正式未決定</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>個人情報の扱い<br><span style="font-size:10px;color:var(--muted)">暗号化PDF or クラウドリンク</span></td><td>事務と連携して決める</td><td><span class="badge badge-todo">要検討</span></td></tr>
+        <tr><td>受付での確認事項</td><td>メールアドレス確認・追加希望メニュー等の対応フロー</td><td><span class="badge badge-todo">要整備</span></td></tr>
+        <tr><td>訪問診療日は健診なし</td><td>（検討中・未決定）</td><td><span class="badge badge-tbd">未決定</span></td></tr>
+        <tr><td>つくば市健診の陽性者対応</td><td>—</td><td><span class="badge badge-todo">要検討</span></td></tr>
+        <tr><td>Wakumy予約枠設定</td><td>医師・看護師・事務で検討→たろさん最終決定→keiさんが設定</td><td><span class="badge badge-todo">未着手</span></td></tr>
       </tbody>
     </table>
   </div>
 
   <!-- ⑤ タスク役割分担 -->
   <div class="card">
-    <div class="card-title"><span class="dot dot-blue"></span>タスク役割分担</div>
+    <div class="card-title"><span class="dot dot-blue"></span>タスク役割分担（仮）</div>
     <h3>👩‍⚕️ 看護師チーム</h3>
     <ul class="checklist mt8">
       <li><span class="icon">✅</span>採血・尿検査対応・結果記入用紙運用</li>
-      <li><span class="icon">✅</span>問診フォームの案内・回収</li>
+      <li><span class="icon">⚠️</span>問診フォーム（シムビュー）：たろさん・みゆさん確認後に運用開始</li>
       <li><span class="icon">⏳</span>江東微研連携後のデータ確認テスト</li>
       <li><span class="icon">⏳</span>スタッフ健診トライアル対応</li>
     </ul>
     <div class="divider"></div>
     <h3>🗂️ 事務チーム</h3>
     <ul class="checklist mt8">
-      <li><span class="icon">⏳</span>Wakumy予約枠設定</li>
+      <li><span class="icon">⏳</span>Wakumy予約枠設定（医師・看護師・事務で検討→たろさん最終決定→keiさんが設定）</li>
+      <li><span class="icon">⏳</span>受付での確認事項の整備（メールアドレス確認・追加メニュー対応等）</li>
       <li><span class="icon">⏳</span>結果送付フローの整備（メール方法含む）</li>
       <li><span class="icon">⏳</span>つくば市健診の手引き受領後、各種申請対応</li>
       <li><span class="icon">⏳</span>健診コスト入力タイミング・入力者の確認</li>
@@ -251,6 +250,7 @@
     <h3>🩺 医師</h3>
     <ul class="checklist mt8">
       <li><span class="icon">✅</span>判定・総合コメント記載（個別対応・テンプレなし）</li>
+      <li><span class="icon">⚠️</span>問診フォーム（シムビュー）の内容確認・承認（→たろさん・みゆさん）</li>
       <li><span class="icon">⏳</span>健診種別ごとの枠・フロー最終決定</li>
     </ul>
   </div>
@@ -259,11 +259,12 @@
   <div class="card">
     <div class="card-title"><span class="dot dot-red"></span>懸念・リスク</div>
     <ul class="checklist">
-      <li><span class="icon">⚠️</span><span><strong>江東微研連携が前提</strong><br>3/16のPC設定が完了しないと健診データ取込ができない。遅延リスクあり。</span></li>
-      <li><span class="icon">⚠️</span><span><strong>院内健診とつくば市健診の混同</strong><br>枠・結果渡し・フローが全く別物。スタッフへの周知が必要。</span></li>
-      <li><span class="icon">⚠️</span><span><strong>結果の個人情報保護</strong><br>メール送付時の暗号化方法が未統一。送り間違いリスク。</span></li>
-      <li><span class="icon">⚠️</span><span><strong>Wakumy枠が未設定</strong><br>このまま受け入れを始めると予約混乱の可能性あり。</span></li>
-      <li><span class="icon">⚠️</span><span><strong>4月体制変更とのタイミング</strong><br>新スタッフ増加と健診開始が重なる。習熟コストに注意。</span></li>
+      <li><span class="icon">⚠️</span><span><strong>江東微研連携が前提</strong><br>3/16の設定が遅延するとデータ取込ができない</span></li>
+      <li><span class="icon">⚠️</span><span><strong>問診フォームが未確定</strong><br>シムビュー使用・医師承認が得られるまでフロー確定しない</span></li>
+      <li><span class="icon">⚠️</span><span><strong>院内健診とつくば市健診の混同</strong><br>枠・結果渡し・フローが全く別物。スタッフへの周知が必要</span></li>
+      <li><span class="icon">⚠️</span><span><strong>結果の個人情報保護</strong><br>メール送付時の暗号化方法が未統一。送り間違いリスクあり</span></li>
+      <li><span class="icon">⚠️</span><span><strong>Wakumy枠が未設定のまま受け入れ開始はリスクあり</strong></span></li>
+      <li><span class="icon">⚠️</span><span><strong>4月の体制変更と健診開始が重なる</strong><br>新スタッフ増加タイミングと重複。習熟コストに注意</span></li>
     </ul>
   </div>
 
