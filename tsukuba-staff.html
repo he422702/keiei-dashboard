@@ -230,7 +230,7 @@ body{
     <div class="header-badge">学長室直轄 | 経営企画室</div>
     <h1>つくば院<br>運営体制プロジェクト</h1>
     <p></p>
-    <div class="header-date">最終更新：2026年3月11日</div>
+    <div class="header-date">最終更新：2026年3月12日</div>
   </div>
 </header>
 
@@ -239,7 +239,6 @@ body{
   <div class="nav-inner">
     <a href="#intro">はじめに</a>
     <a href="#performance">診療実績</a>
-    <a href="#oneon1">1on1面談</a>
     <a href="#chatwork">チャット一覧</a>
     <a href="#improvement">取り組み</a>
     <a href="#phases">今後の流れ</a>
@@ -262,7 +261,7 @@ body{
     <div class="profile-info">
       <h3>ABB</h3>
       <div class="role">学長秘書室 / 学長経営企画室</div>
-      <p>学長より全権委任されており、明日3月12日よりつくば院に常駐します。全スタッフ10名との1on1面談が完了し、みなさんの声をしっかり聞かせていただきました。明日からは一緒に具体的な改善に取り組んでいきます。</p>
+      <p>学長より全権委任されており、3月12日よりつくば院に常駐しています。みなさんと一緒に、より良い院づくりに取り組んでいきます。</p>
     </div>
   </div>
 
@@ -313,28 +312,7 @@ body{
   </div>
 </section>
 
-<!-- 1on1 -->
-<section class="section" id="oneon1">
-  <div class="section-header">
-    <div class="section-icon">@</div>
-    <div class="section-title">1on1面談の進捗</div>
-  </div>
-
-  <div class="card">
-    <h4>面談の目的</h4>
-    <p>みなさん一人ひとりの声を直接聞かせていただくための面談です。<strong>全10名の面談が完了しました。</strong>ご協力いただきありがとうございます。いただいた声をもとに、具体的な改善策を進めてまいります。面談内容は個人が特定される形では共有しません。</p>
-  </div>
-
-  <div class="card">
-    <h4>面談スケジュール</h4>
-    <div class="oneon1-grid" id="oneon1Grid">
-      <!-- JS で描画 -->
-    </div>
-    <p style="font-size:12px;color:var(--success);margin-top:12px;font-weight:600;">
-      ✅ 全10名の面談が完了しました！ありがとうございます。
-    </p>
-  </div>
-</section>
+<!-- 1on1セクション削除済み（常駐開始により不要） -->
 
 <!-- Chatwork -->
 <section class="section" id="chatwork">
@@ -455,7 +433,7 @@ body{
 
   <div class="callout callout-info">
     <strong>みなさんのアイデアを募集中</strong>
-    「こうしたら良くなるのに」というアイデアがあれば、1on1でお聞かせください。小さなことでも大歓迎です。良いアイデアはすぐに取り入れていきます。
+    「こうしたら良くなるのに」というアイデアがあれば、いつでもお声がけください。小さなことでも大歓迎です。良いアイデアはすぐに取り入れていきます。
   </div>
 </section>
 
@@ -470,11 +448,11 @@ body{
     <div class="phase">
       <div class="phase-label">Phase 0 — ✅ 完了</div>
       <h4>現状把握</h4>
-      <p>全スタッフ10名との1on1面談が完了しました。みなさんの声をもとに改善計画を策定しています。</p>
+      <p>ABBが常駐を開始しました。みなさんの声をもとに改善を進めています。</p>
       <div class="period">3月7日〜3月11日</div>
     </div>
     <div class="phase active">
-      <div class="phase-label">Phase 1 - 明日スタート</div>
+      <div class="phase-label">Phase 1 - 進行中</div>
       <h4>常駐 + 環境整備</h4>
       <p>ABBが常駐し、朝礼の導入・業務ルールの文書化・会議体の整備を進めます。</p>
       <div class="period">3月12日〜3月31日</div>
@@ -575,8 +553,8 @@ const DATA = {
     { date: '3/7', title: 'みゆさん1on1完了', desc: '面談を実施しました。貴重なお話をありがとうございました', status: 'done' },
     { date: '3/8', title: '1on1面談5名完了 + チャット整理完了', desc: 'しめじ・kei・ひな・Reiko・eiさんの面談を実施。チャットの命名規則統一・概要整備も完了', status: 'done' },
     { date: '3/9', title: '1on1面談3名完了 — 全10名完了!', desc: 'kuu・Maya・黄さんの面談を実施し、全スタッフの面談が完了しました', status: 'done' },
-    { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化。日報チャットで告知予定', status: 'current' },
-    { date: '3/12', title: 'ABB常駐開始 — 明日!', desc: '朝礼導入・院内ルール提示・業務観察からスタートします', status: 'future' },
+    { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化。日報チャットで告知予定', status: 'done' },
+    { date: '3/12', title: 'ABB常駐開始', desc: '朝礼導入・院内ルール提示・業務観察からスタートします', status: 'current' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルール10項目以上を整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
   ]
