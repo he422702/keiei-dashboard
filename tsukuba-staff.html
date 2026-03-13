@@ -230,7 +230,7 @@ body{
     <div class="header-badge">学長室直轄 | 経営企画室</div>
     <h1>つくば院<br>運営体制プロジェクト</h1>
     <p></p>
-    <div class="header-date">最終更新：2026年3月12日</div>
+    <div class="header-date">最終更新：2026年3月13日</div>
   </div>
 </header>
 
@@ -494,20 +494,26 @@ body{
 <script>
 // ===== DATA (朝事処理で更新される部分) =====
 const DATA = {
-  lastUpdated: '2026-03-11',
+  lastUpdated: '2026-03-13',
 
   // 日別売上
   dailySales: [
+    { date: '3/1', amount: 610080, patients: 69 },
+    { date: '3/2', amount: 272050, patients: 56 },
     { date: '3/4', amount: 244700, patients: 46 },
     { date: '3/5', amount: 199156, patients: 51 },
     { date: '3/6', amount: 361870, patients: 43 },
     { date: '3/7', amount: 295540, patients: 63 },
+    { date: '3/8', amount: 407442, patients: 46 },
+    { date: '3/9', amount: 346740, patients: 67 },
+    { date: '3/11', amount: 268070, patients: 46 },
+    { date: '3/12', amount: 179850, patients: 41 },
   ],
 
   // 月間累計
-  monthlySales: 1101266,
+  monthlySales: 3185498,
   monthlyReceipts: '949万円',
-  visitCount: '要確認',
+  visitCount: '5件',
 
   // 1on1 status: done / scheduled / pending
   oneon1: [
@@ -528,9 +534,11 @@ const DATA = {
     { text: 'チャットグループの整理・命名規則統一', done: true, date: '3/8完了' },
     { text: '3行日報テンプレート導入', done: true, date: '3/9完了' },
     { text: 'つくば院プロジェクト進捗管理スプシ作成', done: true, date: '3/11完了' },
+    { text: 'シフト作成フロー・運用方針の整理', done: true, date: '3/12完了' },
+    { text: '週1定例MTGの提案・日程調整中', done: true, date: '3/12提案済' },
+    { text: '資料・マニュアル一覧スプシ作成', done: true, date: '3/13完了' },
     { text: '予約枠管理ルールの策定', done: false },
     { text: '残業管理ルールの整備', done: false },
-    { text: '会議体の整備（朝礼・週次MTG）', done: false },
     { text: '院内ルール・業務フローの文書化（10項目以上）', done: false },
   ],
   improveComm: [
@@ -540,9 +548,12 @@ const DATA = {
     { text: '業務上の相談がしやすい体制の構築', done: false },
   ],
   improveClinical: [
-    { text: '訪問診療の体制整備', done: false },
-    { text: '疑義照会の運用フロー見直し', done: false },
-    { text: '健診受け入れ体制の検討（kuuさん自主推進中）', done: false },
+    { text: '訪問診療の体制整備（在宅用iPhone2番契約・チラシ再整理）', done: false, date: '進行中' },
+    { text: '疑義照会の運用フロー見直し（記録ルール策定中）', done: false, date: '進行中' },
+    { text: '健診受け入れ体制の検討（検便キット運用確定）', done: false, date: '進行中' },
+    { text: '生活習慣病 療養指導計画書の運用整備', done: false, date: '進行中' },
+    { text: '禁煙外来の導入準備', done: false, date: 'keiさん資料取り寄せ済' },
+    { text: 'IVR+（電話自動応答）導入検討', done: false, date: '見積もり取得済' },
     { text: '診療実績の見える化（KPIダッシュボード）', done: false },
   ],
 
@@ -553,8 +564,10 @@ const DATA = {
     { date: '3/7', title: 'みゆさん1on1完了', desc: '面談を実施しました。貴重なお話をありがとうございました', status: 'done' },
     { date: '3/8', title: '1on1面談5名完了 + チャット整理完了', desc: 'しめじ・kei・ひな・Reiko・eiさんの面談を実施。チャットの命名規則統一・概要整備も完了', status: 'done' },
     { date: '3/9', title: '1on1面談3名完了 — 全10名完了!', desc: 'kuu・Maya・黄さんの面談を実施し、全スタッフの面談が完了しました', status: 'done' },
-    { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化。日報チャットで告知予定', status: 'done' },
-    { date: '3/12', title: 'ABB常駐開始', desc: '朝礼導入・院内ルール提示・業務観察からスタートします', status: 'current' },
+    { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化', status: 'done' },
+    { date: '3/12', title: 'ABB常駐開始・シフト運用整理・定例MTG提案', desc: 'ABB常駐初日。シフト作成フローの整理、週1定例MTGの提案を実施', status: 'done' },
+    { date: '3/13', title: '資料・マニュアル一覧作成・業務改善継続', desc: '資料・マニュアル一覧スプシ完成。各種業務フロー（疑義照会・検便・計画書）の整備が進行中', status: 'current' },
+    { date: '3/19', title: '第1回 定例MTG（予定）', desc: '初回定例MTGを開催予定。議題の整理中', status: 'future' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルール10項目以上を整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
   ]
