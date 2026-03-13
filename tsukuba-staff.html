@@ -230,7 +230,7 @@ body{
     <div class="header-badge">学長室直轄 | 経営企画室</div>
     <h1>つくば院<br>運営体制プロジェクト</h1>
     <p></p>
-    <div class="header-date">最終更新：2026年3月13日</div>
+    <div class="header-date">最終更新：2026年3月14日</div>
   </div>
 </header>
 
@@ -494,7 +494,7 @@ body{
 <script>
 // ===== DATA (朝事処理で更新される部分) =====
 const DATA = {
-  lastUpdated: '2026-03-13',
+  lastUpdated: '2026-03-14',
 
   // 日別売上
   dailySales: [
@@ -508,12 +508,13 @@ const DATA = {
     { date: '3/9', amount: 346740, patients: 67 },
     { date: '3/11', amount: 268070, patients: 46 },
     { date: '3/12', amount: 179850, patients: 41 },
+    { date: '3/13', amount: 148040, patients: 34 },
   ],
 
   // 月間累計
-  monthlySales: 3185498,
+  monthlySales: 3333538,
   monthlyReceipts: '949万円',
-  visitCount: '5件',
+  visitCount: '2件/日',
 
   // 1on1 status: done / scheduled / pending
   oneon1: [
@@ -538,21 +539,26 @@ const DATA = {
     { text: '資料・マニュアル一覧スプシ作成', done: true, date: '3/13完了' },
     { text: '受付マニュアル・スキルチェックシートの共有', done: true, date: '3/13共有' },
     { text: '新スタッフ（marinoさん）への3行日報説明', done: true, date: '3/13完了' },
+    { text: '大阪歯科チームとの相互チャット参加（運用ノウハウ共有）', done: true, date: '3/13完了' },
+    { text: 'CLIUSアカウント整理（共通ID運用への移行検討）', done: false, date: '3/13提案中' },
+    { text: '第1回 定例MTG 3/16(月) 13:30〜', done: false, date: '3/13日程調整中' },
     { text: '予約枠管理ルールの策定', done: false },
     { text: '残業管理ルールの整備', done: false },
     { text: '院内ルール・業務フローの文書化（10項目以上）', done: false },
   ],
   improveComm: [
     { text: '全スタッフとの1on1面談（10名）', done: true, date: '3/9完了 — 全10名完了!' },
-    { text: 'Wakumy患者ID自動紐付け問題の調査・改善', done: false, date: '3/12発覚・問合せ中' },
+    { text: 'Wakumy患者ID自動紐付け問題の調査・改善', done: false, date: '3/13レイヤード社に問合せ中・週明け回答待ち' },
     { text: '情報共有の仕組みづくり（日報→確認→改善サイクル）', done: false },
     { text: '業務上の相談がしやすい体制の構築', done: false },
   ],
   improveClinical: [
-    { text: '訪問診療の体制整備（在宅用iPhone2番契約・チラシ再整理）', done: false, date: '進行中' },
+    { text: '訪問診療の体制整備（在宅用iPhone2番契約・チラシ再整理）', done: false, date: '進行中・チラシはFAX配布の方針に' },
+    { text: '訪問診療中の連絡方法ルール策定（急ぎ→050電話/通常→CW）', done: true, date: '3/13合意' },
     { text: '疑義照会の運用フロー見直し（記録ルール策定中）', done: false, date: '進行中' },
     { text: '健診受け入れ体制の検討（検便キット運用確定）', done: false, date: '進行中' },
-    { text: '生活習慣病 療養指導計画書の運用整備（事務対応に移管決定）', done: false, date: '3/12-13運用変更合意' },
+    { text: '生活習慣病 療養指導計画書の運用整備（事務対応に移管）', done: true, date: '3/13運用変更確定' },
+    { text: 'eFAX送信不具合の調査・代替手段検討', done: false, date: '3/13発生・3/16回答待ち' },
     { text: 'IVR+（電話自動応答）導入検討', done: false, date: '見積もり取得済' },
     { text: '診療実績の見える化（KPIダッシュボード）', done: false },
   ],
@@ -566,8 +572,9 @@ const DATA = {
     { date: '3/9', title: '1on1面談3名完了 — 全10名完了!', desc: 'kuu・Maya・黄さんの面談を実施し、全スタッフの面談が完了しました', status: 'done' },
     { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化', status: 'done' },
     { date: '3/12', title: 'ABB常駐開始・シフト運用整理・定例MTG提案', desc: 'ABB常駐初日。シフト作成フローの整理、週1定例MTGの提案を実施', status: 'done' },
-    { date: '3/13', title: '業務フロー整備・各種プロジェクト推進', desc: '療養指導計画書の事務移管合意。疑義照会・訪問チラシ改善・健診体制の議論が進行中', status: 'current' },
-    { date: '3/19', title: '第1回 定例MTG（予定）', desc: '初回定例MTGを開催予定。議題の整理中', status: 'future' },
+    { date: '3/13', title: '業務フロー整備・大阪歯科との連携開始', desc: '療養計画書の事務移管確定。訪問中の連絡ルール合意。大阪歯科と相互チャット参加で運用ノウハウ共有開始。eFAX不具合が発生し代替対応', status: 'done' },
+    { date: '3/14', title: 'ABB常駐4日目・定例MTG準備', desc: '3/16の第1回定例MTGに向けた議題整理。CLIUSアカウント整理の検討。Wakumy・eFAXの回答待ち', status: 'current' },
+    { date: '3/16', title: '第1回 定例MTG 13:30〜', desc: '初回定例MTG開催。各種プロジェクトの進捗共有・課題整理', status: 'future' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルール10項目以上を整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
   ]
