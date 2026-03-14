@@ -494,7 +494,7 @@ body{
 <script>
 // ===== DATA (朝事処理で更新される部分) =====
 const DATA = {
-  lastUpdated: '2026-03-14',
+  lastUpdated: '2026-03-15',
 
   // 日別売上
   dailySales: [
@@ -509,10 +509,11 @@ const DATA = {
     { date: '3/11', amount: 268070, patients: 46 },
     { date: '3/12', amount: 179850, patients: 41 },
     { date: '3/13', amount: 148040, patients: 34 },
+    { date: '3/14', amount: 300350, patients: 49 },
   ],
 
   // 月間累計
-  monthlySales: 3333538,
+  monthlySales: 3633888,
   monthlyReceipts: '949万円',
   visitCount: '2件/日',
 
@@ -542,7 +543,7 @@ const DATA = {
     { text: '大阪歯科チームとの相互チャット参加（運用ノウハウ共有）', done: true, date: '3/13完了' },
     { text: 'CLIUSアカウント整理（共通ID運用への移行検討）', done: false, date: '3/13提案中' },
     { text: '第1回 定例MTG 3/16(月) 13:30〜', done: false, date: '3/13日程調整中' },
-    { text: '予約枠管理ルールの策定', done: false },
+    { text: '予約枠管理ルールの策定（3/14に不備発見・たろ先生が全体像整理中）', done: false, date: '3/14対応開始' },
     { text: '残業管理ルールの整備', done: false },
     { text: '院内ルール・業務フローの文書化（10項目以上）', done: false },
   ],
@@ -558,7 +559,7 @@ const DATA = {
     { text: '疑義照会の運用フロー見直し（記録ルール策定中）', done: false, date: '進行中' },
     { text: '健診受け入れ体制の検討（検便キット運用確定）', done: false, date: '進行中' },
     { text: '生活習慣病 療養指導計画書の運用整備（事務対応に移管）', done: true, date: '3/13運用変更確定' },
-    { text: 'eFAX送信不具合の調査・代替手段検討', done: false, date: '3/13発生・3/16回答待ち' },
+    { text: 'eFAX送信不具合の調査・代替手段検討（しめじさんがFAX変更判断・導入運用まで対応中）', done: false, date: '3/13発生・しめじさん対応中' },
     { text: 'IVR+（電話自動応答）導入検討', done: false, date: '見積もり取得済' },
     { text: '診療実績の見える化（KPIダッシュボード）', done: false },
   ],
@@ -573,7 +574,8 @@ const DATA = {
     { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化', status: 'done' },
     { date: '3/12', title: 'ABB常駐開始・シフト運用整理・定例MTG提案', desc: 'ABB常駐初日。シフト作成フローの整理、週1定例MTGの提案を実施', status: 'done' },
     { date: '3/13', title: '業務フロー整備・大阪歯科との連携開始', desc: '療養計画書の事務移管確定。訪問中の連絡ルール合意。大阪歯科と相互チャット参加で運用ノウハウ共有開始。eFAX不具合が発生し代替対応', status: 'done' },
-    { date: '3/14', title: 'ABB常駐4日目・定例MTG準備', desc: '3/16の第1回定例MTGに向けた議題整理。CLIUSアカウント整理の検討。Wakumy・eFAXの回答待ち', status: 'current' },
+    { date: '3/14', title: 'ABB常駐4日目・予約枠管理対応・売上30万回復', desc: '予約枠管理の不備を発見・応急処置。3/14売上300,350円（49人）で回復。定例MTG準備', status: 'done' },
+    { date: '3/15', title: 'ABB常駐5日目', desc: '定例MTG(3/16)最終準備。eFAX・CLIUS回答待ちフォロー', status: 'current' },
     { date: '3/16', title: '第1回 定例MTG 13:30〜', desc: '初回定例MTG開催。各種プロジェクトの進捗共有・課題整理', status: 'future' },
     { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルール10項目以上を整備します', status: 'future' },
     { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
