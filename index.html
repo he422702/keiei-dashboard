@@ -3,1515 +3,681 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>つくば院再建計画 | 2026年3月15日</title>
+<title>つくばLAファミリークリニック | サポートプロジェクト</title>
 <style>
-  :root {
-    --primary: #1a56db;
-    --primary-light: #e8eefb;
-    --danger: #dc2626;
-    --danger-light: #fef2f2;
-    --warning: #f59e0b;
-    --warning-light: #fffbeb;
-    --success: #16a34a;
-    --success-light: #f0fdf4;
-    --info: #0891b2;
-    --info-light: #ecfeff;
-    --gray-50: #f9fafb;
-    --gray-100: #f3f4f6;
-    --gray-200: #e5e7eb;
-    --gray-300: #d1d5db;
-    --gray-500: #6b7280;
-    --gray-700: #374151;
-    --gray-900: #111827;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
-    background: var(--gray-50);
-    color: var(--gray-900);
-    line-height: 1.6;
-  }
-  .header {
-    background: linear-gradient(135deg, #1e3a8a, #1a56db);
-    color: white;
-    padding: 32px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header h1 { font-size: 24px; font-weight: 700; }
-  .header .subtitle { opacity: 0.85; font-size: 14px; margin-top: 4px; }
-  .header .date-badge {
-    background: rgba(255,255,255,0.2);
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-  }
-  .nav {
-    background: white;
-    border-bottom: 1px solid var(--gray-200);
-    position: sticky;
-    top: 89px;
-    z-index: 99;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    gap: 4px;
-  }
-  .nav a {
-    display: inline-block;
-    padding: 12px 16px;
-    text-decoration: none;
-    color: var(--gray-500);
-    font-size: 13px;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-  }
-  .nav a:hover, .nav a.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-  }
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-  }
-  .section {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-  .section-header {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--gray-200);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-header .icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .section-header h2 { font-size: 18px; font-weight: 700; }
-  .section-header .badge {
-    margin-left: auto;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .section-body { padding: 24px; }
-  .summary-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .summary-card {
-    background: var(--gray-50);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    border: 1px solid var(--gray-200);
-  }
-  .summary-card .label {
-    font-size: 12px;
-    color: var(--gray-500);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-  }
-  .summary-card .value { font-size: 28px; font-weight: 800; }
-  .summary-card .sub { font-size: 12px; color: var(--gray-500); margin-top: 4px; }
-  .summary-card.danger { background: var(--danger-light); border-color: #fecaca; }
-  .summary-card.danger .value { color: var(--danger); }
-  .summary-card.success { background: var(--success-light); border-color: #bbf7d0; }
-  .summary-card.success .value { color: var(--success); }
-  .summary-card.warning { background: var(--warning-light); border-color: #fde68a; }
-  .summary-card.warning .value { color: var(--warning); }
-  .summary-card.info { background: var(--info-light); border-color: #a5f3fc; }
-  .summary-card.info .value { color: var(--info); }
-  .comparison {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-bottom: 24px;
-  }
-  .comparison-card {
-    border-radius: 10px;
-    padding: 24px;
-    border: 2px solid;
-  }
-  .comparison-card.osaka { background: var(--success-light); border-color: #86efac; }
-  .comparison-card.tsukuba { background: var(--danger-light); border-color: #fca5a5; }
-  .comparison-card h3 { font-size: 16px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-  .comparison-card .stat-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.06);
-    font-size: 14px;
-  }
-  .comparison-card .stat-row:last-child { border-bottom: none; }
-  .comparison-card .stat-value { font-weight: 700; }
-  table { width: 100%; border-collapse: collapse; font-size: 14px; }
-  th {
-    background: var(--gray-50);
-    text-align: left;
-    padding: 12px 16px;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--gray-500);
-    border-bottom: 2px solid var(--gray-200);
-  }
-  td { padding: 12px 16px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
-  tr:hover td { background: var(--gray-50); }
-  .status {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-  }
-  .status-done { background: #dcfce7; color: #15803d; }
-  .status-progress { background: #dbeafe; color: #1d4ed8; }
-  .status-pending { background: #fef3c7; color: #b45309; }
-  .status-risk { background: #fee2e2; color: #dc2626; }
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 11px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--gray-200);
-  }
-  .timeline-item { position: relative; margin-bottom: 24px; }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -27px;
-    top: 4px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--primary);
-    border: 2px solid white;
-    box-shadow: 0 0 0 2px var(--primary);
-  }
-  .timeline-item.done::before { background: var(--success); box-shadow: 0 0 0 2px var(--success); }
-  .timeline-item.active::before { background: var(--warning); box-shadow: 0 0 0 2px var(--warning); animation: pulse 2s infinite; }
-  .timeline-item.future::before { background: var(--gray-300); box-shadow: 0 0 0 2px var(--gray-300); }
-  @keyframes pulse { 0%,100%{box-shadow:0 0 0 2px var(--warning)} 50%{box-shadow:0 0 0 6px rgba(245,158,11,0.3)} }
-  .timeline-date { font-size: 12px; color: var(--gray-500); font-weight: 600; margin-bottom: 4px; }
-  .timeline-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .timeline-desc { font-size: 13px; color: var(--gray-500); }
-  .quote {
-    background: var(--gray-50);
-    border-left: 4px solid var(--primary);
-    padding: 16px 20px;
-    margin: 12px 0;
-    border-radius: 0 8px 8px 0;
-    font-size: 14px;
-    color: var(--gray-700);
-  }
-  .quote .author { font-weight: 700; color: var(--primary); margin-bottom: 4px; font-size: 13px; }
-  .quote.danger { border-left-color: var(--danger); }
-  .quote.danger .author { color: var(--danger); }
-  .quote.warning { border-left-color: var(--warning); }
-  .phase-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .phase-card {
-    border-radius: 10px;
-    padding: 20px;
-    border: 2px solid;
-    position: relative;
-  }
-  .phase-card .phase-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-  .phase-card h4 { font-size: 15px; margin-bottom: 8px; }
-  .phase-card .period { font-size: 12px; color: var(--gray-500); margin-bottom: 12px; }
-  .phase-card ul { font-size: 13px; padding-left: 18px; color: var(--gray-700); }
-  .phase-card ul li { margin-bottom: 4px; }
-  .phase-card.active-phase { border-color: var(--warning); background: var(--warning-light); }
-  .phase-card.p1 { border-color: var(--primary); background: var(--primary-light); }
-  .phase-card.p2 { border-color: var(--info); background: var(--info-light); }
-  .phase-card.p3 { border-color: var(--success); background: var(--success-light); }
-  .problem-tree {
-    background: var(--danger-light);
-    border: 1px solid #fecaca;
-    border-radius: 10px;
-    padding: 24px;
-    margin: 16px 0;
-  }
-  .problem-root {
-    background: var(--danger);
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 15px;
-  }
-  .problem-branches {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 12px;
-  }
-  .problem-branch {
-    background: white;
-    border-radius: 8px;
-    padding: 16px;
-    border-left: 4px solid var(--danger);
-  }
-  .problem-branch h5 { font-size: 13px; color: var(--danger); margin-bottom: 8px; }
-  .problem-branch ul { font-size: 13px; padding-left: 16px; color: var(--gray-700); }
-  .problem-branch ul li { margin-bottom: 4px; }
-  .staff-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-  }
-  .staff-card {
-    border: 1px solid var(--gray-200);
-    border-radius: 8px;
-    padding: 16px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .staff-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    flex-shrink: 0;
-  }
-  .staff-info h5 { font-size: 14px; margin-bottom: 2px; }
-  .staff-info .role { font-size: 12px; color: var(--gray-500); }
-  .staff-info .note { font-size: 12px; color: var(--gray-700); margin-top: 4px; }
-  .candidate-list { display: grid; gap: 12px; }
-  .candidate-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    border: 1px solid var(--gray-200);
-    border-radius: 10px;
-    background: white;
-  }
-  .candidate-rank {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 800;
-    font-size: 14px;
-    color: white;
-    flex-shrink: 0;
-  }
-  .candidate-card:nth-child(1) .candidate-rank { background: #f59e0b; }
-  .candidate-card:nth-child(2) .candidate-rank { background: #94a3b8; }
-  .candidate-card:nth-child(3) .candidate-rank { background: #b45309; }
-  .candidate-card:nth-child(4) .candidate-rank { background: var(--gray-300); }
-  .candidate-info { flex: 1; }
-  .candidate-info h5 { font-size: 14px; }
-  .candidate-info p { font-size: 13px; color: var(--gray-500); }
-  .candidate-feasibility { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; flex-shrink: 0; }
-  .kpi-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--gray-100);
-  }
-  .kpi-row:last-child { border-bottom: none; }
-  .kpi-label { width: 140px; font-size: 13px; font-weight: 600; flex-shrink: 0; }
-  .kpi-bar-wrap { flex: 1; }
-  .kpi-bar-bg {
-    height: 24px;
-    background: var(--gray-100);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative;
-  }
-  .kpi-bar {
-    height: 100%;
-    border-radius: 12px;
-    transition: width 1s ease;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    color: white;
-  }
-  .kpi-target {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 11px;
-    color: var(--gray-500);
-  }
-  .risk-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 12px;
-  }
-  .risk-card { border-radius: 8px; padding: 16px; border-left: 4px solid; }
-  .risk-card.high { background: var(--danger-light); border-color: var(--danger); }
-  .risk-card.medium { background: var(--warning-light); border-color: var(--warning); }
-  .risk-card h5 { font-size: 14px; margin-bottom: 4px; }
-  .risk-card p { font-size: 13px; color: var(--gray-700); }
-  .risk-card .risk-meta { font-size: 11px; color: var(--gray-500); margin-top: 8px; }
-  .action-list { list-style: none; }
-  .action-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--gray-100);
-  }
-  .action-item:last-child { border-bottom: none; }
-  .action-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .action-content { flex: 1; }
-  .action-content h5 { font-size: 14px; margin-bottom: 2px; }
-  .action-content p { font-size: 13px; color: var(--gray-500); }
-  .action-deadline { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 6px; flex-shrink: 0; }
-  .action-deadline.today { background: #fee2e2; color: var(--danger); }
-  .action-deadline.week { background: #fef3c7; color: #b45309; }
-  .oneon1-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .oneon1-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
-  .oneon1-card h5 { font-size: 14px; margin-bottom: 8px; }
-  .oneon1-card .finding { font-size: 13px; color: var(--gray-700); margin-bottom: 4px; padding-left: 12px; border-left: 3px solid var(--warning); }
-  .footer { text-align: center; padding: 32px 24px; color: var(--gray-500); font-size: 12px; }
-  .issue-list { list-style: none; margin: 0; padding: 0; }
-  .issue-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--gray-100);
-    font-size: 13px;
-  }
-  .issue-item:last-child { border-bottom: none; }
-  .issue-tag {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 600;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  @media (max-width: 768px) {
-    .comparison, .phase-grid { grid-template-columns: 1fr; }
-    .problem-branches { grid-template-columns: 1fr; }
-    .header-inner { flex-direction: column; gap: 12px; }
-    .kpi-label { width: 100px; font-size: 12px; }
-    .staff-grid { grid-template-columns: 1fr; }
-    .nav a { padding: 10px 12px; font-size: 12px; }
-  }
-  @media print {
-    .header { position: static; }
-    .nav { display: none; }
-    .section { break-inside: avoid; }
-  }
+:root {
+  --primary: #0d6e6e;
+  --primary-light: #e6f5f5;
+  --primary-dark: #094d4d;
+  --accent: #f0a050;
+  --accent-light: #fff7ed;
+  --bg: #f7fafa;
+  --card: #ffffff;
+  --text: #2d3a3a;
+  --text-light: #6b7f7f;
+  --border: #dce8e8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --info: #0284c7;
+  --shadow: 0 1px 6px rgba(0,0,0,0.06);
+  --radius: 14px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.8;font-size:15px;
+}
+
+/* Header */
+.header{
+  background:linear-gradient(135deg,#0d6e6e 0%,#148f8f 50%,#1aadad 100%);
+  color:white;padding:48px 24px 40px;position:relative;
+}
+.header::after{
+  content:'';position:absolute;bottom:-20px;left:0;right:0;
+  height:40px;background:var(--bg);border-radius:20px 20px 0 0;
+}
+.header-inner{max-width:900px;margin:0 auto;}
+.header-badge{
+  display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);
+  padding:4px 16px;border-radius:100px;font-size:12px;margin-bottom:16px;
+}
+.header h1{font-size:clamp(24px,4vw,36px);font-weight:800;line-height:1.3;margin-bottom:8px;}
+.header p{font-size:15px;opacity:0.85;max-width:600px;}
+.header-date{margin-top:16px;font-size:13px;opacity:0.6;}
+
+/* Nav */
+.nav{
+  position:sticky;top:0;z-index:50;max-width:900px;margin:0 auto;padding:0 24px;
+}
+.nav-inner{
+  background:var(--card);border-radius:12px;box-shadow:var(--shadow);
+  padding:10px 16px;display:flex;gap:4px;overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav a{
+  display:block;padding:8px 14px;text-decoration:none;color:var(--text-light);
+  font-size:13px;font-weight:600;white-space:nowrap;border-radius:8px;transition:all 0.2s;
+}
+.nav a:hover,.nav a.active{color:var(--primary);background:var(--primary-light);}
+
+/* Main */
+.main{max-width:900px;margin:0 auto;padding:24px 24px 80px;}
+
+/* Section */
+.section{margin-bottom:48px;}
+.section-header{
+  display:flex;align-items:center;gap:12px;margin-bottom:20px;
+  padding-bottom:10px;border-bottom:2px solid var(--border);
+}
+.section-icon{
+  width:36px;height:36px;background:var(--primary);color:white;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.section-title{font-size:20px;font-weight:800;color:var(--primary-dark);}
+
+/* Card */
+.card{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;margin-bottom:16px;
+}
+.card h4{font-size:16px;font-weight:700;color:var(--primary-dark);margin-bottom:10px;}
+.card p{margin-bottom:10px;font-size:14px;color:var(--text);}
+.card ul{padding-left:20px;margin-bottom:10px;}
+.card li{margin-bottom:4px;font-size:14px;}
+
+/* Profile */
+.profile{
+  display:flex;gap:20px;align-items:center;
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;margin-bottom:24px;
+}
+.profile-avatar{
+  width:72px;height:72px;background:linear-gradient(135deg,var(--primary),var(--accent));
+  border-radius:16px;display:flex;align-items:center;justify-content:center;
+  color:white;font-size:28px;font-weight:800;flex-shrink:0;
+}
+.profile-info h3{font-size:18px;font-weight:700;color:var(--primary-dark);margin-bottom:4px;}
+.profile-info .role{font-size:13px;color:var(--text-light);margin-bottom:8px;}
+.profile-info p{font-size:14px;color:var(--text);line-height:1.7;}
+
+/* Metrics */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px;}
+.metric{
+  background:var(--card);border-radius:12px;box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:20px;text-align:center;
+}
+.metric .value{font-size:32px;font-weight:800;color:var(--primary);}
+.metric .label{font-size:12px;color:var(--text-light);margin-top:2px;}
+.metric .sub{font-size:11px;color:var(--text-light);margin-top:4px;}
+
+/* Timeline */
+.timeline{position:relative;padding-left:36px;}
+.timeline::before{
+  content:'';position:absolute;left:13px;top:0;bottom:0;width:2px;
+  background:linear-gradient(180deg,var(--primary),var(--accent));
+}
+.tl-item{
+  position:relative;margin-bottom:20px;background:var(--card);
+  padding:16px 20px;border-radius:12px;box-shadow:var(--shadow);
+  border:1px solid var(--border);
+}
+.tl-item::before{
+  content:'';position:absolute;left:-29px;top:20px;width:10px;height:10px;
+  border-radius:50%;background:var(--primary);border:2px solid white;
+  box-shadow:0 0 0 2px var(--primary);
+}
+.tl-item.done::before{background:var(--success);}
+.tl-item.current::before{background:var(--accent);box-shadow:0 0 0 2px var(--accent),0 0 8px rgba(240,160,80,0.4);}
+.tl-item.future::before{background:#ccc;box-shadow:0 0 0 2px #ccc;}
+.tl-date{font-size:12px;font-weight:700;color:var(--primary);}
+.tl-item.done .tl-date{color:var(--success);}
+.tl-item.current .tl-date{color:var(--accent);}
+.tl-item.future .tl-date{color:#aaa;}
+.tl-title{font-size:15px;font-weight:700;margin:2px 0 4px;color:var(--primary-dark);}
+.tl-desc{font-size:13px;color:var(--text-light);}
+
+/* 1on1 Progress */
+.oneon1-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px;}
+.oneon1-card{
+  background:var(--card);border-radius:12px;border:1px solid var(--border);
+  padding:16px;text-align:center;box-shadow:var(--shadow);
+}
+.oneon1-card.done{border-color:var(--success);background:#f0fdf4;}
+.oneon1-card.scheduled{border-color:var(--accent);background:var(--accent-light);}
+.oneon1-card.pending{border-color:#ddd;}
+.oneon1-name{font-size:14px;font-weight:700;color:var(--primary-dark);margin-bottom:4px;}
+.oneon1-status{font-size:11px;font-weight:600;padding:2px 8px;border-radius:6px;display:inline-block;}
+.done .oneon1-status{background:#dcfce7;color:#166534;}
+.scheduled .oneon1-status{background:#fef3c7;color:#92400e;}
+.pending .oneon1-status{background:#f3f4f6;color:#6b7280;}
+
+/* Phase Cards */
+.phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.phase{
+  background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
+  border:1px solid var(--border);padding:24px;position:relative;overflow:hidden;
+}
+.phase.active{border-color:var(--primary);border-width:2px;}
+.phase-label{
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--primary);margin-bottom:8px;
+}
+.phase.active .phase-label{color:var(--accent);}
+.phase h4{font-size:16px;font-weight:700;color:var(--primary-dark);margin-bottom:8px;}
+.phase p{font-size:13px;color:var(--text-light);line-height:1.6;}
+.phase .period{font-size:12px;color:var(--text-light);margin-top:12px;padding-top:12px;border-top:1px solid var(--border);}
+
+/* Improvement List */
+.improve-list{list-style:none;padding:0;}
+.improve-list li{
+  padding:12px 16px 12px 40px;position:relative;border-bottom:1px solid #f0f0f0;
+  font-size:14px;
+}
+.improve-list li:last-child{border-bottom:none;}
+.improve-list li::before{
+  content:'';position:absolute;left:12px;top:16px;width:16px;height:16px;
+  border:2px solid var(--primary);border-radius:4px;
+}
+.improve-list li.done::before{
+  background:var(--success);border-color:var(--success);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3 4.3a1 1 0 010 1.4l-6 6a1 1 0 01-1.4 0l-3-3a1 1 0 011.4-1.4L6.5 9.6l5.3-5.3a1 1 0 011.4 0z'/%3E%3C/svg%3E");
+  background-size:12px;background-position:center;background-repeat:no-repeat;
+}
+.improve-list li .date{font-size:11px;color:var(--text-light);margin-left:8px;}
+
+/* Callout */
+.callout{
+  padding:18px 22px;border-radius:12px;margin:16px 0;font-size:14px;line-height:1.7;
+}
+.callout-info{background:#ecfeff;border:1px solid #a5f3fc;color:#155e75;}
+.callout-warm{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;}
+.callout strong{display:block;margin-bottom:4px;}
+
+/* Sales Chart */
+.chart-bar{
+  display:flex;align-items:flex-end;gap:8px;height:160px;
+  padding:16px 0;border-bottom:1px solid var(--border);margin:16px 0;
+}
+.bar-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.bar{
+  width:100%;max-width:48px;background:linear-gradient(180deg,var(--primary),#1aadad);
+  border-radius:6px 6px 0 0;transition:height 0.6s ease;margin:0 auto;min-height:4px;
+}
+.bar-label{font-size:11px;color:var(--text-light);white-space:nowrap;}
+.bar-value{font-size:11px;font-weight:700;color:var(--primary-dark);}
+
+/* Footer */
+.footer{
+  text-align:center;padding:32px 24px;font-size:12px;color:var(--text-light);
+  border-top:1px solid var(--border);max-width:900px;margin:0 auto;
+}
+
+@media(max-width:640px){
+  .profile{flex-direction:column;text-align:center;}
+  .phase-grid{grid-template-columns:1fr;}
+  .metrics{grid-template-columns:repeat(2,1fr);}
+}
 </style>
 </head>
 <body>
 
-<div class="header">
+<!-- Header -->
+<header class="header">
   <div class="header-inner">
-    <div>
-      <h1>リベクリつくば院 再建計画</h1>
-      <div class="subtitle">大阪歯科院の再建成功パターンを適用 | 担当: ABB</div>
-    </div>
-    <div class="date-badge">2026年3月15日 更新</div>
+    <div class="header-badge">学長室直轄 | 経営企画室</div>
+    <h1>つくば院<br>運営体制プロジェクト</h1>
+    <p></p>
+    <div class="header-date">最終更新：2026年3月15日</div>
   </div>
-</div>
+</header>
 
-<div class="nav">
+<!-- Nav -->
+<nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#overview">概要</a>
-    <a href="#osaka">大阪歯科院</a>
-    <a href="#tsukuba-status">数値実績</a>
-    <a href="#oneon1">1on1結果</a>
-    <a href="#issues">最新イシュー</a>
-    <a href="#problem">問題の全体像</a>
-    <a href="#timeline">タイムライン</a>
-    <a href="#staff">スタッフ</a>
-    <a href="#candidates">院長候補</a>
-    <a href="#plan">再建フェーズ</a>
-    <a href="#kpi">KPI</a>
-    <a href="#risks">リスク</a>
-    <a href="#actions">アクション</a>
+    <a href="#intro">はじめに</a>
+    <a href="#performance">診療実績</a>
+    <a href="#chatwork">チャット一覧</a>
+    <a href="#improvement">取り組み</a>
+    <a href="#phases">今後の流れ</a>
+    <a href="#timeline-section">スケジュール</a>
   </div>
-</div>
+</nav>
 
-<div class="container">
+<!-- Main -->
+<main class="main">
 
-<!-- Overview -->
-<div id="overview" class="section">
+<!-- Intro -->
+<section class="section" id="intro">
   <div class="section-header">
-    <div class="icon" style="background:var(--primary-light);color:var(--primary)">&#128200;</div>
-    <div><h2>エグゼクティブサマリー</h2></div>
+    <div class="section-icon">!</div>
+    <div class="section-title">経営企画室からのご挨拶</div>
   </div>
-  <div class="section-body">
-    <div class="summary-grid">
-      <div class="summary-card success">
-        <div class="label">大阪歯科院 月間売上</div>
-        <div class="value">2,100万</div>
-        <div class="sub">2024年3月ジョイン → 再建成功</div>
-      </div>
-      <div class="summary-card danger">
-        <div class="label">つくば院 月間売上</div>
-        <div class="value">949万</div>
-        <div class="sub">2月レセプト実績 / 3月累計 3,633,888円</div>
-      </div>
-      <div class="summary-card success">
-        <div class="label">1on1 進捗</div>
-        <div class="value">10/10</div>
-        <div class="sub">全10名1on1完了!</div>
-      </div>
-      <div class="summary-card info">
-        <div class="label">ABB常駐</div>
-        <div class="value">5日目</div>
-        <div class="sub">3/12開始済。学長代理・全権委任</div>
-      </div>
+
+  <div class="profile">
+    <div class="profile-avatar">A</div>
+    <div class="profile-info">
+      <h3>ABB</h3>
+      <div class="role">学長秘書室 / 学長経営企画室</div>
+      <p>学長より全権委任されており、3月12日よりつくば院に常駐しています。みなさんと一緒に、より良い院づくりに取り組んでいきます。</p>
     </div>
-    <p style="font-size:14px;color:var(--gray-700);line-height:1.8">
-      ABBは2024年3月に歯科大阪院にジョインし、約2年かけて月間売上2,100万円・自費率42%の安定院へ再建。
-      この成功パターンを、院長の人間性に起因する組織崩壊リスクを抱えるつくば院の再建に適用します。
-      <strong>Phase 0完了、Phase 1（常駐安定化）進行中。ABBは3/12より常駐開始、5日目。</strong>
-      くまち先生（橋本考明）が後任院長候補として面談完了（3/12）。弁護士との法的整理も完了し、3/31試用期間満了をデッドラインとした段階的アプローチに移行中。
-      3/14の進捗：予約枠管理の問題をkeiさんが発見→たろ先生が全体像整理を自主的に買って出る。ひなさんが非常勤医師の印鑑管理問題を提起し解決策を提案。kuuさんから訪問診療の感熱紙処方箋課題が上がる。かなはむ（門司佳奈子）さんが日報チャットに参加。売上¥300,350（49人）と回復基調。弁護士に既存雇用契約書の有期雇用巻き直し可否を確認中。
+  </div>
+
+  <div class="callout callout-warm">
+    <strong>このプロジェクトの目的</strong>
+    スタッフのみなさんがより働きやすく、患者さんにもより安心して通っていただけるクリニックを、一緒につくっていきたいと思っています。
+  </div>
+</section>
+
+<!-- Performance -->
+<section class="section" id="performance">
+  <div class="section-header">
+    <div class="section-icon">~</div>
+    <div class="section-title">診療実績</div>
+  </div>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="value" id="m-sales">--</div>
+      <div class="label">3月売上（累計）</div>
+      <div class="sub" id="m-sales-sub"></div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-patients">--</div>
+      <div class="label">平均患者数/日</div>
+      <div class="sub">外来 + 訪問</div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-rece">--</div>
+      <div class="label">2月レセプト</div>
+      <div class="sub">1,117件</div>
+    </div>
+    <div class="metric">
+      <div class="value" id="m-visit">--</div>
+      <div class="label">訪問診療</div>
+      <div class="sub">3月実績</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4>日別売上推移（3月）</h4>
+    <div class="chart-bar" id="salesChart">
+      <!-- JS で描画 -->
+    </div>
+    <p style="font-size:12px;color:var(--text-light);text-align:center;">
+      * 保険 + 自費 + その他の合計
     </p>
   </div>
-</div>
+</section>
 
-<!-- 大阪歯科院 -->
-<div id="osaka" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--success-light);color:var(--success)">&#9989;</div>
-    <div><h2>大阪歯科院 再建実績（参考）</h2></div>
-    <div class="badge" style="background:var(--success-light);color:var(--success)">安定運営中</div>
-  </div>
-  <div class="section-body">
-    <div class="comparison">
-      <div class="comparison-card osaka">
-        <h3>&#127941; 大阪歯科院</h3>
-        <div class="stat-row"><span>ジョイン日</span><span class="stat-value">2024年3月28日</span></div>
-        <div class="stat-row"><span>院長</span><span class="stat-value">わっこ（木村和佳子）</span></div>
-        <div class="stat-row"><span>月間売上（2月）</span><span class="stat-value">21,032,920円</span></div>
-        <div class="stat-row"><span>3月目標</span><span class="stat-value">22,000,000円</span></div>
-        <div class="stat-row"><span>自費率</span><span class="stat-value">42%（目標47%）</span></div>
-        <div class="stat-row"><span>月間患者数</span><span class="stat-value">879人</span></div>
-      </div>
-      <div class="comparison-card tsukuba">
-        <h3>&#9888;&#65039; つくば院</h3>
-        <div class="stat-row"><span>介入開始</span><span class="stat-value">2026年3月3日</span></div>
-        <div class="stat-row"><span>院長</span><span class="stat-value">たろ先生 ※離脱プロセス進行中（3/31DL）</span></div>
-        <div class="stat-row"><span>月間売上（2月）</span><span class="stat-value">約9,493,920円</span></div>
-        <div class="stat-row"><span>3月累計</span><span class="stat-value">3,633,888円</span></div>
-        <div class="stat-row"><span>自費率</span><span class="stat-value">約3%</span></div>
-        <div class="stat-row"><span>日次患者数</span><span class="stat-value">34〜51人</span></div>
-        <div class="stat-row"><span>リスクスコア</span><span class="stat-value" style="color:var(--danger)">5/5</span></div>
-      </div>
-    </div>
-    <h3 style="font-size:15px;margin-bottom:12px">大阪歯科院で確立された成功パターン</h3>
-    <table>
-      <thead><tr><th>施策</th><th>効果</th><th>つくば院への適用</th></tr></thead>
-      <tbody>
-        <tr><td>情報共有の見える化（日報→承認→マニュアル）</td><td>ブラックボックス解消</td><td>最優先で導入</td></tr>
-        <tr><td>日次売上の分類トラッキング</td><td>データドリブン経営</td><td>日報は開始済。分析を強化</td></tr>
-        <tr><td>院長自ら方針発信</td><td>チームの方向性統一</td><td>ABBが一時的に代行</td></tr>
-        <tr><td>スタッフ間の感謝・学び合い文化</td><td>離職率低下</td><td>1on1で種を蒔く</td></tr>
-        <tr><td>AI診断によるカウンセリング改善</td><td>自費率向上</td><td>組織安定後に検討</td></tr>
-        <tr><td>タスク可視化スプレッドシート</td><td>業務の透明化・属人化解消</td><td>つくば院導入済→東京院にも波及中</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<!-- 1on1セクション削除済み（常駐開始により不要） -->
 
-<!-- つくば院 数値実績 -->
-<div id="tsukuba-status" class="section">
+<!-- Chatwork -->
+<section class="section" id="chatwork">
   <div class="section-header">
-    <div class="icon" style="background:var(--warning-light);color:var(--warning)">&#128202;</div>
-    <div><h2>つくば院 数値実績</h2></div>
+    <div class="section-icon">💬</div>
+    <div class="section-title">Chatworkチャット一覧</div>
   </div>
-  <div class="section-body">
-    <h3 style="font-size:15px;margin-bottom:12px">日次実績（2026年3月）</h3>
-    <table>
-      <thead><tr><th>日付</th><th>売上</th><th>受診人数</th><th>保険</th><th>自費</th><th>訪問</th></tr></thead>
-      <tbody>
-        <tr><td>3/4（火）</td><td><strong>244,700円</strong></td><td>46人</td><td>49件</td><td>6件</td><td>-</td></tr>
-        <tr><td>3/5（水）</td><td><strong>199,156円</strong></td><td>51人</td><td>51件</td><td>2件</td><td>1件</td></tr>
-        <tr><td>3/6（木）</td><td><strong>361,870円</strong></td><td>43人</td><td>34件</td><td>9件</td><td>1件（末期癌）</td></tr>
-        <tr><td>...</td><td colspan="5" style="color:var(--gray-500)">3/7〜3/11 データ省略</td></tr>
-        <tr><td>3/12（水）</td><td><strong>179,850円</strong></td><td>41人</td><td colspan="3">-</td></tr>
-        <tr><td>3/13（木）</td><td><strong>148,040円</strong></td><td>34人</td><td colspan="3">-</td></tr>
-        <tr style="background:var(--success-light)"><td>3/14（金）</td><td><strong>300,350円</strong></td><td>49人</td><td colspan="3">売上30万回復</td></tr>
-      </tbody>
-      <tfoot>
-        <tr style="background:var(--gray-50);font-weight:700">
-          <td>月間累計</td><td>3,633,888円</td><td colspan="4">日平均 約330,353円（11日稼働）</td>
+
+  <div class="callout callout-info">
+    <strong>スタッフの主体的な動きが加速しています</strong>
+    3/14は奥脇先生の初出勤日。たろ先生は「とても丁寧な診療で勉強になった」と高評価。kuuさん・黄先生・Reikoさんからも好反応で、チーム全体の学びにつながっています。<br>
+    3/15にはひなさんが皮膚科の予約導線問題を提起、しめじさんが事務目線で補足し、たろ先生が即日Googleビジネスプロフィールを更新。<strong>日報→気づき→改善のサイクルが定着してきました！</strong>
+  </div>
+
+  <div class="card">
+    <h4>院内スタッフ間のチャット</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border);text-align:left;">
+          <th style="padding:8px 12px;color:var(--primary-dark);">チャット名</th>
+          <th style="padding:8px 12px;color:var(--primary-dark);">用途</th>
         </tr>
-      </tfoot>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">日報・業務連絡チャット</td>
+          <td style="padding:8px 12px;">3行日報の投稿・業務連絡用チャット。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">訪問診療チャット</td>
+          <td style="padding:8px 12px;">訪問診療の進捗管理・相談チャット。進捗シート（Googleスプレッドシート）あり。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">問合せ｜医科つくば院</td>
+          <td style="padding:8px 12px;">HP・電話等からの患者問合せ通知チャット。自動通知の受信用。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">コンシェルジュ連携チャット（各担当）</td>
+          <td style="padding:8px 12px;">各コンシェルジュとの業務連携・情報共有チャット。</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;font-weight:600;">お掃除見積もり調整チャット</td>
+          <td style="padding:8px 12px;">清掃業者選定・見積もり比較・スケジュール調整用チャット。</td>
+        </tr>
+      </tbody>
     </table>
-    <h3 style="font-size:15px;margin:20px 0 12px">レセプト実績（2月分）</h3>
-    <div class="summary-grid" style="grid-template-columns: repeat(3, 1fr)">
-      <div class="summary-card">
-        <div class="label">社保</div>
-        <div class="value" style="font-size:22px">1,021件</div>
-        <div class="sub">840,508点</div>
-      </div>
-      <div class="summary-card">
-        <div class="label">国保</div>
-        <div class="value" style="font-size:22px">96件</div>
-        <div class="sub">108,884点</div>
-      </div>
-      <div class="summary-card info">
-        <div class="label">合計</div>
-        <div class="value" style="font-size:22px">949万円</div>
-        <div class="sub">1,117件 / 949,392点</div>
-      </div>
-    </div>
   </div>
-</div>
 
-<!-- 1on1 Results -->
-<div id="oneon1" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--success-light);color:var(--success)">&#128172;</div>
-    <div><h2>1on1 結果サマリー（全10名完了）</h2></div>
-    <div class="badge" style="background:var(--success-light);color:var(--success)">Phase 0 達成</div>
+  <div class="card">
+    <h4>外部連携のチャット</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:13px;">
+      <thead>
+        <tr style="border-bottom:2px solid var(--border);text-align:left;">
+          <th style="padding:8px 12px;color:var(--primary-dark);">チャット名</th>
+          <th style="padding:8px 12px;color:var(--primary-dark);">用途</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">マーケティングチャット</td>
+          <td style="padding:8px 12px;">Web集客施策（広告・MEO・チラシ等）のやりとり・相談チャット。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">HP制作チャット</td>
+          <td style="padding:8px 12px;">つくばLAファミリークリニックHP制作・更新のやりとり。HPチームへの依頼用。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">制作チャット（SPOT）</td>
+          <td style="padding:8px 12px;">つくば院制作MTG用チャット。Google Meet情報あり。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">Instagram運用チャット</td>
+          <td style="padding:8px 12px;">Instagramアカウントの投稿企画・運用方針のやりとり用チャット。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">LINE構築チャット</td>
+          <td style="padding:8px 12px;">LINE公式アカウントの構築・設定・運用に関するやりとり用チャット。</td>
+        </tr>
+        <tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:8px 12px;font-weight:600;">カッツさん連携チャット</td>
+          <td style="padding:8px 12px;">つくばLAファミリークリニックに関するカッツさんとの連携チャット。</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;font-weight:600;">つくば駅前薬局様連携チャット</td>
+          <td style="padding:8px 12px;">つくば駅前薬局様との処方連携・業務調整に関するやりとり用チャット。</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="section-body">
-    <p style="font-size:14px;color:var(--gray-700);margin-bottom:16px"><strong>共通パターン</strong>: 全員が「表面的には変わったが本質は変わっていない」と指摘。たろ先生の防衛パターンが継続していることが全方位から確認された。</p>
-    <div class="oneon1-grid">
-      <div class="oneon1-card">
-        <h5>しめじ（医療事務）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
-        <div class="finding">予約枠調整の混乱。健診運用フローの責任範囲不明確</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>kei（看護師）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
-        <div class="finding">「朝令暮改」な指示。たろ先生の機嫌を恐れてチャットで事実共有できない</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>ひな（医療事務）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
-        <div class="finding">システム移行不可（院長のこだわり）。事務スタッフを避ける動き</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>Reiko（処置室）<span class="status status-done" style="margin-left:8px">3/8</span></h5>
-        <div class="finding">チャットでの意見交換減少。スタッフが発言を躊躇する空気</div>
-      </div>
-      <div class="oneon1-card" style="border-color:var(--danger)">
-        <h5>ei（事務）<span class="status status-risk" style="margin-left:8px">要注意</span></h5>
-        <div class="finding" style="border-color:var(--danger)">パワハラ的言動のターゲット。差別的対応。「二面性」への深い不信感</div>
-      </div>
-      <div class="oneon1-card" style="border-color:var(--danger)">
-        <h5>kuu（看護師）<span class="status status-risk" style="margin-left:8px">重要証言 3/9</span></h5>
-        <div class="finding" style="border-color:var(--danger)">表面的改善のみ。高圧的態度+「察して動け」の空気は不変。コミュニケーション回避し看護師を介して指示</div>
-      </div>
-      <div class="oneon1-card" style="border-color:var(--danger)">
-        <h5>みゆ（小児科医師）<span class="status status-risk" style="margin-left:8px">限界度 8/10</span></h5>
-        <div class="finding" style="border-color:var(--danger)">インシデント管理に積極的。前向きな姿勢だが、限界度8/10。妊娠中で負荷が高い状態</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>たろ先生（院長）<span class="status status-done" style="margin-left:8px">3/5</span></h5>
-        <div class="finding">「改善すべきところは覚悟をもって改善する」との言質。常駐合意済み</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>Maya<span class="status status-done" style="margin-left:8px">3/9</span></h5>
-        <div class="finding">1on1完了（3/9 19:00）</div>
-      </div>
-      <div class="oneon1-card">
-        <h5>黄 誠（非常勤医師）<span class="status status-done" style="margin-left:8px">3/9</span></h5>
-        <div class="finding">1on1完了（3/9 21:00）。人望厚い。将来の院長候補</div>
-      </div>
-    </div>
-    <div style="margin-top:16px;padding:12px 16px;background:var(--success-light);border-radius:8px;border:1px solid #bbf7d0">
-      <strong style="color:var(--success);font-size:13px">全10名1on1完了（3/9達成）</strong>
-      <span style="font-size:13px;color:var(--gray-700);margin-left:8px">統合レポートを本日（3/11）経営陣に共有予定</span>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- 最新イシュー（Chatworkより） -->
-<div id="issues" class="section">
+<!-- Improvement -->
+<section class="section" id="improvement">
   <div class="section-header">
-    <div class="icon" style="background:var(--danger-light);color:var(--danger)">&#128293;</div>
-    <div><h2>最新イシュー（3/15 Chatwork分析）</h2></div>
-    <div class="badge" style="background:var(--danger-light);color:var(--danger)">14件</div>
+    <div class="section-icon">&gt;</div>
+    <div class="section-title">取り組み内容</div>
   </div>
-  <div class="section-body">
-    <ul class="issue-list">
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--danger-light);color:var(--danger)">重大</span>
-        <div><strong>院長離脱プロセス進行中</strong> - 弁護士から辞任届・退職届・退任合意書のドラフト完成。3/31試用期間満了が法的デッドライン</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>くまち先生（橋本考明）が後任候補として面談完了</strong> - 3/12 22:00。MAX週4・任期付きで前向き回答。うるし先生も全面協力了承</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>弁護士との法的整理完了</strong> - 試用期間中の本採用拒否が最もクリーンなルート。有期雇用巻き直しも選択肢として確認済み</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>業務フロー整備が加速</strong> - 受付マニュアルv1.0公開、訪問診療情報管理ルール策定、大阪歯科との相互チャット参加実施</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>日報チャットの活性化</strong> - eFAX問題でチーム全体が連携。ひなさんがメーカー問合せ、keiさんがインシデント報告、Reikoさんがマニュアル整備提起、しめじさんがFAX変更判断・導入まで引き取り</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>ひなさんが非常勤医師の印鑑管理問題を自発的に提起（3/14）</strong> - 受付での対応が属人的だった問題に気づき、解決策を提案。eiさんからLA会の印鑑情報も確認。スタッフ主導の業務改善が定着</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--success-light);color:var(--success)">好転</span>
-        <div><strong>たろ先生が予約枠の全体像整理を自主的に買って出る（3/14）</strong> - keiさんが1診/2診の問題を報告後、たろ先生自らが管理医師一覧の整理に着手。ABBの常駐が院長の行動変容を引き出している可能性</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--warning-light);color:#b45309">運用</span>
-        <div><strong>予約枠管理の不備</strong> - 1診体制で2診分の予約が入る。皮膚科の予約制限もかかっておらず午後に流入。たろ先生が全体像を整理する方針</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--warning-light);color:#b45309">運用</span>
-        <div><strong>eFAX送信不具合</strong> - インターネットFAXの送信エラーで紹介患者を1時間半待たせた。しめじさんが変更判断・導入運用まで引き取り</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--warning-light);color:#b45309">運用</span>
-        <div><strong>訪問診療の感熱紙処方箋問題（3/14 kuu）</strong> - 感熱紙の処方箋はFAXで送ると文字が消える。訪問診療のフロー見直しが必要</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--danger-light);color:var(--danger)">人員</span>
-        <div><strong>kuuさんの動悸・めまい</strong> - 看護チームリーダーに身体症状が出ている。メンタルケアが必要</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--danger-light);color:var(--danger)">人員</span>
-        <div><strong>しめじさんの精神的限界</strong> - レセプト業務担当。精神的限界が報告されている</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--danger-light);color:var(--danger)">リスク</span>
-        <div><strong>たろ先生の「偽装」体質</strong> - ABB常駐下では歓迎ムード。パワハラの現場確認が困難に</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--warning-light);color:#b45309">期限</span>
-        <div><strong>3/31デッドラインが極めてタイト</strong> - 弁護士からも「急いでスケジュールを組むべき」と指摘</div>
-      </li>
-      <li class="issue-item">
-        <span class="issue-tag" style="background:var(--warning-light);color:#b45309">法務</span>
-        <div><strong>信用毀損リスク</strong> - たろさんが「不当解雇」を訴えるリスクへの対策が必要</div>
-      </li>
+
+  <div class="card">
+    <h4>運営ルール・業務フロー</h4>
+    <ul class="improve-list" id="improveOps">
+      <!-- JS で描画 -->
     </ul>
   </div>
-</div>
 
-<!-- 問題の全体像 -->
-<div id="problem" class="section">
+  <div class="card">
+    <h4>コミュニケーション・チーム</h4>
+    <ul class="improve-list" id="improveComm">
+      <!-- JS で描画 -->
+    </ul>
+  </div>
+
+  <div class="card">
+    <h4>診療体制</h4>
+    <ul class="improve-list" id="improveClinical">
+      <!-- JS で描画 -->
+    </ul>
+  </div>
+
+  <div class="callout callout-info">
+    <strong>みなさんのアイデアを募集中</strong>
+    「こうしたら良くなるのに」というアイデアがあれば、いつでもお声がけください。小さなことでも大歓迎です。良いアイデアはすぐに取り入れていきます。
+  </div>
+</section>
+
+<!-- Phases -->
+<section class="section" id="phases">
   <div class="section-header">
-    <div class="icon" style="background:var(--danger-light);color:var(--danger)">&#9888;&#65039;</div>
-    <div><h2>問題の全体像</h2></div>
-    <div class="badge" style="background:var(--danger-light);color:var(--danger)">深刻度: 高</div>
+    <div class="section-icon">#</div>
+    <div class="section-title">プロジェクトの流れ</div>
   </div>
-  <div class="section-body">
-    <div class="problem-tree">
-      <div class="problem-root">根本原因：院長（たろ先生）の人間性・パーソナリティの問題（自己愛的傾向）</div>
-      <div class="problem-branches">
-        <div class="problem-branch">
-          <h5>コミュニケーション崩壊</h5>
-          <ul>
-            <li>パワハラ指摘後、直接対話が激減</li>
-            <li>チャットの発言は「上層部向けパフォーマンス」</li>
-            <li>運用変更を事務に事前相談なく日報で共有</li>
-            <li>keiさんに調整役負荷が集中</li>
-            <li><strong>NEW:</strong> 看護師を介してしか指示できない（kuu証言）</li>
-          </ul>
-        </div>
-        <div class="problem-branch">
-          <h5>責任回避・防衛パターン</h5>
-          <ul>
-            <li>「具体例がないと改善できない」→ 個別論破</li>
-            <li>「患者数が多すぎた」→ 外部要因化</li>
-            <li>「反省」と言いつつ行動変わらず</li>
-            <li>ABB分析：「防衛と合理化」モード</li>
-            <li><strong>NEW:</strong> 「察して動け」の空気は不変（kuu）</li>
-            <li><strong>NEW:</strong> 辞任勧告も視野に入る段階</li>
-          </ul>
-        </div>
-        <div class="problem-branch">
-          <h5>労務リスク</h5>
-          <ul>
-            <li>ひなさんの親「労基に相談した方がいい」</li>
-            <li>休日出勤の事前承認制が不徹底</li>
-            <li>eiさん：パワハラターゲット・差別的対応</li>
-            <li>スタッフの心身疲弊</li>
-            <li>みゆ先生の限界度8/10（妊娠中+業務過多）</li>
-            <li><strong>NEW:</strong> kuuさんの動悸・めまい（身体症状）</li>
-            <li><strong>NEW:</strong> しめじさんの精神的限界</li>
-          </ul>
-        </div>
-        <div class="problem-branch">
-          <h5>業務構造の問題</h5>
-          <ul>
-            <li><strong>NEW:</strong> 健診業務が2種類（院内/つくば市）混在し未整理</li>
-            <li><strong>NEW:</strong> シフト表の認識齟齬（ABBが仲介）</li>
-            <li><strong>NEW:</strong> オンライン資格確認システム不具合（CLIUS/DONUTS/レイヤード）</li>
-            <li>注意されるべきことが注意されない</li>
-            <li>別の意味でモンスターが育つ（両の懸念）</li>
-          </ul>
-        </div>
-      </div>
+
+  <div class="phase-grid">
+    <div class="phase">
+      <div class="phase-label">Phase 0 — ✅ 完了</div>
+      <h4>現状把握</h4>
+      <p>ABBが常駐を開始しました。みなさんの声をもとに改善を進めています。</p>
+      <div class="period">3月7日〜3月11日</div>
     </div>
-    <h3 style="font-size:15px;margin:20px 0 12px">経営陣の評価</h3>
-    <div class="quote danger">
-      <div class="author">両（学長）3/3</div>
-      「そもそも論で、院長の人間性の問題やから、解決難しいやろなぁ」
+    <div class="phase active">
+      <div class="phase-label">Phase 1 - 進行中</div>
+      <h4>常駐 + 環境整備</h4>
+      <p>ABBが常駐し、朝礼の導入・業務ルールの文書化・会議体の整備を進めます。</p>
+      <div class="period">3月12日〜3月31日</div>
     </div>
-    <div class="quote danger">
-      <div class="author">Yu 3/3</div>
-      「人間性や人格は変わらないので、引き継いでくれる院長が見つかったらバトンタッチがベスト」
+    <div class="phase">
+      <div class="phase-label">Phase 2</div>
+      <h4>体制の安定化</h4>
+      <p>院内マニュアルの整備、診療体制の最適化、実績の見える化を進めます。</p>
+      <div class="period">4月〜6月</div>
     </div>
-    <div class="quote">
-      <div class="author">ABB 3/3</div>
-      「たろ先生のマインドは『反省』ではなく『防衛』と『状況の合理化』に大きく傾いている」
-    </div>
-    <h3 style="font-size:15px;margin:20px 0 12px">スタッフの声（1on1より 3/8-9更新）</h3>
-    <div class="quote danger">
-      <div class="author">keiさん（看護師）3/8</div>
-      「朝令暮改な指示。たろ先生の機嫌を恐れてチャットで事実を共有できない」
-    </div>
-    <div class="quote danger">
-      <div class="author">eiさん（事務）3/8</div>
-      「パワハラ的言動のターゲットにされている。差別的対応。二面性への深い不信感」
-    </div>
-    <div class="quote danger">
-      <div class="author">kuuさん（看護師）3/9</div>
-      「高圧的態度と『察して動け』の空気は変わっていない。コミュニケーションを避け看護師を介して指示」
-    </div>
-    <div class="quote">
-      <div class="author">Reikoさん（処置室）3/8</div>
-      「チャットでの意見交換が減少。スタッフが発言を躊躇する空気がある」
+    <div class="phase">
+      <div class="phase-label">Phase 3</div>
+      <h4>自走体制へ</h4>
+      <p>現場主導で運営を回せる体制の確立を目指します。</p>
+      <div class="period">7月〜</div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Timeline -->
-<div id="timeline" class="section">
+<section class="section" id="timeline-section">
   <div class="section-header">
-    <div class="icon" style="background:var(--primary-light);color:var(--primary)">&#128197;</div>
-    <div><h2>経緯タイムライン</h2></div>
+    <div class="section-icon">=</div>
+    <div class="section-title">直近のスケジュール</div>
   </div>
-  <div class="section-body">
-    <div class="timeline">
-      <div class="timeline-item done">
-        <div class="timeline-date">3/2（日）</div>
-        <div class="timeline-title">経営陣が介入方針を協議</div>
-        <div class="timeline-desc">両「企画室が現場に張り付く可能性を匂わせて良い」</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/3（月）</div>
-        <div class="timeline-title">スタッフからの深刻な報告 + 面談実施</div>
-        <div class="timeline-desc">kuu・kei・eiから現場の実態が報告。ABBが参入表明「僕行こうと思ってました」</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/4（火）</div>
-        <div class="timeline-title">ABBの介入準備</div>
-        <div class="timeline-desc">たろ先生にZoom調整連絡（学長代理・全権委任を明示）</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/5（木）</div>
-        <div class="timeline-title">ABB x たろ先生 1on1（2時間Zoom）</div>
-        <div class="timeline-desc">常駐の合意を取得。「改善すべきところは覚悟をもって改善する」との言質</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/6（金）</div>
-        <div class="timeline-title">スタッフへの自己紹介 + 1on1スケジュール確定</div>
-        <div class="timeline-desc">つくば院日報チャットに全員宛の自己紹介・1on1案内を投稿</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/7（土）</div>
-        <div class="timeline-title">みゆさん1on1 完了</div>
-        <div class="timeline-desc">インシデント管理に積極的。前向きな姿勢を確認</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/8（日）</div>
-        <div class="timeline-title">5名の1on1を一括実施 + 概要欄大幅整備</div>
-        <div class="timeline-desc">しめじ・kei・ひな・Reiko・eiの議事録を即日共有。チャット概要欄・ルール提示・メンション文字列を整備</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/9（月）</div>
-        <div class="timeline-title">kuuさん・Maya・黄先生 1on1完了 → 全10名達成</div>
-        <div class="timeline-desc">「高圧的態度+察して動けの空気は不変」の重要証言。kuuさん健診計画自主推進。ひな・Reikoが自発的に動き始める好転シグナル</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/10（火）</div>
-        <div class="timeline-title">統合レポート作成・常駐準備開始</div>
-        <div class="timeline-desc">10名分の統合レポート作成。常駐初日アジェンダ策定・院内ルール10項目下書き</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/11（水）</div>
-        <div class="timeline-title">統合レポート経営陣共有・常駐最終準備</div>
-        <div class="timeline-desc">健診業務構造整理、シフト表齟齬仲介、オンライン資格確認不具合対応。たろ先生辞任勧告の検討開始。みゆ先生限界度8/10のケア方針策定</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/12（水）</div>
-        <div class="timeline-title">ABB常駐開始。シフト運用整理、定例MTG提案、資料マニュアル一覧共有</div>
-        <div class="timeline-desc">くまち先生と後任院長面談完了（22:00）。弁護士との法的整理完了。3/31デッドライン確定</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/13（木）</div>
-        <div class="timeline-title">受付マニュアルv1.0公開。訪問診療情報管理ルール策定。大阪歯科×つくば院相互参加</div>
-        <div class="timeline-desc">日報チャット活性化。eFAX問題でチーム全体が連携して対応。Lillさん3行日報運用開始</div>
-      </div>
-      <div class="timeline-item done">
-        <div class="timeline-date">3/14（金）</div>
-        <div class="timeline-title">予約枠問題発覚→たろ先生が自主整理。ひなさん印鑑管理提案。売上¥300,350回復</div>
-        <div class="timeline-desc">keiさんが1診/2診の予約制限不備を発見。kuuさんから感熱紙処方箋問題。かなはむさん日報チャット参加。弁護士に有期雇用巻き直し確認中</div>
-      </div>
-      <div class="timeline-item active">
-        <div class="timeline-date">3/15（土）TODAY</div>
-        <div class="timeline-title">常駐5日目。定例MTG(3/16)アジェンダ最終準備・くまち先生条件とりまとめ</div>
-        <div class="timeline-desc">予約枠管理フロー整備。感熱紙処方箋問題の対策検討。弁護士回答待ち</div>
-      </div>
-      <div class="timeline-item future">
-        <div class="timeline-date">3/16（月）</div>
-        <div class="timeline-title">第1回定例MTG（13:30-14:30）</div>
-        <div class="timeline-desc">Phase 1における定例会議体の開始</div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Staff -->
-<div id="staff" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--info-light);color:var(--info)">&#128101;</div>
-    <div><h2>スタッフ構成（全10名1on1完了）</h2></div>
-    <div class="badge" style="background:var(--success-light);color:var(--success)">1on1 10/10完了</div>
+  <div class="timeline" id="timelineList">
+    <!-- JS で描画 -->
   </div>
-  <div class="section-body">
-    <div class="staff-grid">
-      <div class="staff-card" style="border-left:3px solid var(--danger)">
-        <div class="staff-avatar" style="background:var(--danger)">&#128104;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>たろ18（細井崇弘）</h5>
-          <div class="role">院長 / 常勤医師 / 休日:火水</div>
-          <div class="note" style="color:var(--danger)">離脱プロセス進行中。3/31試用期間満了がデッドライン。偽装体質（常駐下では歓迎ムード）</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--success)">
-        <div class="staff-avatar" style="background:var(--success)">&#128104;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>黄 誠</h5>
-          <div class="role">非常勤医師 / 週1水曜+臨時</div>
-          <div class="note">1on1 3/9 &#9989; 人望厚い。皮膚科外来見学でスキルアップ意欲。将来の院長候補</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--danger)">
-        <div class="staff-avatar" style="background:#8b5cf6">&#128105;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>みゆ（目黒美結）</h5>
-          <div class="role">小児科医師</div>
-          <div class="note" style="color:var(--danger)">1on1 3/7 &#9989; 限界度8/10。妊娠中+業務過多。早急なサポート必要</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--danger)">
-        <div class="staff-avatar" style="background:#0891b2">&#128105;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>kuu（小林郁美）</h5>
-          <div class="role">看護師 / チームリーダー</div>
-          <div class="note" style="color:var(--danger)">1on1 3/9 &#9989; 動悸・めまいの身体症状発生。要メンタルケア</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--success)">
-        <div class="staff-avatar" style="background:#0d9488">&#128105;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>kei_石踊</h5>
-          <div class="role">看護師</div>
-          <div class="note">1on1 3/8 &#9989; バランスが良い（ロックン評）。ABBがフォロー中</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--danger)">
-        <div class="staff-avatar" style="background:#6366f1">&#128105;</div>
-        <div class="staff-info">
-          <h5>しめじ（嶋津彩穂）</h5>
-          <div class="role">医療事務</div>
-          <div class="note">1on1 3/8 &#9989; eFAX問題でFAX変更判断・導入運用まで引き取り。自発的に課題解決に動いている</div>
-        </div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-avatar" style="background:#d97706">&#128105;</div>
-        <div class="staff-info">
-          <h5>ひな（倉持ひな）</h5>
-          <div class="role">医療事務</div>
-          <div class="note" style="color:var(--success)">1on1 3/8 &#9989; 非常勤医師の印鑑管理問題を自発的に提起・解決策提案（3/14）。スプシ活用も開始</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--danger)">
-        <div class="staff-avatar" style="background:#ea580c">&#128105;</div>
-        <div class="staff-info">
-          <h5>ei（石塚栄里）</h5>
-          <div class="role">事務</div>
-          <div class="note" style="color:var(--danger)">1on1 3/8 &#9989; パワハラターゲット。差別的対応。要重点ケア</div>
-        </div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-avatar" style="background:#059669">&#128105;&#8205;&#9877;&#65039;</div>
-        <div class="staff-info">
-          <h5>Reiko</h5>
-          <div class="role">処置室</div>
-          <div class="note">1on1 3/8 &#9989; 健診資料調査を自主的に開始</div>
-        </div>
-      </div>
-      <div class="staff-card">
-        <div class="staff-avatar" style="background:#7c3aed">&#128105;</div>
-        <div class="staff-info">
-          <h5>Maya</h5>
-          <div class="role">スタッフ</div>
-          <div class="note" style="color:var(--success)">1on1 3/9 &#9989; 完了</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--success)">
-        <div class="staff-avatar" style="background:#059669">&#128105;</div>
-        <div class="staff-info">
-          <h5>Lill</h5>
-          <div class="role">コンシェルジュ / 学生アルバイト / 土日勤務</div>
-          <div class="note" style="color:var(--success)">3/8-9初出勤完了。3行日報運用開始。土曜8:30-17:30、日曜8:30-12:30</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--info)">
-        <div class="staff-avatar" style="background:#475569">&#128100;</div>
-        <div class="staff-info">
-          <h5>まんまる / たねこ</h5>
-          <div class="role">新規チャット参加</div>
-          <div class="note">3/9にチャットに追加</div>
-        </div>
-      </div>
-      <div class="staff-card" style="border-left:3px solid var(--info)">
-        <div class="staff-avatar" style="background:#2563eb">&#128105;</div>
-        <div class="staff-info">
-          <h5>かなはむ（門司佳奈子）</h5>
-          <div class="role">新規チャット参加</div>
-          <div class="note" style="color:var(--info)">3/14に日報チャットに参加</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- 院長候補 -->
-<div id="candidates" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--warning-light);color:var(--warning)">&#128081;</div>
-    <div><h2>代替院長の選択肢</h2></div>
-    <div class="badge" style="background:var(--success-light);color:var(--success)">面談完了</div>
-  </div>
-  <div class="section-body">
-    <div class="candidate-list">
-      <div class="candidate-card">
-        <div class="candidate-rank">1</div>
-        <div class="candidate-info">
-          <h5>くまち先生（橋本考明・東京院）</h5>
-          <p>3/12面談完了。MAX週4・任期付きで前向き回答。訪問診療も可能。うるし先生も全面協力了承。着任条件の詰めが次ステップ</p>
-        </div>
-        <div class="candidate-feasibility" style="background:var(--success-light);color:var(--success)">面談完了</div>
-      </div>
-      <div class="candidate-card">
-        <div class="candidate-rank">2</div>
-        <div class="candidate-info">
-          <h5>黄 誠先生（非常勤）</h5>
-          <p>人望厚い。他で常勤のため1〜2年は厳しい。ベストシナリオ</p>
-        </div>
-        <div class="candidate-feasibility" style="background:var(--info-light);color:var(--info)">1〜2年後</div>
-      </div>
-      <div class="candidate-card">
-        <div class="candidate-rank">3</div>
-        <div class="candidate-info">
-          <h5>みゆ先生（小児科）</h5>
-          <p>前職で雇われ院長経験あり。短期つなぎ。ただし妊娠中+限界度8/10で現実的に困難</p>
-        </div>
-        <div class="candidate-feasibility" style="background:var(--danger-light);color:var(--danger)">困難</div>
-      </div>
-      <div class="candidate-card">
-        <div class="candidate-rank">4</div>
-        <div class="candidate-info">
-          <h5>外部募集</h5>
-          <p>たろ先生に隠れて募集は悪手。本人と話してからが前提</p>
-        </div>
-        <div class="candidate-feasibility" style="background:var(--gray-100);color:var(--gray-500)">今後検討</div>
-      </div>
-    </div>
-    <div class="quote" style="margin-top:16px">
-      <div class="author">ABB 3/12</div>
-      「くまち先生との面談完了。MAX週4・任期付きで前向き。着任条件を早急にとりまとめる」
-    </div>
-  </div>
-</div>
+</main>
 
-<!-- Plan -->
-<div id="plan" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--primary-light);color:var(--primary)">&#128640;</div>
-    <div><h2>再建フェーズ</h2></div>
-  </div>
-  <div class="section-body">
-    <div class="phase-grid">
-      <div class="phase-card p3">
-        <div class="phase-num" style="color:var(--success)">Phase 0</div>
-        <h4>緊急介入</h4>
-        <div class="period">3/2 〜 3/11 &#9989; 完了</div>
-        <ul>
-          <li>経営陣方針決定 &#9989;</li>
-          <li>たろ先生1on1 &#9989;</li>
-          <li>全スタッフ1on1 <strong>10/10 &#9989;</strong></li>
-          <li>統合レポート共有 &#9989;</li>
-          <li>常駐開始済 &#9989;</li>
-        </ul>
-      </div>
-      <div class="phase-card active-phase">
-        <div class="phase-num" style="color:var(--warning)">Phase 1</div>
-        <h4>常駐安定化</h4>
-        <div class="period">3/12 〜 3/31 &#9664; 進行中</div>
-        <ul>
-          <li>ABB常駐開始 &#9989;</li>
-          <li>院内ルール文書化</li>
-          <li>定例MTG（初回3/16）</li>
-          <li>院長離脱プロセス（3/31DL）</li>
-          <li>業務フロー整備加速中</li>
-          <li>くまち先生着任条件の確定</li>
-        </ul>
-      </div>
-      <div class="phase-card p2">
-        <div class="phase-num" style="color:var(--info)">Phase 2</div>
-        <h4>体制構築</h4>
-        <div class="period">4月 〜 6月</div>
-        <ul>
-          <li>代替院長の確保</li>
-          <li>マニュアル完成</li>
-          <li>KPIダッシュボード</li>
-          <li>たろ先生→訪問診療</li>
-          <li>きむぽん引き継ぎ</li>
-        </ul>
-      </div>
-      <div class="phase-card p3">
-        <div class="phase-num" style="color:var(--success)">Phase 3</div>
-        <h4>自走</h4>
-        <div class="period">7月〜</div>
-        <ul>
-          <li>新院長の独立運営</li>
-          <li>ABB→週1訪問</li>
-          <li>月次レビュー体制</li>
-          <li>12月に成果検証</li>
-        </ul>
-      </div>
-    </div>
+<footer class="footer">
+  <p>つくばLAファミリークリニック 運営体制プロジェクト</p>
+  <p style="margin-top:4px;">経営企画室 | 毎日更新</p>
+</footer>
 
-    <h3 style="font-size:15px;margin:20px 0 12px">Phase 0 完了状況</h3>
-    <table>
-      <thead><tr><th>日付</th><th>アクション</th><th>ステータス</th></tr></thead>
-      <tbody>
-        <tr><td>3/2</td><td>経営陣で介入方針決定</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/3</td><td>Yu・ロックン・シゲがたろ先生と面談</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/3</td><td>ABB参入表明・議事録分析</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/4</td><td>たろ先生にZoom調整連絡</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/5</td><td>ABB x たろ先生 1on1（2時間）</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/6</td><td>スタッフ自己紹介・スケジュール確定</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/7</td><td>みゆさん1on1</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/8</td><td>5名1on1 + 概要欄整備 + ルール提示</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/9</td><td>kuuさん・Maya・黄先生 1on1 → 全10名完了</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/10</td><td>統合レポート作成・常駐アジェンダ策定</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/11</td><td>統合レポート経営陣共有・常駐最終準備</td><td><span class="status status-done">完了</span></td></tr>
-        <tr><td>3/12</td><td>ABB常駐開始。くまち先生面談完了。弁護士法的整理完了</td><td><span class="status status-done">完了</span></td></tr>
-      </tbody>
-    </table>
+<script>
+// ===== DATA (朝事処理で更新される部分) =====
+const DATA = {
+  lastUpdated: '2026-03-15',
 
-    <h3 style="font-size:15px;margin:20px 0 12px">Phase 1 たろ先生対応方針</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="color:var(--success);font-size:13px;margin-bottom:8px">良い院を作りたいと思っている場合</h5>
-        <p style="font-size:13px">一緒に改善していく。ルール策定に巻き込む</p>
-      </div>
-      <div style="background:var(--danger-light);border-radius:8px;padding:16px;border:1px solid #fecaca">
-        <h5 style="color:var(--danger);font-size:13px;margin-bottom:8px">思っていない場合（可能性が高い）</h5>
-        <p style="font-size:13px">ルールの上で必要な診療をしていただく。訪問診療に段階的に移行</p>
-      </div>
-      <div style="background:var(--danger-light);border-radius:8px;padding:16px;border:2px solid var(--danger)">
-        <h5 style="color:var(--danger);font-size:13px;margin-bottom:8px">進行中: 離脱プロセス（3/31デッドライン）</h5>
-        <p style="font-size:13px">弁護士ドラフト完了。既存雇用契約書の有期雇用巻き直し可否を確認中（3/14）。くまち先生後任で着地を目指す</p>
-      </div>
-    </div>
-  </div>
-</div>
+  // 日別売上
+  dailySales: [
+    { date: '3/1', amount: 610080, patients: 69 },
+    { date: '3/2', amount: 272050, patients: 56 },
+    { date: '3/4', amount: 244700, patients: 46 },
+    { date: '3/5', amount: 199156, patients: 51 },
+    { date: '3/6', amount: 361870, patients: 43 },
+    { date: '3/7', amount: 295540, patients: 63 },
+    { date: '3/8', amount: 407442, patients: 46 },
+    { date: '3/9', amount: 346740, patients: 67 },
+    { date: '3/11', amount: 268070, patients: 46 },
+    { date: '3/12', amount: 179850, patients: 41 },
+    { date: '3/13', amount: 148040, patients: 34 },
+    { date: '3/14', amount: 300350, patients: 49 },
+  ],
 
-<!-- KPI -->
-<div id="kpi" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--info-light);color:var(--info)">&#127919;</div>
-    <div><h2>KPI・成功指標</h2></div>
-  </div>
-  <div class="section-body">
-    <h3 style="font-size:15px;margin-bottom:12px">短期KPI（3月末まで）</h3>
-    <div class="kpi-row">
-      <div class="kpi-label">スタッフ離職</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:100%;background:var(--warning)">リスクあり（ei要注意 / みゆ限界8/10）</div>
-          <div class="kpi-target">目標: 0人</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-label">1on1実施率</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:100%;background:var(--success)">10/10名完了 &#9989;</div>
-          <div class="kpi-target">目標: 100%</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-label">ルール文書化</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:15%;background:var(--info)">概要欄整備済</div>
-          <div class="kpi-target">目標: 10項目以上</div>
-        </div>
-      </div>
-    </div>
-    <h3 style="font-size:15px;margin:24px 0 12px">中期KPI（6月末まで）</h3>
-    <div class="kpi-row">
-      <div class="kpi-label">月間売上</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:79%;background:var(--primary)">949万円（2月レセプト）</div>
-          <div class="kpi-target">目標: 1,200万円</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-label">自費率</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:20%;background:var(--danger)">3%</div>
-          <div class="kpi-target">目標: 15%以上</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-label">院長候補</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:70%;background:var(--success)">くまち先生 面談完了・前向き回答</div>
-          <div class="kpi-target">目標: 1名確定</div>
-        </div>
-      </div>
-    </div>
-    <div class="kpi-row">
-      <div class="kpi-label">訪問診療</div>
-      <div class="kpi-bar-wrap">
-        <div class="kpi-bar-bg">
-          <div class="kpi-bar" style="width:20%;background:var(--info)">月数件</div>
-          <div class="kpi-target">目標: 月10件以上</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  // 月間累計
+  monthlySales: 3633888,
+  monthlyReceipts: '949万円',
+  visitCount: '2件/日',
 
-<!-- Risks -->
-<div id="risks" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--danger-light);color:var(--danger)">&#128680;</div>
-    <div><h2>リスクマトリクス</h2></div>
-  </div>
-  <div class="section-body">
-    <div class="risk-grid">
-      <div class="risk-card high">
-        <h5>3/31デッドラインのタイトさ <span class="status status-risk">最重要</span></h5>
-        <p>試用期間中の本採用拒否が最もクリーンなルート。弁護士からも「急いでスケジュールを組むべき」</p>
-        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: 今週中に面談日程確定。辞任届・退職届・合意書ドラフト済み</div>
-      </div>
-      <div class="risk-card high">
-        <h5>たろ先生の「偽装」体質 <span class="status status-risk">確認済</span></h5>
-        <p>ABB常駐下では歓迎ムード。パワハラの現場確認が困難に。「不当解雇」主張のリスクも</p>
-        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: 段階的アプローチ。改善アドバイスしつつBANストーリーの根拠固め</div>
-      </div>
-      <div class="risk-card high">
-        <h5>スタッフのメンタル悪化 <span class="status status-risk">複数名</span></h5>
-        <p>kuuさん: 動悸・めまい。しめじさん: 精神的限界。みゆ先生: 限界度8/10（妊娠中）</p>
-        <div class="risk-meta">影響: 高 / 確率: 高 | 対策: ABB常駐でケア。業務負荷軽減策の実施</div>
-      </div>
-      <div class="risk-card high">
-        <h5>たろ先生が突然退職（「飛ぶ」）</h5>
-        <p>院長不在で診療継続不能になるリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: くまち先生面談完了・前向き回答あり</div>
-      </div>
-      <div class="risk-card high">
-        <h5>くまち先生着任の空白期間</h5>
-        <p>たろ先生離脱→くまち先生着任のタイムラインに空白が生じるリスク</p>
-        <div class="risk-meta">影響: 高 / 確率: 中 | 対策: 着任条件を早急にとりまとめ。有期雇用巻き直しも選択肢</div>
-      </div>
-      <div class="risk-card medium">
-        <h5>オンライン資格確認システム不具合 <span class="status status-pending">対応中</span></h5>
-        <p>CLIUS・DONUTS・レイヤードの3システムで不具合。日常業務への影響あり</p>
-        <div class="risk-meta">影響: 中 / 確率: 高 | 対策: 各ベンダーへ問い合わせ・代替運用策定</div>
-      </div>
-      <div class="risk-card medium">
-        <h5>「愚痴文化」の固定化</h5>
-        <p>院長批判が常態化し成長機会が失われるリスク</p>
-        <div class="risk-meta">影響: 中 / 確率: 中 | 対策: 建設的な改善文化へ転換。ABBはスタッフチャット不参加で中立保持</div>
-      </div>
-      <div class="risk-card medium">
-        <h5>ABB常駐中の他事業への影響</h5>
-        <p>他事業が手薄になるリスク</p>
-        <div class="risk-meta">影響: 中 / 確率: 高 | 対策: きむぽんへの早期引き継ぎ</div>
-      </div>
+  // 1on1 status: done / scheduled / pending
+  oneon1: [
+    { name: 'たろさん', status: 'done', date: '3/5' },
+    { name: 'みゆさん', status: 'done', date: '3/7' },
+    { name: 'しめじさん', status: 'done', date: '3/8' },
+    { name: 'keiさん', status: 'done', date: '3/8' },
+    { name: 'ひなさん', status: 'done', date: '3/8' },
+    { name: 'Reikoさん', status: 'done', date: '3/8' },
+    { name: 'eiさん', status: 'done', date: '3/8' },
+    { name: 'kuuさん', status: 'done', date: '3/9' },
+    { name: 'Mayaさん', status: 'done', date: '3/9' },
+    { name: '黄さん', status: 'done', date: '3/9' },
+  ],
+
+  // 改善項目
+  improveOps: [
+    { text: 'チャットグループの整理・命名規則統一', done: true, date: '3/8完了' },
+    { text: 'つくば院プロジェクト進捗管理スプシ作成', done: true, date: '3/11完了' },
+    { text: 'シフト作成フロー・運用方針の整理', done: true, date: '3/12完了' },
+    { text: '週1定例MTGの提案・日程調整中', done: true, date: '3/12提案済' },
+    { text: '資料・マニュアル一覧スプシ作成', done: true, date: '3/13完了' },
+    { text: '受付マニュアル・スキルチェックシートの共有', done: true, date: '3/13共有' },
+    { text: '新スタッフ（marinoさん）への3行日報説明', done: true, date: '3/13完了' },
+    { text: '大阪歯科チームとの相互チャット参加（運用ノウハウ共有）', done: true, date: '3/13完了' },
+    { text: '訪問診療ノートPCの運用ルール策定（PC1:スタッフ用/PC2:たろ先生専用）', done: true, date: '3/15しめじさん整理' },
+    { text: 'CLIUSアカウント整理（共通ID運用への移行検討）', done: false, date: '3/13提案中' },
+    { text: '第1回 定例MTG 3/16(月) 13:30〜', done: false, date: '3/16開催予定' },
+    { text: '予約枠管理ルールの策定（たろ先生が全体像整理→ABBがレビュー）', done: false, date: '3/14対応開始・3/15図解作成中' },
+    { text: '残業管理ルールの整備', done: false },
+    { text: '院内ルール・業務フローの文書化（10項目以上）', done: false },
+  ],
+  improveComm: [
+    { text: '全スタッフとの1on1面談（10名）', done: true, date: '3/9完了 — 全10名完了!' },
+    { text: 'Wakumy患者ID自動紐付け問題の調査・改善', done: false, date: '3/13レイヤード社に問合せ中・週明け回答待ち' },
+    { text: '情報共有の仕組みづくり（日報→確認→改善サイクル）', done: false },
+    { text: '業務上の相談がしやすい体制の構築', done: false },
+  ],
+  improveClinical: [
+    { text: '訪問診療の体制整備（在宅用iPhone2番契約・チラシ再整理）', done: false, date: '進行中・チラシはFAX配布の方針に' },
+    { text: '訪問診療中の連絡方法ルール策定（急ぎ→050電話/通常→CW）', done: true, date: '3/13合意' },
+    { text: '居宅療養管理指導書の運用改善（「医師入力前」表記で管理）', done: true, date: '3/14しめじさん提案・運用開始' },
+    { text: '訪問看護指示書4月分の事前作成（4名分）', done: true, date: '3/14しめじさん作成' },
+    { text: '小児かかりつけ診療料の算定ルール確定（翌月から算定方式）', done: true, date: '3/15シゲさん回答・ひなさん確認' },
+    { text: '皮膚科予約導線の改善（Googleビジネスプロフィール更新・予約枠調整）', done: false, date: '3/15対応開始・たろ先生更新済' },
+    { text: '皮膚科非常勤医師の週3勤務検討（面談調整中）', done: false, date: '3/14Yuさん調整中' },
+    { text: '疑義照会の運用フロー見直し（記録ルール策定中）', done: false, date: '進行中' },
+    { text: '健診受け入れ体制の検討（検便キット運用確定）', done: false, date: '進行中' },
+    { text: '生活習慣病 療養指導計画書の運用整備（事務対応に移管）', done: true, date: '3/13運用変更確定' },
+    { text: 'eFAX送信不具合の調査・代替手段検討（しめじさん対応中）', done: false, date: '3/13発生・しめじさん対応中' },
+    { text: 'IVR+（電話自動応答）導入検討', done: false, date: '見積もり取得済' },
+    { text: '診療実績の見える化（KPIダッシュボード）', done: false },
+  ],
+
+  // タイムライン
+  timeline: [
+    { date: '3/5', title: 'ABBの院長面談完了', desc: '常駐について合意。改善の方向性を共有しました', status: 'done' },
+    { date: '3/6', title: 'スタッフ全員にご挨拶・1on1案内', desc: '日報チャットにて自己紹介と面談のご案内をしました', status: 'done' },
+    { date: '3/7', title: 'みゆさん1on1完了', desc: '面談を実施しました。貴重なお話をありがとうございました', status: 'done' },
+    { date: '3/8', title: '1on1面談5名完了 + チャット整理完了', desc: 'しめじ・kei・ひな・Reiko・eiさんの面談を実施。チャットの命名規則統一・概要整備も完了', status: 'done' },
+    { date: '3/9', title: '1on1面談3名完了 — 全10名完了!', desc: 'kuu・Maya・黄さんの面談を実施し、全スタッフの面談が完了しました', status: 'done' },
+    { date: '3/11', title: 'プロジェクト進捗管理スプシ完成', desc: '5シート構成で進行中プロジェクトを一覧化', status: 'done' },
+    { date: '3/12', title: 'ABB常駐開始・シフト運用整理・定例MTG提案', desc: 'ABB常駐初日。シフト作成フローの整理、週1定例MTGの提案を実施', status: 'done' },
+    { date: '3/13', title: '業務フロー整備・大阪歯科との連携開始', desc: '療養計画書の事務移管確定。訪問中の連絡ルール合意。大阪歯科と相互チャット参加で運用ノウハウ共有開始。eFAX不具合が発生し代替対応', status: 'done' },
+    { date: '3/14', title: 'ABB常駐4日目・奥脇先生初出勤・売上30万回復', desc: '奥脇先生の小児科初出勤（高評価）。予約枠管理の不備を応急処置。居宅療養管理指導書の運用改善。3/14売上300,350円（49人）', status: 'done' },
+    { date: '3/15', title: 'ABB常駐5日目・皮膚科問題対応・小児算定確定', desc: 'ひなさん起点で皮膚科予約導線問題を改善開始。たろ先生がGoogleビジネスプロフィール更新。小児かかりつけ診療料の算定方式が確定。訪問PCルール策定', status: 'current' },
+    { date: '3/16', title: '第1回 定例MTG 13:30〜', desc: '初回定例MTG開催。予約枠管理・皮膚科体制・各種プロジェクトの進捗共有', status: 'future' },
+    { date: '3/20', title: '院内ルール初版の完成', desc: 'みなさんの意見を反映した業務ルール10項目以上を整備します', status: 'future' },
+    { date: '3/31', title: 'Phase 1 完了', desc: '常駐期間の成果をまとめ、次のステップへ', status: 'future' },
+  ]
+};
+
+// ===== RENDER =====
+
+// Metrics
+function renderMetrics() {
+  const sales = DATA.monthlySales;
+  document.getElementById('m-sales').textContent = (sales / 10000).toFixed(0) + '万';
+  document.getElementById('m-sales-sub').textContent = DATA.dailySales.length + '日分';
+
+  const avgPatients = DATA.dailySales.reduce((s, d) => s + d.patients, 0) / DATA.dailySales.length;
+  document.getElementById('m-patients').textContent = avgPatients.toFixed(0) + '人';
+
+  document.getElementById('m-rece').textContent = DATA.monthlyReceipts;
+  document.getElementById('m-visit').textContent = DATA.visitCount;
+}
+
+// Sales Chart
+function renderChart() {
+  const container = document.getElementById('salesChart');
+  const max = Math.max(...DATA.dailySales.map(d => d.amount));
+  container.innerHTML = DATA.dailySales.map(d => {
+    const h = Math.max(8, (d.amount / max) * 130);
+    return `<div class="bar-item">
+      <div class="bar-value">${(d.amount/10000).toFixed(1)}万</div>
+      <div class="bar" style="height:${h}px;"></div>
+      <div class="bar-label">${d.date}</div>
+    </div>`;
+  }).join('');
+}
+
+// 1on1 Grid
+function renderOneon1() {
+  const grid = document.getElementById('oneon1Grid');
+  const statusLabel = { done: '完了', scheduled: '予定', pending: '調整中' };
+  grid.innerHTML = DATA.oneon1.map(o => `
+    <div class="oneon1-card ${o.status}">
+      <div class="oneon1-name">${o.name}</div>
+      <div class="oneon1-status">${statusLabel[o.status]}</div>
+      <div style="font-size:11px;color:var(--text-light);margin-top:4px;">${o.date}</div>
     </div>
-  </div>
-</div>
+  `).join('');
+}
 
-<!-- Actions -->
-<div id="actions" class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--primary-light);color:var(--primary)">&#9889;</div>
-    <div><h2>今日〜来週のアクション</h2></div>
-  </div>
-  <div class="section-body">
-    <ul class="action-list">
-      <li class="action-item">
-        <div class="action-num">1</div>
-        <div class="action-content">
-          <h5>くまち先生の着任条件・時期の詰め</h5>
-          <p>ABBが「早急にとりまとめる」と発言済み。条件提示書を作成・送付</p>
-        </div>
-        <div class="action-deadline today">本日</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">2</div>
-        <div class="action-content">
-          <h5>第1回定例MTG（3/16）アジェンダ準備</h5>
-          <p>3/16（月）13:30-14:30で調整中。議題整理が必要</p>
-        </div>
-        <div class="action-deadline today">3/16</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">3</div>
-        <div class="action-content">
-          <h5>eFAX問題の着地判断</h5>
-          <p>しめじさんが対応中。MOVFAX導入判断のフォロー</p>
-        </div>
-        <div class="action-deadline today">週明け</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">4</div>
-        <div class="action-content">
-          <h5>予約枠管理フローの整備</h5>
-          <p>たろ先生が全体像を整理開始（3/14）。出勤医師×診療科の組み合わせに応じた切替ルールが必要</p>
-        </div>
-        <div class="action-deadline today">今週中</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">4.5</div>
-        <div class="action-content">
-          <h5>非常勤医師の印鑑管理ルール策定</h5>
-          <p>ひなさんが問題提起済み。eiさんからLA会印鑑情報も確認。運用フロー化が必要</p>
-        </div>
-        <div class="action-deadline today">今週中</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">4.6</div>
-        <div class="action-content">
-          <h5>訪問診療の感熱紙処方箋問題対策</h5>
-          <p>kuuさんが問題提起（3/14）。FAX送信時に文字が消える。代替フロー検討</p>
-        </div>
-        <div class="action-deadline today">今週中</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">5</div>
-        <div class="action-content">
-          <h5>医療事務3名の面談実施</h5>
-          <p>土田さん(3/19)、大山さん(3/20)、前田さん（レセプト経験確認中）</p>
-        </div>
-        <div class="action-deadline week">3/19-20</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">6</div>
-        <div class="action-content">
-          <h5>弁護士と最終方針を確定</h5>
-          <p>合意退任 or 有期雇用巻き直しの選択</p>
-        </div>
-        <div class="action-deadline today">~3/25</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">7</div>
-        <div class="action-content">
-          <h5>本採用拒否 or 有期雇用切替通告</h5>
-          <p>3/31デッドライン。ロックン・Yu主導</p>
-        </div>
-        <div class="action-deadline week">~3/31</div>
-      </li>
-      <li class="action-item">
-        <div class="action-num">8</div>
-        <div class="action-content">
-          <h5>くまち先生着任・引き継ぎ</h5>
-          <p>4月以降を目標。具体的なスケジュールは条件確定後</p>
-        </div>
-        <div class="action-deadline week">4月~</div>
-      </li>
-    </ul>
-  </div>
-</div>
+// Improve Lists
+function renderImprove(listId, items) {
+  const el = document.getElementById(listId);
+  el.innerHTML = items.map(i =>
+    `<li class="${i.done ? 'done' : ''}">${i.text}${i.date ? '<span class="date">' + i.date + '</span>' : ''}</li>`
+  ).join('');
+}
 
-<!-- 好転シグナル -->
-<div class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--success-light);color:var(--success)">&#127793;</div>
-    <div><h2>好転シグナル</h2></div>
-  </div>
-  <div class="section-body">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:12px">
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">くまち先生後任候補面談完了</h5>
-        <p style="font-size:13px;color:var(--gray-700)">3/12面談。MAX週4・任期付きで前向き回答。訪問診療も可能。うるし先生も全面協力了承</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">弁護士との法的整理完了</h5>
-        <p style="font-size:13px;color:var(--gray-700)">辞任届・退職届・退任合意書のドラフト作成済み。3/31デッドラインで明確なロードマップが確立</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">業務フロー整備が加速</h5>
-        <p style="font-size:13px;color:var(--gray-700)">療養指導計画書の事務移管合意。疑義照会運用フロー議論。健診体制整備推進中</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">ABB常駐が機能開始</h5>
-        <p style="font-size:13px;color:var(--gray-700)">3/12常駐開始。シフト運用整理、定例MTG提案、資料マニュアル一覧共有。段階的アプローチで改善とBANストーリーの根拠固めを並行</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">スタッフの自発性がさらに拡大</h5>
-        <p style="font-size:13px;color:var(--gray-700)">ひなさんが非常勤医師の印鑑管理問題を自発提起（3/14）。kuuさんが感熱紙処方箋問題を報告。個々のスタッフが受け身でなく能動的に問題を発見・共有する文化が定着しつつある</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">たろ先生の行動変容の兆し（3/14）</h5>
-        <p style="font-size:13px;color:var(--gray-700)">keiさんが予約枠の問題を報告した際、たろ先生が「全体像を整理する」と自主的に申し出。ABB常駐の効果か、院長としての当事者意識が見え始めている</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">売上回復基調（3/14: ¥300,350）</h5>
-        <p style="font-size:13px;color:var(--gray-700)">3/13の¥148,040から倍増。受診49人と安定。日平均約33万円ペースに回復</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">日報チャットの活性化（3/13-14）</h5>
-        <p style="font-size:13px;color:var(--gray-700)">eFAX問題でチーム全体が連携。ひなさんがメーカー問合せ、keiさんがインシデント報告、Reikoさんがマニュアル整備提起、しめじさんがFAX変更判断・導入まで引き取り。日報チャットを通じて情報が集まり、チームとして課題に向き合えている</p>
-      </div>
-      <div style="background:var(--success-light);border-radius:8px;padding:16px;border:1px solid #bbf7d0">
-        <h5 style="font-size:14px;margin-bottom:4px">タスク可視化が東京院に波及</h5>
-        <p style="font-size:13px;color:var(--gray-700)">つくば院で導入したタスク可視化スプレッドシートが東京院にも展開。成功パターンの横展開</p>
-      </div>
+// Timeline
+function renderTimeline() {
+  const el = document.getElementById('timelineList');
+  el.innerHTML = DATA.timeline.map(t => `
+    <div class="tl-item ${t.status}">
+      <div class="tl-date">${t.date}</div>
+      <div class="tl-title">${t.title}</div>
+      <div class="tl-desc">${t.desc}</div>
     </div>
-  </div>
-</div>
+  `).join('');
+}
 
-<!-- 教訓 -->
-<div class="section">
-  <div class="section-header">
-    <div class="icon" style="background:var(--success-light);color:var(--success)">&#128161;</div>
-    <div><h2>大阪歯科院再建からの5つの教訓</h2></div>
-  </div>
-  <div class="section-body">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px">
-      <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
-        <div style="font-size:28px;margin-bottom:8px">&#128196;</div>
-        <h5 style="font-size:14px;margin-bottom:4px">1. 情報の透明化</h5>
-        <p style="font-size:13px;color:var(--gray-500)">日報→承認→マニュアル反映のサイクル確立</p>
-      </div>
-      <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
-        <div style="font-size:28px;margin-bottom:8px">&#128202;</div>
-        <h5 style="font-size:14px;margin-bottom:4px">2. 数値で語る文化</h5>
-        <p style="font-size:13px;color:var(--gray-500)">日次売上・患者数のトラッキング</p>
-      </div>
-      <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
-        <div style="font-size:28px;margin-bottom:8px">&#127793;</div>
-        <h5 style="font-size:14px;margin-bottom:4px">3. 成長実感の共有</h5>
-        <p style="font-size:13px;color:var(--gray-500)">できることが増え売上が向上の好循環</p>
-      </div>
-      <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
-        <div style="font-size:28px;margin-bottom:8px">&#128694;</div>
-        <h5 style="font-size:14px;margin-bottom:4px">4. 段階的アプローチ</h5>
-        <p style="font-size:13px;color:var(--gray-500)">大阪は約2年で再建。焦らず信頼構築</p>
-      </div>
-      <div style="background:var(--gray-50);border-radius:8px;padding:16px;border:1px solid var(--gray-200)">
-        <div style="font-size:28px;margin-bottom:8px">&#128227;</div>
-        <h5 style="font-size:14px;margin-bottom:4px">5. 方針発信者の確保</h5>
-        <p style="font-size:13px;color:var(--gray-500)">ABBが一時代行→新院長へ引継</p>
-      </div>
-    </div>
-  </div>
-</div>
+// Init
+renderMetrics();
+renderChart();
+// renderOneon1(); // 1on1セクション削除済み
+renderImprove('improveOps', DATA.improveOps);
+renderImprove('improveComm', DATA.improveComm);
+renderImprove('improveClinical', DATA.improveClinical);
+renderTimeline();
 
-</div>
-
-<div class="footer">
-  Chatworkログに基づき作成。1on1の結果および経営陣との協議を経て随時更新<br>最終更新: 2026年3月15日
-</div>
-
+// Nav highlight
+const secs = document.querySelectorAll('.section[id]');
+const links = document.querySelectorAll('.nav a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  links.forEach(a => {
+    const active = a.getAttribute('href') === '#' + cur;
+    a.style.background = active ? 'var(--primary-light)' : '';
+    a.style.color = active ? 'var(--primary)' : '';
+  });
+});
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
 </body>
 </html>
